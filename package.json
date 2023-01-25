@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ChenPeleg/hours-report/issues"
   },
-  "homepage": "https://github.com/ChenPeleg/hours-report#readme"
+  "homepage": "https://github.com/ChenPeleg/hours-report#readme",
+  "devDependencies": {
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
+  }
 }
