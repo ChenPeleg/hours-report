@@ -3,7 +3,7 @@ import * as os from "os";
 
 const dir = process.cwd()
 
-const command = `git log --pretty='%cd %ce %s' --graph --date=iso --date-order`
+const command = `git log --pretty="%cd %ce %s" --graph --date=iso --date-order`
 
 export const main =(a)=> {
     let lsCommand = `ls ${dir}/.git`;
@@ -17,7 +17,8 @@ export const main =(a)=> {
             console.log(`${dir} is not a valid Git directory`)
             return
         }
-        exec(`${command}`, function (err, data) {
+        console.log(data)
+        exec(`cd ${dir} && ${command}`, function (err, data) {
             if (err) {
                 console.log(err)
                 return
