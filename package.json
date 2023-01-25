@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "hours report based on git repo",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
+  "type": "module",
   "scripts": {
     "test": "node --test tests/tests.mjs"
   },
