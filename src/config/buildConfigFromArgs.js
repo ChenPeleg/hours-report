@@ -1,25 +1,25 @@
-const parsEmailAlias = (value) => {
-  if (value.indexOf('=') > 0) {
-    const email = value.substring(0, value.indexOf('=')).trim();
-    const alias = value.substring(value.indexOf('=') + 1).trim();
-    if (config.emailAliases === undefined) {
-      config.emailAliases = {};
-    }
-    config.emailAliases[email] = alias;
-  } else {
-    console.error(`ERROR: Invalid alias: ${value}`);
-  }
-};
+import {ArgsOption} from './argsOption.js';
 
-export const buildConfigFromArgs = (args) => {
+
+/**
+ * @param {any}args
+ * @param {CommandLineOption[]} ArgsOption
+ */
+export const buildConfigFromArgs = (args, ArgsOption) => {
+
   for (let i = 0; i < args; i += 1) {
-    const k = args[i];
-    let n = i <= args.length - 1 ? args[i + 1] : undefined;
-    if (k === '-e' || k === '--email') {
-      parseEmailAlias(n);
-    } else if (k.startsWith('--email=')) {
-      n = k.substring(k.indexOf('=') + 1);
-      parseEmailAlias(n);
-    }
+    let argument = args[i];
+    ArgsOption.forEach((option) => {
+      if (
+          argument.startsWith(`-${option.alias}`) ||
+          argument.startsWith(`--${option.name}`)
+      ) {
+        const isAlias = argument.startsWith(`-${option.alias}`);
+        const hasEqual = argument.includes('=');
+        if (hasEqual) {
+
+        }
+      }
+    });
   }
 };

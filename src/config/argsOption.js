@@ -1,5 +1,4 @@
 /**
- *
  * @type {CommandLineOption[]}
  */
 export const ArgsOption = [
