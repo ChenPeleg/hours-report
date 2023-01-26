@@ -8,7 +8,7 @@ const validateArgumentText = (argument, nextArg, optionLiteral) => {
   const restOfText = argument.replace(optionLiteral, '').trim();
   if (
     restOfText.length === 0 ||
-    (restOfText.length > 2 && restOfText.startsWith('='))
+    (restOfText.length > 1 && restOfText.startsWith('='))
   ) {
     return true;
   }
