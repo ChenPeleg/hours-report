@@ -6,15 +6,15 @@
  */
 const getArgumentFromArgs = (argument, nextArg, option) => {
   if (
-    argument.startsWith(`-${option.alias}`) ||
-    argument.startsWith(`--${option.name}`)
+      argument.startsWith(`-${option.alias}`) ||
+      argument.startsWith(`--${option.name}`)
   ) {
     const isAlias = argument.startsWith(`-${option.alias}`);
     const hasEqual = argument.includes('=');
     if (hasEqual) {
       const data = isAlias
-        ? argument.replace(`-${option.alias}=`)
-        : argument.replace(`--${option.name}=`);
+          ? argument.replace(`-${option.alias}=`, '')
+          : argument.replace(`--${option.name}=`, '');
       return {
         data,
         jumpNextArg: false,
@@ -35,10 +35,12 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
  */
 export const getConfigFromArgs = (args, ArgsOption) => {
   /** @type {Partial<ReportConfigurations>}  */
+
   let dataFromArgs = {};
-  argsLoop: for (let i = 0; i < args; i += 1) {
+  argsLoop: for (let i = 0; i < args.length; i += 1) {
     for (let option of ArgsOption) {
       const resArgument = getArgumentFromArgs(args[i], args[i + 1], option);
+
       if (resArgument) {
         dataFromArgs[option.configOption] = resArgument.data;
         if (resArgument.jumpNextArg) {

@@ -13,9 +13,11 @@ test('ping', (_t) => {
   assert.equal(ping(), 'pong');
 });
 test('argumantResult', (_t) => {
-  // const argumantResult = getConfigFromArgs(
-  //   '-email my-email@gmail.com',
-  //   ArgsOption
-  // );
-  // assert.equal(argumantResult, 'pong');
+  console.log('******', 'argumantResult');
+  const argumantResult = getConfigFromArgs(
+    ' --email=my-email@gmail.com mx=200 mn=100'.split(' '),
+    ArgsOption
+  );
+  console.log('******', argumantResult);
+  assert.equal(argumantResult, 'pong');
 });
