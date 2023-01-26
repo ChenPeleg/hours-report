@@ -6,15 +6,15 @@
  */
 const getArgumentFromArgs = (argument, nextArg, option) => {
   if (
-      argument.startsWith(`-${option.alias}`) ||
-      argument.startsWith(`--${option.name}`)
+    argument.startsWith(`-${option.alias}`) ||
+    argument.startsWith(`--${option.name}`)
   ) {
     const isAlias = argument.startsWith(`-${option.alias}`);
     const hasEqual = argument.includes('=');
     if (hasEqual) {
       const data = isAlias
-          ? argument.replace(`-${option.alias}=`, '')
-          : argument.replace(`--${option.name}=`, '');
+        ? argument.replace(`-${option.alias}=`, '')
+        : argument.replace(`--${option.name}=`, '');
       return {
         data,
         jumpNextArg: false,
@@ -43,6 +43,9 @@ export const getConfigFromArgs = (args, ArgsOption) => {
 
       if (resArgument) {
         dataFromArgs[option.configOption] = resArgument.data;
+        if (option.type === 'number') {
+          dataFromArgs[option.configOption] = +resArgument.data;
+        }
         if (resArgument.jumpNextArg) {
           i++;
           continue argsLoop;
