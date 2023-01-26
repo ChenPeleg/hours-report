@@ -41,29 +41,14 @@ export const buildConfigFromArgs = (args, ArgsOption) => {
    * @type {Partial<ReportConfigurations>}
    */
   let dataFromArgs = {};
-  argsLoop:
-      for (let i = 0; i < args; i += 1) {
-        let argument = args[i];
+  for (let i = 0; i < args; i += 1) {
 
-        ArgsOption.forEach((option) => {
-          if (
-              argument.startsWith(`-${option.alias}`) ||
-              argument.startsWith(`--${option.name}`)
-          ) {
-            const isAlias = argument.startsWith(`-${option.alias}`);
-            const hasEqual = argument.includes('=');
-            if (hasEqual) {
-              dataFromArgs[option.configOption] = isAlias
-                  ? argument.replace(`-${option.alias}=`)
-                  : argument.replace(`--${option.name}=`);
-            } else {
-              dataFromArgs[option.configOption] = args[i];
-              i++;
+    for (let option of ArgsOption) {
+      if (getArgumentFromArgs(args[i], args[i + 1], option)) {
 
-            }
-            continue argsLoop;
-          }
-        });
       }
+    }
+
+  }
   return dataFromArgs;
 };
