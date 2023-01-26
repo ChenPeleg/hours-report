@@ -30,12 +30,12 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
 };
 
 /**
- * @param {any} args
+ * @param {string} argsAsString
  * @param {CommandLineOption[]} ArgsOption
  */
-export const getConfigFromArgs = (args, ArgsOption) => {
+export const getConfigFromArgs = (argsAsString, ArgsOption) => {
+  const args = argsAsString.split(' ');
   /** @type {Partial<ReportConfigurations>}  */
-
   let dataFromArgs = {};
   argsLoop: for (let i = 0; i < args.length; i += 1) {
     for (let option of ArgsOption) {
