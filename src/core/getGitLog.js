@@ -1,5 +1,6 @@
 import os from 'os';
-import {execPromise} from './exec-promise.js';
+import {execPromise} from "../utils/execPromise.js";
+
 
 const dir = process.cwd();
 
