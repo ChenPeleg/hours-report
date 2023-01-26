@@ -26,4 +26,9 @@ describe('Get Arguments from list', () => {
       );
     assert.throws(run);
   });
+  it('arguments throws an error if argument is without value', () => {
+    const run = () =>
+      getConfigFromArgs(' --email= -mx=200 -mn=100', ArgsOption);
+    assert.throws(run);
+  });
 });
