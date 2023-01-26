@@ -34,7 +34,7 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
  * @param {CommandLineOption[]} ArgsOption
  */
 export const getConfigFromArgs = (argsAsString, ArgsOption) => {
-  const args = argsAsString.split(' ');
+  const args = argsAsString.split(' ').filter((x) => x.trim());
   /** @type {Partial<ReportConfigurations>}  */
   let dataFromArgs = {};
   argsLoop: for (let i = 0; i < args.length; i += 1) {
@@ -50,10 +50,11 @@ export const getConfigFromArgs = (argsAsString, ArgsOption) => {
           i++;
           continue argsLoop;
         } else {
-          break;
+          continue argsLoop;
         }
       }
     }
+    throw new Error(`${args[i]} is not a legal command.`);
   }
   return dataFromArgs;
 };
