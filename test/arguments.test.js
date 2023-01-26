@@ -19,12 +19,11 @@ describe('Get Arguments from list', () => {
     assert.equal(argumantResult.MinimumSessionMinuets, 100);
   });
   it('arguments throws an error if argument is missing', () => {
-    const argumantResult = getConfigFromArgs(
-      ' --email=my-email@gmail.com -mx=200 -mn=100',
-      ArgsOption
-    );
-    assert.equal(argumantResult.Email, 'my-email@gmail.com');
-    assert.equal(argumantResult.MaxDiffForSession, 200);
-    assert.equal(argumantResult.MinimumSessionMinuets, 100);
+    const run = () =>
+      getConfigFromArgs(
+        ' --emainosucharg=my-email@gmail.com -mx=200 -mn=100',
+        ArgsOption
+      );
+    assert.throws(run);
   });
 });

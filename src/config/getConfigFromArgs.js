@@ -1,6 +1,23 @@
 /**
  * @param {string}argument
  * @param {string}nextArg
+ * @param {string } optionLiteral
+ * @return { true  }
+ */
+const validateArgumentText = (argument, nextArg, optionLiteral) => {
+  const restOfText = argument.replace(optionLiteral, '').trim();
+  if (
+    restOfText.length === 0 ||
+    (restOfText.length > 2 && restOfText.startsWith('='))
+  ) {
+    return true;
+  }
+  throw Error(`bad argument or format${argument}`);
+};
+
+/**
+ * @param {string}argument
+ * @param {string}nextArg
  * @param {CommandLineOption } option
  * @return { null | {data : string, jumpNextArg: boolean}}
  */
@@ -11,6 +28,11 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
   ) {
     const isAlias = argument.startsWith(`-${option.alias}`);
     const hasEqual = argument.includes('=');
+    validateArgumentText(
+      argument,
+      nextArg,
+      isAlias ? `-${option.alias}` : `--${option.name}`
+    );
     if (hasEqual) {
       const data = isAlias
         ? argument.replace(`-${option.alias}=`, '')
