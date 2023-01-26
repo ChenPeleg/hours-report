@@ -33,7 +33,7 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
  * @param {any} args
  * @param {CommandLineOption[]} ArgsOption
  */
-export const buildConfigFromArgs = (args, ArgsOption) => {
+export const getConfigFromArgs = (args, ArgsOption) => {
   /** @type {Partial<ReportConfigurations>}  */
   let dataFromArgs = {};
   argsLoop: for (let i = 0; i < args; i += 1) {
