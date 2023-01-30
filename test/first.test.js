@@ -3,6 +3,6 @@ import assert from 'node:assert/strict';
 
 describe('A thing', () => {
   it('should work', () => {
-    assert.strictEqual(1, 1);
+    assert.strictEqual(1, 0);
   });
 });

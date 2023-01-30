@@ -1,39 +1,39 @@
-import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
+import {TestFrameWorkConsole} from '../../src/utils/consoleFormat.js';
 import path from 'path';
 /**
  * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
  */
 /** @param {Conclusions} conclusions */
 const writeFinalResults = (conclusions) => {
-  const { skipped, fail, pass } = conclusions;
+  const {skipped, fail, pass} = conclusions;
   if (+skipped) {
     console.log(
-      TestFrameWorkConsole.paint(
-        `${skipped} Tests ${TestFrameWorkConsole.paint(' SKIPPED ', {
-          color: 'white',
-          background: 'BGyellow',
-        })}`
-      )
+        TestFrameWorkConsole.paint(
+            `${skipped} Tests ${TestFrameWorkConsole.paint(' SKIPPED ', {
+              color: 'white',
+              background: 'BGyellow',
+            })}`
+        )
     );
   }
   if (+fail) {
     console.log(
-      TestFrameWorkConsole.paint(
-        `${fail} Tests ${TestFrameWorkConsole.paint(' FAILED ', {
-          color: 'white',
-          background: 'BGred',
-        })}`
-      )
+        TestFrameWorkConsole.paint(
+            `${fail} Tests ${TestFrameWorkConsole.paint(' FAILED ', {
+              color: 'white',
+              background: 'BGred',
+            })}`
+        )
     );
   }
   console.log(
-    TestFrameWorkConsole.paint(
-      `${pass} Tests ${TestFrameWorkConsole.paint(' PASSED ', {
-        color: 'white',
-        background: 'BGgreen',
-      })}`,
-      { background: 'BGblack' }
-    )
+      TestFrameWorkConsole.paint(
+          `${pass} Tests ${TestFrameWorkConsole.paint(' PASSED ', {
+            color: 'white',
+            background: 'BGgreen',
+          })}`,
+          {background: 'BGblack'}
+      )
   );
 };
 
@@ -57,14 +57,14 @@ const getConclusions = (resultsAsText) => {
     }
   });
 
-  return { conclusionsText: resultRows.join('\n'), conclusions };
+  return {conclusionsText: resultRows.join('\n'), conclusions};
 };
 
 const reformatMainData = (text) => {
   const lines = text.split('\n');
   const argumentsForLineRemoval = ['# Subtest', '...', '---', 'duration_ms'];
   const removedRedundant = lines.filter(
-    (l) => !argumentsForLineRemoval.some((a) => l.includes(a))
+      (l) => !argumentsForLineRemoval.some((a) => l.includes(a))
   );
   const currentPath = path.resolve('').replace(/\\/g, '\\\\');
 
@@ -81,16 +81,20 @@ const reformatMainData = (text) => {
  * @param {string} resultsAsText
  * @return string
  */
-export const reformatResults = (resultsAsText, passed = true) => {
-  const conclusionsObj = getConclusions(resultsAsText);
-  const textWithoutConclutions = resultsAsText.replace(
-    conclusionsObj.conclusionsText,
-    ''
-  );
-  const mainData = reformatMainData(textWithoutConclutions);
+export const printTestResult = (resultsAsText, passed = true) => {
+  try {
+    const conclusionsObj = getConclusions(resultsAsText);
+    const textWithoutConclutions = resultsAsText.replace(
+        conclusionsObj.conclusionsText,
+        ''
+    );
+    const mainData = reformatMainData(textWithoutConclutions);
 
-  console.log(mainData);
-  writeFinalResults(conclusionsObj.conclusions);
+    console.log(mainData);
+    writeFinalResults(conclusionsObj.conclusions);
+  } catch (err) {
+    console.log(resultsAsText)
+  }
 
-  return resultsAsText;
+
 };

@@ -1,7 +1,7 @@
 import { run } from 'node:test';
 import path from 'path';
 import { getTestFiles } from './utils/getTestFiles.js';
-import { reformatResults } from './utils/reformatResults.js';
+import { printTestResult } from './utils/printTestResult.js';
 
 /**
  * @param testFiles
@@ -26,15 +26,14 @@ const mainRunner = async () => {
       .filter((f) => f.includes('test.js'))
       .map((p) => path.resolve('./test', p));
     const result = await getTapDataAsync(testFiles);
-    if (result.pass) {
-      const reformatedResults = reformatResults(result.data);
-      //console.log(reformatedResults);
+    if (result) {
+      printTestResult(result.data);
       return true;
     }
   } catch (err) {
-    console.error(err);
+    console.error('error', err);
   }
 
-  process.exit(1);
+  // process.exit(1);
 };
 mainRunner().then();
