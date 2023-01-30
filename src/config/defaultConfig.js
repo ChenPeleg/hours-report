@@ -1,6 +1,5 @@
 /**
- *
- * @type {import("../types/reportConfigurations").ReportConfigurations}
+ * @type {import("../types/reportConfigurations.js").ReportConfigurations}
  */
 const defaultConfig = {
   MaxDiffForSession: 120,
