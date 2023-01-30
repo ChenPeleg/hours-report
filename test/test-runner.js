@@ -38,4 +38,4 @@ const anotherTry = async () => {
   console.log('2');
   console.log(result);
 };
-anotherTry().then();
+// anotherTry().then();
