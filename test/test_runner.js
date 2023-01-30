@@ -28,12 +28,14 @@ const mainRunner = async () => {
     const result = await getTapDataAsync(testFiles);
     if (result) {
       printTestResult(result.data, result.pass);
-      return true;
+      if (result.pass) {
+        return true;
+      }
     }
   } catch (err) {
     console.error('error', err);
   }
 
-  // process.exit(1);
+  process.exit(1);
 };
 mainRunner().then();

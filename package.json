@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": " node ./test/runner.js",
+    "test": " node ./test/test_runner.js",
     "run:tests": "node --test"
   },
   "repository": {
