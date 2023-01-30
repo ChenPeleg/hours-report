@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "node --test"
+    "test": "node --test",
+    "run:tests": "node ./test/test-runner.js"
   },
   "repository": {
     "type": "git",
