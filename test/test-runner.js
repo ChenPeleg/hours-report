@@ -2,16 +2,21 @@ import { run } from 'node:test';
 import path from 'path';
 import { getTestFiles } from './utils/getTestFiles.js';
 
-const anotherTry = async () => {
-  const allfiles = (await getTestFiles(path.resolve('./test'))).filter((f) =>
-    f.includes('test.js')
-  );
-  const stream = run({
-    concurrency: false,
-    files: allfiles,
+const getTapDataAsync = async (testFiles) => {
+  let allData = '';
+  return new Promise((resolve, reject) => {
+    const stream = run({
+      files: testFiles,
+    });
+    stream.on('data', (data) => (allData += data.toString()));
+    stream.on('close', (data) => resolve(allData));
   });
-  stream.on('test:diagnostic', (data) => console.dir(data));
-  stream.on('test:fail', (data) => console.dir(data));
-  stream.on('test:pass', (data) => console.dir(data));
 };
-anotherTry().then();
+const mainRunner = async () => {
+  const testFiles = (await getTestFiles(path.resolve('./test')))
+    .filter((f) => f.includes('test.js'))
+    .map((p) => path.resolve('./test', p));
+  const result = await getTapDataAsync(testFiles);
+  console.log(result);
+};
+mainRunner().then((r) => r);
