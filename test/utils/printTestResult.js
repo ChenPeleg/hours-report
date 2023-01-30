@@ -61,6 +61,7 @@ const getConclusions = (resultsAsText) => {
 };
 
 const reformatMainData = (text, passed) => {
+  text = text.replace(/# tests[\s\S]*# todo/g, '');
   const lines = text.split('\n');
   const argumentsForLineRemoval = [
     passed ? '# Subtest' : 'TAP version',
@@ -68,6 +69,7 @@ const reformatMainData = (text, passed) => {
     'exitCode: 1',
     `failureType: 'subtestsFailed'`,
     '...',
+    '1..1',
     '---',
     'duration_ms',
     'TAP version',
@@ -85,6 +87,7 @@ const reformatMainData = (text, passed) => {
     return l;
   });
   let finalArr = formatUrl;
+
   if (!passed) {
     let paintErrorLines = 0;
     finalArr = finalArr
@@ -97,7 +100,7 @@ const reformatMainData = (text, passed) => {
         }
         l = l.replace('# Subtest', 'Description');
         if (l.includes('Expected')) {
-          paintErrorLines = 6;
+          paintErrorLines = 8;
           l = TestFrameWorkConsole.paint(`${l}`, 'yellow');
         }
         if (paintErrorLines > 0) {
