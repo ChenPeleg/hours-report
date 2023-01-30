@@ -1,3 +1,3 @@
-import { main } from './main.js';
+import {main} from './main.js';
 
-await main();
+main().then((results) => console.log(results));
