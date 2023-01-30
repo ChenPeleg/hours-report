@@ -27,7 +27,7 @@ const mainRunner = async () => {
   const result = await getTapDataAsync(testFiles);
   console.log(result.data);
   if (!result.pass) {
-    throw '';
+    process.exit(1);
   }
 };
 mainRunner().then((r) => r);
