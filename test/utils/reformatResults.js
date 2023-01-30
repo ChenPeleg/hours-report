@@ -2,10 +2,7 @@ import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
 /**
  * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
  */
-/**
- *
- * @param {Conclusions} conclusions
- */
+/** @param {Conclusions} conclusions */
 const writeFinalResults = (conclusions) => {
   const { skipped, fail, pass } = conclusions;
   if (+skipped) {
