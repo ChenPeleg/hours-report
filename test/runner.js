@@ -27,7 +27,7 @@ const mainRunner = async () => {
       .map((p) => path.resolve('./test', p));
     const result = await getTapDataAsync(testFiles);
     if (result) {
-      printTestResult(result.data);
+      printTestResult(result.data, result.pass);
       return true;
     }
   } catch (err) {
