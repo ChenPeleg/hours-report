@@ -1,9 +1,15 @@
 import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
-
-const writeFinalResults = ({ skipped, failed, passed }) => {
-  if (skipped) {
+/**
+ * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
+ */
+/**
+ *
+ * @param {Conclusions} conclusions
+ */
+const writeFinalResults = (conclusions) => {
+  const { skipped, fail, pass } = conclusions;
+  if (+skipped) {
     console.log(
-      '\n',
       TestFrameWorkConsole.paint(
         `${skipped} Tests ${TestFrameWorkConsole.paint(' SKIPPED ', {
           color: 'white',
@@ -12,10 +18,10 @@ const writeFinalResults = ({ skipped, failed, passed }) => {
       )
     );
   }
-  if (failed) {
+  if (+fail) {
     console.log(
       TestFrameWorkConsole.paint(
-        `${failed} Tests ${TestFrameWorkConsole.paint(' FAILED ', {
+        `${fail} Tests ${TestFrameWorkConsole.paint(' FAILED ', {
           color: 'white',
           background: 'BGred',
         })}`
@@ -23,24 +29,20 @@ const writeFinalResults = ({ skipped, failed, passed }) => {
     );
   }
   console.log(
-    '\n',
     TestFrameWorkConsole.paint(
-      `${passed} Tests ${TestFrameWorkConsole.paint(' PASSED ', {
+      `${pass} Tests ${TestFrameWorkConsole.paint(' PASSED ', {
         color: 'white',
         background: 'BGgreen',
       })}`,
       { background: 'BGblack' }
     )
   );
-  if (failed) {
-    //  process.exit(1);
-    throw new Error('npm ERR! Test failed.  See above for more details.');
-  }
 };
 
-const getConclutions = (resultsAsText) => {
+const getConclusions = (resultsAsText) => {
   const resultArr = resultsAsText.split('\n');
   const resultRows = resultArr.slice(-9);
+
   const conclusions = {
     tests: '',
     pass: '',
@@ -57,8 +59,7 @@ const getConclutions = (resultsAsText) => {
     }
   });
 
-  console.log(resultRows);
-  return { conclusionsText: resultRows.join(' '), conclusions };
+  return { conclusionsText: resultRows.join('\n'), conclusions };
 };
 
 /**
@@ -66,7 +67,14 @@ const getConclutions = (resultsAsText) => {
  * @return string
  */
 export const reformatResults = (resultsAsText, passed = true) => {
-  const conclutions = getConclutions(resultsAsText);
+  const conclusionsObj = getConclusions(resultsAsText);
+  const textWithoutConclutions = resultsAsText.replace(
+    conclusionsObj.conclusionsText,
+    ''
+  );
+
+  console.log(textWithoutConclutions);
+  writeFinalResults(conclusionsObj.conclusions);
 
   return resultsAsText;
 };
