@@ -1,4 +1,4 @@
-import { getGitLog } from './utils/get-git-log.js';
+import { getGitLog } from './core/getGitLog.js';
 
 export const main = async () => {
   try {
