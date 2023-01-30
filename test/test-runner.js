@@ -1,41 +1,16 @@
 import { run } from 'node:test';
 import path from 'path';
+import { getTestFiles } from './utils/getTestFiles.js';
 
-const getStream = () => {
-  return new Promise((resolve, reject) => {
-    const tapStream = run({
-      files: [path.resolve('./test/first.test.js')],
-    }).pipe(process.stdout);
-    tapStream.on('end', (res) => {
-      console.log('################');
-      resolve(tapStream);
-      console.log('################');
-    });
-  });
-};
-
-const testRunner = async () => {
-  console.log('************');
-  const result = await getStream();
-  console.log(result);
-  console.log('************');
-};
-
-// testRunner().then();
-const streamToPromise = (stream) => {
-  return new Promise((res, rej) => {
-    stream.on('end', () => {
-      console.log('################');
-      res(stream);
-      console.log('################');
-    });
-  });
-};
 const anotherTry = async () => {
-  const stream = run({ files: [path.resolve('./test/first.test.js')] });
-  console.log('1');
-  const result = await streamToPromise(stream);
-  console.log('2');
-  console.log(result);
+  const allfiles = (await getTestFiles(path.resolve('./test'))).filter((f) =>
+    f.includes('test.js')
+  );
+  console.log(allfiles);
+  const stream = run({
+    concurrency: false,
+    files: allfiles,
+  });
+  stream.on('test:diagnostic', (data) => console.dir(data));
 };
-// anotherTry().then();
+anotherTry().then();
