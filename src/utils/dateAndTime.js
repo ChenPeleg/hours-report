@@ -9,6 +9,9 @@
  *
  */
 const dateAndTimeToDateObj = (date, time, offset = 'Z') => {
+  if (!date) {
+    throw 'Date is missing';
+  }
   return new Date(`${date}T${time}${offset}`);
 };
 
