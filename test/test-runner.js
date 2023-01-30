@@ -3,10 +3,9 @@ import path from 'path';
 
 const getStream = () => {
   return new Promise((resolve, reject) => {
-    const tapStream = run({ files: [path.resolve('./test/first.test.js')] });
-    //     .pipe(
-    //   process.stdout
-    // );
+    const tapStream = run({
+      files: [path.resolve('./test/first.test.js')],
+    }).pipe(process.stdout);
     tapStream.on('end', (res) => {
       console.log('################');
       resolve(tapStream);
@@ -22,4 +21,21 @@ const testRunner = async () => {
   console.log('************');
 };
 
-testRunner().then();
+// testRunner().then();
+const streamToPromise = (stream) => {
+  return new Promise((res, rej) => {
+    stream.on('end', () => {
+      console.log('################');
+      res(stream);
+      console.log('################');
+    });
+  });
+};
+const anotherTry = async () => {
+  const stream = run({ files: [path.resolve('./test/first.test.js')] });
+  console.log('1');
+  const result = await streamToPromise(stream);
+  console.log('2');
+  console.log(result);
+};
+anotherTry().then();
