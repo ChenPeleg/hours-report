@@ -18,7 +18,7 @@ const validateArgumentText = (argument, nextArg, optionLiteral) => {
 /**
  * @param {string}argument
  * @param {string}nextArg
- * @param {CommandLineOption } option
+ * @param {import("../types/reportConfigurations").CommandLineOption } option
  * @return { null | {data : string, jumpNextArg: boolean}}
  */
 const getArgumentFromArgs = (argument, nextArg, option) => {
@@ -53,19 +53,21 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
 
 /**
  * @param {string} argsAsString
- * @param {CommandLineOption[]} ArgsOption
+ * @param {import("../types/reportConfigurations").CommandLineOption[]} ArgsOption
  */
 export const getConfigFromArgs = (argsAsString, ArgsOption) => {
   const args = argsAsString.split(' ').filter((x) => x.trim());
-  /** @type {Partial<ReportConfigurations>}  */
+  /** @type {Partial<import("../types/reportConfigurations").ReportConfigurations>}  */
   let dataFromArgs = {};
   argsLoop: for (let i = 0; i < args.length; i += 1) {
     for (let option of ArgsOption) {
       const resArgument = getArgumentFromArgs(args[i], args[i + 1], option);
 
       if (resArgument) {
+        // @ts-ignore
         dataFromArgs[option.configOption] = resArgument.data;
         if (option.type === 'number') {
+          // @ts-ignore
           dataFromArgs[option.configOption] = +resArgument.data;
         }
         if (resArgument.jumpNextArg) {

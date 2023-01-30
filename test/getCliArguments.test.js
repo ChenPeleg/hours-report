@@ -30,4 +30,8 @@ describe('Get Arguments from list', () => {
     const run = () => getConfigFromArgs(' --email= ', ArgsOption);
     assert.throws(run);
   });
+  it('arguments throws an error if argument shorter that it should be', () => {
+    const run = () => getConfigFromArgs(' --ema=abc123 ', ArgsOption);
+    assert.throws(run);
+  });
 });
