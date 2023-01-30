@@ -9,7 +9,6 @@ describe('Time utils', () => {
         '2023-01-25',
         '19:19:02'
       );
-
       assert.equal(
         date.toString(),
         new Date('2023-01-25T19:19:02Z').toString()
