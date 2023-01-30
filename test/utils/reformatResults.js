@@ -59,6 +59,10 @@ const getConclusions = (resultsAsText) => {
   return { conclusionsText: resultRows.join('\n'), conclusions };
 };
 
+const reformatMainData = (text) => {
+  text;
+};
+
 /**
  * @param {string} resultsAsText
  * @return string
