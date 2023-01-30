@@ -2,13 +2,14 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "typeRoots": [
-      "./typings"
-    ],
+    "moduleResolution": "NodeNext",
+    //    "typeRoots": [
+    //      "./typings"
+    //    ],
     "outFile": "./justANameToMakeTSHappy.js",
     "module": "System",
     "lib": [
-      "ES2015"
+      "ESNext"
     ]
   }
 }
