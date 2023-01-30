@@ -1,4 +1,5 @@
 import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
+import path from 'path';
 /**
  * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
  */
@@ -60,7 +61,20 @@ const getConclusions = (resultsAsText) => {
 };
 
 const reformatMainData = (text) => {
-  text;
+  const lines = text.split('\n');
+  const argumentsForLineRemoval = ['# Subtest', '...', '---', 'duration_ms'];
+  const removedRedundant = lines.filter(
+    (l) => !argumentsForLineRemoval.some((a) => l.includes(a))
+  );
+  const currentPath = path.resolve('').replace(/\\/g, '\\\\');
+
+  const formatUrl = removedRedundant.map((l) => {
+    l = l.replace(currentPath, '');
+    l = l.replace(/\\/g, ' ');
+    l = l.replace('ok', TestFrameWorkConsole.paint('passed ✔ ', 'green'));
+    return l;
+  });
+  return formatUrl.join('\n');
 };
 
 /**
@@ -73,8 +87,9 @@ export const reformatResults = (resultsAsText, passed = true) => {
     conclusionsObj.conclusionsText,
     ''
   );
+  const mainData = reformatMainData(textWithoutConclutions);
 
-  console.log(textWithoutConclutions);
+  console.log(mainData);
   writeFinalResults(conclusionsObj.conclusions);
 
   return resultsAsText;
