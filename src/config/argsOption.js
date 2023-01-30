@@ -1,5 +1,5 @@
 /**
- * @type {import("../types/reportConfigurations").CommandLineOption[]}
+ * @type {import("../types/reportConfigurations.js").CommandLineOption[]}
  */
 export const ArgsOption = [
   {
