@@ -1,6 +1,5 @@
 import os from 'os';
-import {execPromise} from "../utils/execPromise.js";
-
+import { execPromise } from '../utils/execPromise.js';
 
 const dir = process.cwd();
 
@@ -22,6 +21,7 @@ export const getGitLog = async () => {
   const gitLog = await execPromise(`cd ${dir} && ${command}`).catch((err) => {
     throw `git log command failed ${err}`;
   });
+
   const userEmail = await execPromise(`git config --get user.email`);
-  return {gitLog, userEmail};
+  return { gitLog, userEmail };
 };

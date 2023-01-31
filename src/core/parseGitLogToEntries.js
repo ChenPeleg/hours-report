@@ -31,6 +31,7 @@ const gitLogLineToEntry = (line) => {
  */
 export const parseGitLogToEntries = (gitLogAsString) => {
   const lines = gitLogAsString.split(GIT_LOG_SEPARATOR);
+  lines[0] = lines[0].replace('*', '');
 
   return lines
     .filter((l) => l.trim())

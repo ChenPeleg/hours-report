@@ -2,9 +2,9 @@ import { ArgsOptionDictionary } from './argsOptionDictionary.js';
 import { defaultConfig } from './defaultConfig.js';
 import { getConfigurationsFromArgs } from './getConfigurationsFromArgs.js';
 
-export const GetConfiguration = (commandLineArgs) => {
+export const getConfiguration = (commandLineArgs) => {
   const config = { ...defaultConfig };
-  const commandLineArgsAsString = process.argv.slice(2).join(' ');
+  const commandLineArgsAsString = commandLineArgs.slice(2).join(' ');
 
   const configsFromArgs = getConfigurationsFromArgs(
     commandLineArgsAsString,

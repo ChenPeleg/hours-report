@@ -10,6 +10,12 @@ export const LogEntriesToWorkSessions = (logEntries, config) => {
   const sortedLogEntries = [...logEntries].sort(
     (a, b) => a.date.getTime() - b.date.getTime()
   );
+  console.log(sortedLogEntries);
+  let lastTime;
+  for (let entry of sortedLogEntries) {
+    if (entry) {
+    }
+  }
 
   return workSessions;
 };
