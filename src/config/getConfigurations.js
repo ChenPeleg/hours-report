@@ -5,7 +5,7 @@ import { getConfigurationsFromArgs } from './getConfigurationsFromArgs.js';
 export const GetConfiguration = (commandLineArgs) => {
   const config = { ...defaultConfig };
   const commandLineArgsAsString = process.argv.slice(2).join(' ');
-  console.log(commandLineArgs);
+
   const configsFromArgs = getConfigurationsFromArgs(
     commandLineArgsAsString,
     ArgsOptionDictionary

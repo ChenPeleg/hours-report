@@ -6,6 +6,8 @@ import { GetConfiguration } from './config/getConfigurations.js';
 export const main = async () => {
   try {
     const config = GetConfiguration(process.argv);
+    console.log(config);
+    return;
     const gitLogData = await getGitLog();
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
     const buildWorkSessionsFromEntries = LogEntriesToWorkSessions(
