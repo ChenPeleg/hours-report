@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node ./src/index.js --email=chenpeleg@gmail.com ",
     "test": " node ./test/test_runner.js",
     "run:tests": "node --test"
   },

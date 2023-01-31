@@ -55,12 +55,16 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
 };
 
 /**
- * @param {string[]} args
+ * @param {string } argsAsString
  * @param {import("../types/reportConfigurations.js").CommandLineOption[]} ArgsOption
  */
-export const getConfigurationsFromArgs = (args, ArgsOption) => {
+export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
   /** @type {Partial<import("../types/reportConfigurations.js").ReportConfigurations>}  */
   let dataFromArgs = {};
+  if (!argsAsString.trim().length) {
+    return dataFromArgs;
+  }
+  const args = argsAsString.split(' ').filter((a) => a);
   argsLoop: for (let i = 0; i < args.length; i += 1) {
     for (let option of ArgsOption) {
       const resArgument = getArgumentFromArgs(args[i], args[i + 1], option);

@@ -1,8 +1,6 @@
 import { getGitLog } from './core/getGitLog.js';
 import { parseGitLogToEntries } from './core/parseGitLogToEntries.js';
 import { LogEntriesToWorkSessions } from './core/logEntriesToWorkSessions.js';
-import { getConfigurationsFromArgs } from './config/getConfigurationsFromArgs.js';
-import { ArgsOptionDictionary } from './config/argsOptionDictionary.js';
 import { GetConfiguration } from './config/getConfigurations.js';
 
 export const main = async () => {
