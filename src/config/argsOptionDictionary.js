@@ -1,7 +1,7 @@
 /**
  * @type {import("../types/reportConfigurations.js").CommandLineOption[]}
  */
-export const ArgsOption = [
+export const ArgsOptionDictionary = [
   {
     name: 'email',
     alias: 'e',

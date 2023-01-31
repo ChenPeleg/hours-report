@@ -1,7 +1,7 @@
 /**
  * @type {import("../types/reportConfigurations.js").ReportConfigurations}
  */
-const defaultConfig = {
+export const defaultConfig = {
   MaxDiffForSession: 120,
   MinimumSessionMinuets: 30,
   DateFrom: new Date(),

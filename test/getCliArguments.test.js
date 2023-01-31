@@ -1,8 +1,7 @@
-import {describe, it} from 'node:test';
-import {getConfigFromArgs} from '../src/config/getConfigFromArgs.js';
-import {ArgsOption} from '../src/config/argsOption.js';
-import assert from "node:assert";
-
+import { describe, it } from 'node:test';
+import { getConfigurationsFromArgs } from '../src/config/getConfigurationsFromArgs.js';
+import { ArgsOptionDictionary } from '../src/config/argsOptionDictionary.js';
+import assert from 'node:assert';
 
 describe('Get Arguments from list', () => {
   it('ping 2', () => {
@@ -11,9 +10,9 @@ describe('Get Arguments from list', () => {
   });
 
   it('arguments returns a proper object ', () => {
-    const argumantResult = getConfigFromArgs(
-        ' --email=my-email@gmail.com -mx=200 -mn=100',
-        ArgsOption
+    const argumantResult = getConfigurationsFromArgs(
+      ' --email=my-email@gmail.com -mx=200 -mn=100',
+      ArgsOptionDictionary
     );
     assert.equal(argumantResult.Email, 'my-email@gmail.com');
     assert.equal(argumantResult.MaxDiffForSession, 200);
@@ -21,18 +20,20 @@ describe('Get Arguments from list', () => {
   });
   it('arguments throws an error if argument is missing', () => {
     const run = () =>
-        getConfigFromArgs(
-            ' --emainosucharg=my-email@gmail.com -mx=200 -mn=100',
-            ArgsOption
-        );
+      getConfigurationsFromArgs(
+        ' --emainosucharg=my-email@gmail.com -mx=200 -mn=100',
+        ArgsOptionDictionary
+      );
     assert.throws(run);
   });
   it('arguments throws an error if argument is without value', () => {
-    const run = () => getConfigFromArgs(' --email= ', ArgsOption);
+    const run = () =>
+      getConfigurationsFromArgs(' --email= ', ArgsOptionDictionary);
     assert.throws(run);
   });
   it('arguments throws an error if argument shorter that it should be', () => {
-    const run = () => getConfigFromArgs(' --ema=abc123 ', ArgsOption);
+    const run = () =>
+      getConfigurationsFromArgs(' --ema=abc123 ', ArgsOptionDictionary);
     assert.throws(run);
   });
 });
