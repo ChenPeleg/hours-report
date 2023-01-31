@@ -18,7 +18,7 @@ export const ArgsOptionDictionary = [
     name: 'min-session',
     alias: 'mn',
     type: 'number',
-    configOption: 'MinimumSessionMinuets',
+    configOption: 'MinuetsToAddToFirstCommit',
   },
   {
     name: 'date-from',
