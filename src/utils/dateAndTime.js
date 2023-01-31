@@ -14,7 +14,17 @@ const dateAndTimeToDateObj = (date, time, offset = 'Z') => {
   }
   return new Date(`${date}T${time}${offset}`);
 };
+/**
+ * @param {Date}startDate
+ * @param {Date}endDate
+ * @return {number}
+ */
+const getMinutesBetweenDates = (startDate, endDate) => {
+  const diff = endDate.getTime() - startDate.getTime();
+  return diff / 60000;
+};
 
 export const DateAndTimeUtil = {
-  dateAndTimeToDateObj: dateAndTimeToDateObj,
+  getMinutesBetweenDates,
+  dateAndTimeToDateObj,
 };
