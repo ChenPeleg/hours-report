@@ -23,8 +23,17 @@ const getMinutesBetweenDates = (startDate, endDate) => {
   const diff = endDate.getTime() - startDate.getTime();
   return diff / 60000;
 };
+/**
+ *
+ * @param  {Date} date
+ * @param { number }minuets
+ */
+const subtractMinutesFromDate = (date, minuets) => {
+  return new Date(date.getTime() - 1000 * 60 * minuets);
+};
 
 export const DateAndTimeUtil = {
   getMinutesBetweenDates,
   dateAndTimeToDateObj,
+  subtractMinutesFromDate,
 };

@@ -1,6 +1,6 @@
 import { getGitLog } from './core/getGitLog.js';
 import { parseGitLogToEntries } from './core/parseGitLogToEntries.js';
-import { LogEntriesToWorkSessions } from './core/logEntriesToWorkSessions.js';
+import { WorkSessionsBuild } from './core/workSessionsBuild.js';
 import { getConfiguration } from './config/getConfigurations.js';
 
 export const main = async () => {
@@ -8,10 +8,7 @@ export const main = async () => {
     const config = getConfiguration(process.argv);
     const gitLogData = await getGitLog();
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
-    const buildWorkSessionsFromEntries = LogEntriesToWorkSessions(
-      logEntries,
-      config
-    );
+    const buildWorkSessionsFromEntries = WorkSessionsBuild(logEntries, config);
     return logEntries;
   } catch (err) {
     console.error(err);
