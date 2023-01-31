@@ -3,7 +3,7 @@
  */
 export const defaultConfig = {
   MaxDiffForSession: 120,
-  MinimumSessionMinuets: 30,
+  MinuetsToAddToFirstCommit: 30,
   DateFrom: new Date(),
   DateUntil: new Date(),
   Email: null,

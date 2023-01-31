@@ -2,7 +2,6 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 const GIT_LOG_SEPARATOR = '\n*';
 /**
- *
  * @param {string }line
  * @return {import("../types/gitLogEntry.js").GitLogEntry}
  */
