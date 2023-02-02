@@ -3,5 +3,5 @@ import { saveToCsvFile } from './saveToCsvFile.js';
 
 export const exportReportToCsv = (report) => {
   const csv = buildCsvAsString(report);
-  saveToCsvFile(csv.join(), report);
+  saveToCsvFile(csv, report);
 };
