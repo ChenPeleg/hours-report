@@ -1,4 +1,15 @@
-//
+/**
+ *
+ * @param {Date} first
+ * @param {Date} second
+ * @return {boolean}
+ */
+const datesAreOnSameDay = (first, second) =>
+    first.getFullYear() === second.getFullYear() &&
+    first.getMonth() === second.getMonth() &&
+    first.getDate() === second.getDate();
+
+
 /**
  * Uses Ecmascript date format YYYY-MM-DDTHH:mm:ss.sssZ
  * if no offset is specified that this returns
@@ -34,6 +45,7 @@ const subtractMinutesFromDate = (date, minuets) => {
 };
 
 export const DateAndTimeUtil = {
+  datesAreOnSameDay,
   getMinutesBetweenDates,
   dateAndTimeToDateObj,
   subtractMinutesFromDate,

@@ -1,20 +1,23 @@
-import { DateAndTimeUtil } from '../utils/dateAndTime.js';
+import {DateAndTimeUtil} from '../utils/dateAndTime.js';
 
 /**
  * @param{import("../types/Day.js").Day   }day
  * @return {import("../types/Day.js").Day   }
  */
 const buildDayData = (day) => {
-  const dayWithData = { ...day };
+  const dayWithData = {...day};
   dayWithData.dateAsNumber = day.workSessions[0].startTime.getDate();
   dayWithData.minuetSum = day.workSessions
-    .map((session) =>
-      DateAndTimeUtil.getMinutesBetweenDates(
-        session.startTime,
-        session.finishTime
+      .map((session) =>
+          DateAndTimeUtil.getMinutesBetweenDates(
+              session.startTime,
+              session.finishTime
+          )
       )
-    )
-    .reduce((a, b) => a + b, 0);
+      .reduce((a, b) => a + b, 0);
+  dayWithData.comments = day.workSessions
+      .map((session) => session.gitComments)
+      .join('\n');
   return dayWithData;
 };
 
@@ -33,23 +36,22 @@ const buildDaysFromSessions = (workSessions, configuration) => {
   /** @type {import("../types/Day.js").Day [] } */
   let allDays = [];
   /** @type {import("../types/Day.js").Day   } */
-  let CurrentDay = { ...EmptyDay, workSessions: [] };
+  let CurrentDay = {...EmptyDay, workSessions: []};
   /** @type {import("../types/workSession.js").WorkSession } */
   let lastSession;
   for (let session of workSessions) {
     if (
-      lastSession?.startTime.getDate() === session.startTime.getDate() ||
-      !lastSession
+        !lastSession || DateAndTimeUtil.datesAreOnSameDay(lastSession?.startTime, session.startTime)
     ) {
       CurrentDay.workSessions.push(session);
     } else if (lastSession) {
       allDays.push(CurrentDay);
-      CurrentDay = { ...EmptyDay, workSessions: [] };
+      CurrentDay = {...EmptyDay, workSessions: []};
       CurrentDay.workSessions.push(session);
     }
     lastSession = session;
   }
-  return allDays;
+  return allDays.map((d) => buildDayData(d));
 };
 
 /**
@@ -57,4 +59,7 @@ const buildDaysFromSessions = (workSessions, configuration) => {
  * @param {import("../types/workSession.js").WorkSession[]} workSessions
  * @param {import("../types/reportConfigurations.js").ReportConfigurations} configuration
  */
-const buildReportFromSession = (workSessions, configuration) => {};
+export const buildReportFromSession = (workSessions, configuration) => {
+  const days = buildDaysFromSessions(workSessions, configuration);
+  return days;
+};
