@@ -2,7 +2,6 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 const GIT_LOG_SEPARATOR = '\n*';
 /**
- *
  * @param {string }line
  * @return {import("../types/gitLogEntry.js").GitLogEntry}
  */
@@ -31,6 +30,7 @@ const gitLogLineToEntry = (line) => {
  */
 export const parseGitLogToEntries = (gitLogAsString) => {
   const lines = gitLogAsString.split(GIT_LOG_SEPARATOR);
+  lines[0] = lines[0].replace('*', '');
 
   return lines
     .filter((l) => l.trim())

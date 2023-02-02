@@ -1,7 +1,7 @@
 import { run } from 'node:test';
 import path from 'path';
-import { getTestFiles } from './utils/getTestFiles.js';
-import { printTestResult } from './utils/printTestResult.js';
+import { getTestFiles } from './helpers/getTestFiles.js';
+import { printTestResult } from './helpers/printTestResult.js';
 
 /**
  * @param testFiles

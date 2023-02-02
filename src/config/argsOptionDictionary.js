@@ -1,7 +1,7 @@
 /**
  * @type {import("../types/reportConfigurations.js").CommandLineOption[]}
  */
-export const ArgsOption = [
+export const ArgsOptionDictionary = [
   {
     name: 'email',
     alias: 'e',
@@ -18,7 +18,7 @@ export const ArgsOption = [
     name: 'min-session',
     alias: 'mn',
     type: 'number',
-    configOption: 'MinimumSessionMinuets',
+    configOption: 'MinuetsToAddToFirstCommit',
   },
   {
     name: 'date-from',
