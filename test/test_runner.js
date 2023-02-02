@@ -49,7 +49,7 @@ const mainRunner = async () => {
 
     if (result) {
       printTestResult(result.data, result.pass);
-      console.log(result);
+      // console.log(result);
       if (result.pass) {
         return true;
       }
