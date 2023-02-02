@@ -1,8 +1,7 @@
-import {Day} from "./Day.js";
-
+import { Day } from './Day.js';
 
 export interface Month {
   MonthNumber: number;
-  days: Day;
-  summary: number;
+  days: Day[];
+  hoursSum: number;
 }
