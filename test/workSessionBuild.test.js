@@ -43,12 +43,15 @@ describe('Work session build', () => {
         /** @type {GitLogEntry[]} */ gitEntryFixtures.fixture1.map((o) => {
           return { ...o, date: new Date(o.date) };
         });
-      const firstGitCommits = fixture.slice(-5)[0];
+      const lastGitCommits = fixture.slice(0, 4);
       // @ts-ignore
-      const result = WorkSessionsBuild(fixture, defaultConfig);
+      const result = WorkSessionsBuild(lastGitCommits, defaultConfig);
       const firstWorkSession = result[0];
-
-      assert.equal(result.length, 1);
+      const lastCommitTime = lastGitCommits
+        .map((c) => c.date)
+        .sort()
+        .slice(-1)[0];
+      assert.equal(firstWorkSession.finishTime, lastCommitTime);
     });
   });
 });
