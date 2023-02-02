@@ -9,6 +9,7 @@ export const main = async () => {
     const gitLogData = await getGitLog();
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
     const buildWorkSessionsFromEntries = WorkSessionsBuild(logEntries, config);
+    console.log(buildWorkSessionsFromEntries);
     return logEntries;
   } catch (err) {
     console.error(err);
