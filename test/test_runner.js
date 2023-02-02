@@ -3,11 +3,22 @@ import path from 'path';
 import { getTestFiles } from './test-utils/getTestFiles.js';
 import { printTestResult } from './test-utils/printTestResult.js';
 
+const storedConsoleLogs = [];
+const originalConsoleLog = console.log;
+
 /**
  * @param testFiles
  * @return {Promise<{data: string, pass: boolean}>}
  */
 const getTapDataAsync = (testFiles) => {
+  // @ts-ignore
+  console = {
+    ...console,
+    log: (...args) => {
+      storedConsoleLogs.push(args);
+      originalConsoleLog(args);
+    },
+  };
   let allData = '';
   let pass = true;
   return new Promise((resolve, reject) => {
@@ -26,8 +37,10 @@ const mainRunner = async () => {
       .filter((f) => f.includes('test.js'))
       .map((p) => path.resolve('./test', p));
     const result = await getTapDataAsync(testFiles);
+    console.log = originalConsoleLog;
     if (result) {
       printTestResult(result.data, result.pass);
+      console.log(storedConsoleLogs);
       if (result.pass) {
         return true;
       }
