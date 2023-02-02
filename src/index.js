@@ -11,7 +11,12 @@ export const main = async () => {
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
     console.log(gitLogData.gitRepoName);
     const workSessions = WorkSessionsBuild(logEntries, config);
-    const days = buildReportFromSession(workSessions, config);
+    const report = buildReportFromSession(
+      workSessions,
+      config,
+      gitLogData.gitRepoName
+    );
+
     // console.log(days);
     return logEntries;
   } catch (err) {
