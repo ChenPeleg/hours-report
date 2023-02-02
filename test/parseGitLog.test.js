@@ -10,7 +10,7 @@ describe('Parse git log', () => {
       .slice(0, 31)
       .join('\n*');
     const result = parseGitLogToEntries(fixture);
-    console.log(result);
+
     assert.equal(result.length, 30);
     assert.equal(result[0].email, 'cp@gmail.com');
     assert.equal(

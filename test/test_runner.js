@@ -3,6 +3,9 @@ import path from 'path';
 import { getTestFiles } from './test-utils/getTestFiles.js';
 import { printTestResult } from './test-utils/printTestResult.js';
 
+const START_CONSOLE_LOG_IN_TESTS = '@@@START@@@';
+const END_CONSOLE_LOG_IN_TESTS = '@@@END@@@';
+
 const storedConsoleLogs = [];
 const originalConsoleLog = console.log;
 
@@ -15,8 +18,12 @@ const getTapDataAsync = (testFiles) => {
   console = {
     ...console,
     log: (...args) => {
-      storedConsoleLogs.push(args);
-      originalConsoleLog(args);
+      storedConsoleLogs.push('args');
+      originalConsoleLog(
+        START_CONSOLE_LOG_IN_TESTS,
+        ...args,
+        END_CONSOLE_LOG_IN_TESTS
+      );
     },
   };
   let allData = '';
