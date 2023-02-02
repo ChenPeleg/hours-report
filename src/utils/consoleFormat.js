@@ -1,16 +1,17 @@
+import { logToConsole } from './logToConsole.js';
 // @ts-ignore
 process.stdout.cursorTo = process.stdout.cursorTo || (() => {});
 // @ts-ignore
 process.stdout.write =
   process.stdout.write ||
   ((t) => {
-    t?.length > 1 ? console.log('') : null;
+    t?.length > 1 ? logToConsole('') : null;
   });
 // @ts-ignore
 process.stdout.clearLine =
   process.stdout.clearLine ||
   (() => {
-    console.log('');
+    logToConsole('');
   });
 
 const colors = {
@@ -53,7 +54,7 @@ export class TestFrameWorkConsole {
   animationText = '';
 
   static log(...args) {
-    console.log(...args);
+    logToConsole(...args);
   }
 
   /**@type {(ms: number, resolveWith? : any)=>Promise<any>} */
@@ -75,7 +76,7 @@ export class TestFrameWorkConsole {
 
   /** @type {(text : string, options?: logOptions)=>void} */
   static print(text, options = undefined) {
-    console.log(TestFrameWorkConsole.paint(text, options));
+    logToConsole(TestFrameWorkConsole.paint(text, options));
   }
 
   /** @type {(text : string, options?: logOptions)=>string} */
@@ -136,7 +137,7 @@ export class TestFrameWorkConsole {
       process.stdout.write(
         this.animationText + TestFrameWorkConsole.paint(' ✔', 'green')
       );
-      console.log();
+      logToConsole('');
       this.animationText = '';
 
       return;
