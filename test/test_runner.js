@@ -17,14 +17,14 @@ const getTapDataAsync = (testFiles) => {
   // @ts-ignore
   console = {
     ...console,
-    log: (...args) => {
-      storedConsoleLogs.push('args');
-      originalConsoleLog(
-        START_CONSOLE_LOG_IN_TESTS,
-        ...args,
-        END_CONSOLE_LOG_IN_TESTS
-      );
-    },
+    // log: (...args) => {
+    //   storedConsoleLogs.push('args');
+    //   originalConsoleLog(
+    //     START_CONSOLE_LOG_IN_TESTS,
+    //     ...args,
+    //     END_CONSOLE_LOG_IN_TESTS
+    //   );
+    // },
   };
   let allData = '';
   let pass = true;
@@ -34,6 +34,7 @@ const getTapDataAsync = (testFiles) => {
     });
     stream.on('data', (data) => (allData += data.toString()));
     stream.on('test:fail', (data) => (pass = false));
+    stream.on('test:diagnostic', (data) => storedConsoleLogs.push(data));
     stream.on('close', (data) => resolve({ data: allData, pass }));
     stream.on('error', (err) => reject(err));
   });
@@ -43,11 +44,12 @@ const mainRunner = async () => {
     const testFiles = (await getTestFiles(path.resolve('./test')))
       .filter((f) => f.includes('test.js'))
       .map((p) => path.resolve('./test', p));
+
     const result = await getTapDataAsync(testFiles);
-    console.log = originalConsoleLog;
+
     if (result) {
       printTestResult(result.data, result.pass);
-      console.log(storedConsoleLogs);
+      console.log(result);
       if (result.pass) {
         return true;
       }
