@@ -1,4 +1,5 @@
 import { buildDaysFromSessions } from './buildReportDays.js';
+import { buildReportMonths } from './buildReportMonths.js';
 
 /**
  *
@@ -7,5 +8,6 @@ import { buildDaysFromSessions } from './buildReportDays.js';
  */
 export const buildReportFromSession = (workSessions, configuration) => {
   const days = buildDaysFromSessions(workSessions, configuration);
-  return days;
+  const months = buildReportMonths(days, configuration);
+  return months;
 };

@@ -1,3 +1,21 @@
+import { DateAndTimeUtil } from '../utils/dateAndTime.js';
+
+/**
+ * @param { import('../types/Month.js').Month } month
+ * @return {import('../types/Month.js').Month  }
+ */
+const buildMonthData = (month) => {
+  const monthWithData = { ...month };
+  monthWithData.year = month.days[0].workSessions[0].startTime.getFullYear();
+  monthWithData.MonthNumber =
+    month.days[0].workSessions[0].startTime.getMonth() + 1;
+  monthWithData.minuetSum = month.days
+    .map((d) => d.minuetSum)
+    .reduce((a, b) => a + b, 0);
+
+  return monthWithData;
+};
+
 /**
  * @param {import("../types/Day.js").Day []} days
  * @param {import("../types/reportConfigurations.js").ReportConfigurations} configuration
@@ -5,5 +23,36 @@
  */
 
 export const buildReportMonths = (days, configuration) => {
-  return [];
+  /** @type {import("../types/Month.js").Month   } */
+  const EmptyMonth = {
+    days: [],
+    minuetSum: 0,
+    MonthNumber: 0,
+    year: 0,
+    comments: '',
+  };
+  /** @type {import("../types/Month.js").Month[]} */
+  let allMonths = [];
+  /** @type {import("../types/Month.js").Month   } */
+  let CurrentMonth = { ...EmptyMonth, days: [] };
+  /** @type {import("../types/Day.js").Day }*/
+  let lastDay;
+  for (let day of days) {
+    if (
+      !lastDay ||
+      DateAndTimeUtil.datesAreOnSameMonth(
+        day.workSessions[0].startTime,
+        lastDay.workSessions[0].startTime
+      )
+    ) {
+      CurrentMonth.days.push(day);
+    } else if (lastDay) {
+      allMonths.push(CurrentMonth);
+      CurrentMonth = { ...EmptyMonth, days: [] };
+      CurrentMonth.days.push(day);
+    }
+    lastDay = day;
+  }
+  allMonths.push(CurrentMonth);
+  return allMonths.map((m) => buildMonthData(m));
 };
