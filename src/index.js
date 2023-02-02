@@ -9,9 +9,10 @@ export const main = async () => {
     const config = getConfiguration(process.argv);
     const gitLogData = await getGitLog();
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
+    console.log(gitLogData.gitRepoName);
     const workSessions = WorkSessionsBuild(logEntries, config);
     const days = buildReportFromSession(workSessions, config);
-    console.log(days);
+    // console.log(days);
     return logEntries;
   } catch (err) {
     console.error(err);
