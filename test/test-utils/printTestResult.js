@@ -1,5 +1,6 @@
 import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
 import path from 'path';
+import { logToConsole } from '../../src/utils/logToConsole.js';
 /**
  * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
  */
@@ -7,7 +8,7 @@ import path from 'path';
 const writeFinalResults = (conclusions) => {
   const { skipped, fail, pass } = conclusions;
   if (+skipped) {
-    console.log(
+    logToConsole(
       TestFrameWorkConsole.paint(
         `${skipped} Tests ${TestFrameWorkConsole.paint(' SKIPPED ', {
           color: 'white',
@@ -17,7 +18,7 @@ const writeFinalResults = (conclusions) => {
     );
   }
   if (+fail) {
-    console.log(
+    logToConsole(
       TestFrameWorkConsole.paint(
         `${fail} Tests ${TestFrameWorkConsole.paint(' FAILED ', {
           color: 'white',
@@ -26,7 +27,7 @@ const writeFinalResults = (conclusions) => {
       )
     );
   }
-  console.log(
+  logToConsole(
     TestFrameWorkConsole.paint(
       `${pass} Tests ${TestFrameWorkConsole.paint(' PASSED ', {
         color: 'white',
@@ -129,9 +130,9 @@ export const printTestResult = (resultsAsText, passed = true) => {
       ''
     );
     const mainData = reformatMainData(textWithoutConclutions, passed);
-    console.log(mainData);
+    logToConsole(mainData);
     writeFinalResults(conclusionsObj.conclusions);
   } catch (err) {
-    console.log(resultsAsText);
+    logToConsole(resultsAsText);
   }
 };
