@@ -26,13 +26,13 @@ const roundHours = (minuets) => Math.ceil(minuets / 60);
 export const buildCsvAsString = (report) => {
   /** @type {Array<string[]>}  */
   let csvRows = [];
-  const r = (...args) => csvRows.push();
+  const r = (...args) => csvRows.push(buildSafeRow(...args));
   r('Hours report ', '-', report.repoName, '-', report.userEmail);
 
   r(' ***** ', ' ***** ', '*****', ' - ', '*****');
   report.months.forEach((month) => {
     r(
-      month.MonthDate.toLocaleString('default', { month: 'long' }),
+      month.MonthDate.toLocaleString('en-GB', { month: 'long' }),
       '---',
       'Total hours',
       roundHours(month.minuetSum).toString()
@@ -40,7 +40,7 @@ export const buildCsvAsString = (report) => {
     month.days.forEach((day) => {
       r(
         '',
-        day.dayDate.toLocaleDateString('default', { weekday: 'long' }),
+        day.dayDate.toLocaleDateString('en-GB', { weekday: 'long' }),
         day.dayDate.getDate().toString(),
         '  ',
         roundHours(day.minuetSum).toString(),
