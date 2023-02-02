@@ -19,7 +19,6 @@ export const groupEntriesToSessions = (logEntries, maxDiffForSession) => {
         lastEntry.date,
         entry.date
       );
-      console.log(diffFromLast);
       if (diffFromLast < maxDiffForSession) {
         currentSession.logEntries.push(entry);
       } else {
