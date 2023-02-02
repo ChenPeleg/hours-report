@@ -15,6 +15,7 @@ const dateAndTimeToDateObj = (date, time, offset = 'Z') => {
   return new Date(`${date}T${time}${offset}`);
 };
 /**
+ *
  * @param {Date}startDate
  * @param {Date}endDate
  * @return {number}

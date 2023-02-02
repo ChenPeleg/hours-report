@@ -4,5 +4,5 @@ export interface Day {
   workSessions: WorkSession[];
   dateAsNumber: number;
   comments: string;
-  hoursSum: number;
+  minuetSum: number;
 }
