@@ -8,7 +8,7 @@ import { exportReportToCsv } from './export/exportReportToCsv.js';
 export const main = async () => {
   try {
     const config = getConfiguration(process.argv);
-    const gitLogData = await getGitLog();
+    const gitLogData = await getGitLog(config);
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
     console.log(gitLogData.gitRepoName);
     const workSessions = WorkSessionsBuild(logEntries, config);

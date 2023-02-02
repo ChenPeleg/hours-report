@@ -7,10 +7,10 @@ const command = `git log --pretty="%cd %ce %s" --graph --date=iso --date-order`;
 
 const gitNameCommand = `git config --get remote.origin.url`;
 
-/**
+/**@param {import('../types/reportConfigurations.js').ReportConfigurations}config
  * @returns {Promise<{gitLog: unknown, userEmail: unknown,  gitRepoName : string}>}
  */
-export const getGitLog = async () => {
+export const getGitLog = async (config) => {
   let lsCommand = `ls ${dir}/.git`;
 
   if (os.platform() === 'win32') {
@@ -35,5 +35,8 @@ export const getGitLog = async () => {
     .replace('.git', '');
 
   const userEmail = await execPromise(`git config --get user.email`);
+  if (!config.Email) {
+    config.Email = userEmail;
+  }
   return { gitLog, userEmail, gitRepoName };
 };
