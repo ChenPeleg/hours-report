@@ -1,8 +1,7 @@
 import { Day } from './Day.js';
 
 export interface Month {
-  year: number;
-  MonthNumber: number;
+  MonthDate: Date;
   days: Day[];
   minuetSum: number;
   comments: string;

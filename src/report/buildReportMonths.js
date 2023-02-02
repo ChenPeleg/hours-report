@@ -6,9 +6,7 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  */
 const buildMonthData = (month) => {
   const monthWithData = { ...month };
-  monthWithData.year = month.days[0].workSessions[0].startTime.getFullYear();
-  monthWithData.MonthNumber =
-    month.days[0].workSessions[0].startTime.getMonth() + 1;
+  monthWithData.MonthDate = month.days[0].workSessions[0].startTime;
   monthWithData.minuetSum = month.days
     .map((d) => d.minuetSum)
     .reduce((a, b) => a + b, 0);
@@ -27,8 +25,7 @@ export const buildReportMonths = (days, configuration) => {
   const EmptyMonth = {
     days: [],
     minuetSum: 0,
-    MonthNumber: 0,
-    year: 0,
+    MonthDate: new Date(),
     comments: '',
   };
   /** @type {import("../types/Month.js").Month[]} */

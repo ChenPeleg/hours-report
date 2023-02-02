@@ -2,7 +2,7 @@ import { WorkSession } from './workSession.js';
 
 export interface Day {
   workSessions: WorkSession[];
-  dateAsNumber: number;
+  dayDate: Date;
   comments: string;
   minuetSum: number;
 }

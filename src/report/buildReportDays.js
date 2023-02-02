@@ -6,7 +6,7 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  */
 const buildDayData = (day) => {
   const dayWithData = { ...day };
-  dayWithData.dateAsNumber = day.workSessions[0].startTime.getDate();
+  dayWithData.dayDate = day.workSessions[0].startTime;
   dayWithData.minuetSum = day.workSessions
     .map((session) =>
       DateAndTimeUtil.getMinutesBetweenDates(
@@ -27,9 +27,10 @@ const buildDayData = (day) => {
  * @return {import("../types/Day.js").Day [] }
  */
 export const buildDaysFromSessions = (workSessions, configuration) => {
+  /** @type {import("../types/Day.js").Day   } */
   const EmptyDay = {
     workSessions: [],
-    dateAsNumber: 0,
+    dayDate: new Date(),
     comments: '',
     minuetSum: 0,
   };
