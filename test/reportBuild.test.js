@@ -32,6 +32,35 @@ describe('Build report', () => {
       days[0].dayDate.getUTCDate(),
       sessions[0].startTime.getUTCDate()
     );
-    assert.equal(days.length, 2);
+    assert.equal(days.length, 3);
+  });
+  it('Builds months from days correctly', () => {
+    const fixture = workSessionFixtures.fixture1;
+    /**
+     * @type import('../src/types/workSession.js').WorkSession[]
+     */
+    const sessions = fixture.map((s) => {
+      /**
+       * @type import('../src/types/workSession.js').WorkSession
+       */
+      const dateSession = {
+        ...s,
+        startTime: new Date(s.startTime),
+        finishTime: new Date(s.finishTime),
+        logEntries: [],
+      };
+      dateSession.logEntries = s.logEntries.map((le) => ({
+        ...le,
+        date: new Date(le.date),
+        email: le.email,
+      }));
+      return dateSession;
+    });
+    const days = buildDaysFromSessions(sessions, defaultConfig);
+    assert.equal(
+      days[0].dayDate.getUTCDate(),
+      sessions[0].startTime.getUTCDate()
+    );
+    assert.equal(JSON.stringify(days), '');
   });
 });
