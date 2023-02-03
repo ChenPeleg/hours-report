@@ -26,6 +26,7 @@ const roundHours = (minuets) => Math.ceil(minuets / 60);
 export const buildCsvAsString = (report) => {
   /** @type {Array<string[]>}  */
   let csvRows = [];
+  const now = new Date();
   const r = (...args) => csvRows.push(buildSafeRow(...args));
   const repoName = [report.repoName, ''];
   try {
@@ -39,9 +40,9 @@ export const buildCsvAsString = (report) => {
     '',
     '',
     '',
-    new Date().toLocaleDateString('en-GB', {
-      dateStyle: 'short',
-    })
+    `${now.getDate().toString()}.${now.getMonth() + 1}.${
+      now.getFullYear() - 2000
+    }`
   );
   r('', '');
   r(ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE);
@@ -62,7 +63,7 @@ export const buildCsvAsString = (report) => {
         `   ${day.comments}`
       );
     });
-    r('', '');
+
     r(
       ROWS_LINE,
       ROWS_LINE,

@@ -31,14 +31,14 @@ export const ArgsOptionDictionary = [
     alias: 'df',
     type: 'number',
     helpText:
-      'Analyze data since certain date. default: always (with limit of 1000 rows)',
+      'Analyze data since certain date (git log format). default: always (with limit of 1000 rows)',
     configOption: 'DateFrom',
   },
   {
     name: 'date-until',
     alias: 'du',
     type: 'number',
-    helpText: 'Analyze data until certain date. default: now',
+    helpText: 'Analyze data until certain date (git log format). default: now',
     configOption: 'DateUntil',
   },
   {
