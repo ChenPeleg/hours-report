@@ -1,8 +1,16 @@
-import {appendFileSync} from 'fs';
+import { appendFileSync } from 'fs';
+import path from 'path';
 
-export const saveToCsvFile = async (csvText, report) => {
+/**
+ * @param { string } csvText
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
+ * @return {Promise<string>}
+ */
+export const saveToCsvFile = async (csvText, config) => {
   const fileName = `hours-report` + ((Math.random() * 1000) | 0);
-
-  appendFileSync(`./output/${fileName}.csv`, csvText);
-
+  appendFileSync(
+    path.resolve(config.PathToRepo, `./output/${fileName}.csv`),
+    csvText
+  );
+  return path.resolve(`./output/${fileName}.csv`);
 };

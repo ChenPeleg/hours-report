@@ -1,6 +1,7 @@
 import { buildCsvAsString } from './buildCsvAsString.js';
 import { saveToCsvFile } from './saveToCsvFile.js';
 import { exportReportToConsole } from './exportReportToConsole.js';
+import { logToConsole } from '../utils/logToConsole.js';
 
 /**
  *
@@ -13,6 +14,7 @@ export const exportReport = async (report, config) => {
     await exportReportToConsole(csv);
   }
   if (config.output === 'csv' || config.output === 'all') {
-    await saveToCsvFile(csv, report);
+    const fileLocation = await saveToCsvFile(csv, config);
+    logToConsole(`Hours report exported successfully to \n ${fileLocation}`);
   }
 };
