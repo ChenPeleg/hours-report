@@ -1,6 +1,3 @@
-import { ArgsOptionDictionary } from './argsOptionDictionary.js';
-import { defaultConfig } from './defaultConfig.js';
-
 /**
  * @param {string}argument
  * @param {string}nextArg

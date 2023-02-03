@@ -4,9 +4,9 @@ import { getConfigurationsFromArgs } from './getConfigurationsFromArgs.js';
 
 /**
  * @param {string[]} commandLineArgs
- * @return  {{config : import('../types/reportConfigurations.js').ReportConfigurations, help : boolean }} */
+ * @return  {{config : import('../types/reportConfigurations.js').ReportConfigurations, printHelp : boolean }} */
 export const getConfiguration = (commandLineArgs) => {
-  let help = false;
+  let printHelp = false;
   const config = { ...defaultConfig };
   try {
     const commandLineArgsAsString = commandLineArgs.slice(2).join(' ');
@@ -17,12 +17,12 @@ export const getConfiguration = (commandLineArgs) => {
     for (let configProp of Object.keys(configsFromArgs)) {
       config[configProp] = configsFromArgs[configProp];
       if (configProp === 'Help') {
-        help = true;
+        printHelp = true;
       }
     }
   } catch (err) {
-    help = true;
+    printHelp = true;
     console.error(err);
   }
-  return { config, help };
+  return { config, printHelp };
 };
