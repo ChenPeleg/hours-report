@@ -27,8 +27,6 @@ describe('Work session build', () => {
       const firstGitCommit = fixture.slice(-1)[0];
       // @ts-ignore
       const result = WorkSessionsBuild(fixture, defaultConfig);
-      //
-      assert.equal(JSON.stringify(result), '');
 
       const firstWorkSession = result[0];
       const minutesBetweenDates = DateAndTimeUtil.getMinutesBetweenDates(
