@@ -1,6 +1,6 @@
 [![Status badge](https://github.com/ChenPeleg/hours-report/actions/workflows/ci-tests.yml/badge.svg?branch=main)](https://github.com/ChenPeleg/hours-report/actions/?query=branch%3Amain)
 
-# git-hours
+# hours-report
 
 An Estimated time spent on a git repository report.
 
