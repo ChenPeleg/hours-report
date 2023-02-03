@@ -23,7 +23,7 @@ const buildDayData = (day) => {
     .filter((b) => b.trim())
     .join('; ');
   dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim();
-  console.log(dayWithData.comments);
+
   return dayWithData;
 };
 

@@ -1,0 +1,177 @@
+export const workSessionFixtures = {
+  fixture1: [
+    {
+      logEntries: [
+        {
+          comment: 'fixed Line Imports',
+          date: '2023-01-30T10:57:11.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added custom node test runner',
+          date: '2023-01-30T11:32:30.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+      ],
+      finishTime: '2023-01-30T11:32:30.000Z',
+      startTime: '2023-01-30T10:27:11.000Z',
+      gitComments: 'fixed Line Imports     n, added custom node test runner',
+      branches: [''],
+    },
+    {
+      logEntries: [
+        {
+          comment: 'added a stream promise',
+          date: '2023-01-30T14:33:37.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'failing test runner',
+          date: '2023-01-30T14:44:40.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'failing te st runner 2',
+          date: '2023-01-30T14:55:34.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added more documentation',
+          date: '2023-01-30T14:57:48.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'working diagnostics',
+          date: '2023-01-30T15:19:42.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added test runner old',
+          date: '2023-01-30T15:24:18.000Z',
+          email: 'cp@gmail.co m',
+          branch: '',
+        },
+        {
+          comment: 'all tests passing ',
+          date: '2023-01-30T15:58:05.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'go all tap data as string',
+          date: '2023-01-30T16:05:29.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'refactored to check if test failed',
+          date: '2023-01-30T17:40:27.000Z',
+          ' email': 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'refactored to check if test fa iled 2',
+          date: '2023-01-30T17:43:26.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'refact ored for the test runner to return 0 on success',
+          date: '2023-01-30T17:45:09.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'refactored for the test runner to return 0 on success 2',
+          date: '2023-01-30T17:55:55.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added consoleFormat.js',
+          date: '2023-01-30T18:04:46.000Z',
+          email: 'cp@gmail.co m',
+          branch: '',
+        },
+        {
+          comment: 'manipulating conclusions text',
+          date: '2023-01-30T18:24:43.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added nicer text',
+          date: '2023-01-30T18:33:57.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added nicer text 2',
+          date: '2023-01-30T18:34:45.000Z',
+          'emai l': 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'chang ed the name runner',
+          date: '2023-01-30T18:38:30.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'replaced test runner',
+          date: '2023-01-30T18:40:27.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'tests should fail',
+          date: '2023-01-30T19:08:15.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'added bolder colors',
+          date: '2023-01-30T19:33:26.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'test should faild',
+          date: '2023-01-30T19:42:35.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'test should pass',
+          date: '2023-01-30T19:42:47.000Z',
+          email: 'cp@g mail.com',
+          branch: '',
+        },
+        {
+          comment: 'added parse fit   log function',
+          date: '2023-01-30T19:53:23.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+        {
+          comment: 'uninstalled command line args',
+          date: '2023-01-30T19:54:05.000Z',
+          email: 'cp@gmail.com',
+          branch: '',
+        },
+      ],
+      finishTime: '2023-01-30T19:54:05.000Z',
+      startTime: '2023-01-30T14:03:37.000Z',
+      gitComments:
+        'added a stream promise, failing test runner, failing te st runner 2, added more documentation, working diagnostics, added test runner old, all tests passing , go all tap data as string, refactored to check if test failed, refactored to check if test fa iled 2, refact ored for the test runner to return 0 on success, refactored for the test runner to return 0 on success 2, added consoleFormat.js, manipulating conclusions text, added nicer text, added nicer text 2, chang ed the name runner, replaced test runner, tests should fail, added bolder colors, test should faild, test should pass, added parse fit   log function, uninstalled command line args',
+      branches: [''],
+    },
+  ],
+};
