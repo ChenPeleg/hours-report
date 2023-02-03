@@ -1,13 +1,10 @@
 {
   "name": "hours-report",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "hours report based on git repo",
   "main": "./src/index.js",
   "bin": {
     "hours-report": "./src/index.js"
-  },
-  "engines": {
-    "node": "18"
   },
   "files": [
     "src/**/*"
