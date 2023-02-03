@@ -5,5 +5,5 @@ export interface WorkSession {
   finishTime: Date;
   logEntries: GitLogEntry[];
   gitComments: string;
-  branches: string;
+  branches: string[];
 }
