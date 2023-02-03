@@ -1,6 +1,6 @@
 import os from 'os';
-import { execPromise } from '../utils/execPromise.js';
-import { gitLogCommand } from './gitLogbuildLogCommand.js';
+import {execPromise} from '../utils/execPromise.js';
+import {gitLogCommand} from './gitLogbuildLogCommand.js';
 
 const dir = process.cwd();
 
@@ -16,26 +16,30 @@ export const gitLogGetLog = async (config) => {
     lsCommand = `dir ${dir}\\.git`;
   }
 
+
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
-  const gitLog = await execPromise(gitLogCommand(dir, [])).catch((err) => {
-    throw `git log command failed ${err}`;
-  });
-  const gitRepoNameRaw = await execPromise(
-    `cd ${dir} && ${gitNameCommand}`
-  ).catch((err) => {
-    throw `git log command failed ${err}`;
-  });
-  const gitRepoName = gitRepoNameRaw
-    .split('/')
-    .slice(-2)
-    .join('/')
-    .replace('.git', '');
-
   const userEmail = await execPromise(`git config --get user.email`);
   if (!config.Email) {
     config.Email = userEmail;
   }
-  return { gitLog, userEmail, gitRepoName };
+  const gitLog = await execPromise(gitLogCommand(dir, config.Email)).catch(
+      (err) => {
+        throw `git log command failed ${err}`;
+      }
+  );
+  const gitRepoNameRaw = await execPromise(
+      `cd ${dir} && ${gitNameCommand}`
+  ).catch((err) => {
+    throw `git log command failed ${err}`;
+  });
+  const gitRepoName = gitRepoNameRaw
+      .split('/')
+      .slice(-2)
+      .join('/')
+      .replace('.git', '');
+
+
+  return {gitLog, userEmail, gitRepoName};
 };
