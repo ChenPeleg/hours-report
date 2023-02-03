@@ -62,7 +62,7 @@ export const buildCsvAsString = (report) => {
         `   ${day.comments}`
       );
     });
-    r('', '');
+
     r(
       ROWS_LINE,
       ROWS_LINE,

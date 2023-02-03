@@ -11,7 +11,7 @@ const makeCellsEvanSize = (csv) => {
     const newCells = [];
     let passToNextCell = '';
     for (let i = 0; i < cells.length; i++) {
-      let cell = cells[i].replace(/\s/g, '');
+      let cell = cells[i].trim();
       if (cell.length < STANDARD_CELL_SIZE) {
         cell += ' '.repeat(STANDARD_CELL_SIZE - cell.length);
       }
