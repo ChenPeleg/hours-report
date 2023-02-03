@@ -1,5 +1,3 @@
-import { buildCsvAsString } from './buildCsvAsString.js';
-import { saveToCsvFile } from './saveToCsvFile.js';
 import { logToConsole } from '../utils/logToConsole.js';
 import { TestFrameWorkConsole } from '../utils/consoleFormat.js';
 
@@ -41,8 +39,7 @@ const makeCellsEvanSize = (csv) => {
     .join('\n');
 };
 
-export const exportReportToConsole = (report) => {
-  const csv = buildCsvAsString(report);
+export const exportReportToConsole = (csv) => {
   const tableForConsole = makeCellsEvanSize(csv);
   logToConsole(tableForConsole);
 };
