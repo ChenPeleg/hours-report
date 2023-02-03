@@ -17,7 +17,7 @@ const buildLogEntryWithData = (sessionEntries, minuetsToAddToFirstCommit) => {
     finishTime,
     startTime,
     gitComments,
-    otherComments: '',
+    branches: '',
   };
 };
 /**
