@@ -14,56 +14,6 @@ That is why it's recommended not to install it but to use it like this:
 
 `npx hour-report`
 
-## How it works
-
-A short explanation on how hours are estimated:
-
-<br><br>
-
-![](docs/step0.png)
-
-*Go through all commits and compare the difference between
-them in time.*
-
-<br><br><br>
-
-![](docs/step1.png)
-
-*If the difference is smaller or equal then a given threshold, group the commits
-to a same coding session.*
-
-<br><br><br>
-
-![](docs/step2.png)
-
-*If the difference is bigger than a given threshold, the coding session is finished.*
-
-<br><br><br>
-
-![](docs/step3.png)
-
-*To compensate the first commit whose work is unknown, we add extra hours to the coding session.*
-
-<br><br><br>
-
-![](docs/step4.png)
-
-*Continue until we have determined all coding sessions and sum the hours
-made by individual authors.*
-
-<br>
-
-The algorithm
-in [~30 lines of code](https://github.com/kimmobrunfeldt/git-hours/blob/8aaeee237cb9d9028e7a2592a25ad8468b1f45e4/index.js#L114-L143).
-
-## Usage
-
-In root of a git repository run:
-
-    $ git-hours
-
-**Note: repository is not detected if you are not in the root of repository!**
-
 Help
 
     Usage: hours-report <options>
@@ -88,24 +38,11 @@ Help
 
          $  hours-report  --max-diff-for-session=240
 
-     - Estimate hours in repository where developer works 5 hours before first commit in day
+## How it works
 
-         $  hours-report  --first-commit-add 300
+A short explanation on how hours are estimated:
 
-     - Estimate hours work in repository since yesterday
-
-       $ git-hours --since yesterday
-
-     - Estimate hours work in repository since 2015-01-31
-
-       $ git-hours --since 2015-01-31
- 
-
-    For more details, visit https://github.com/kimmobrunfeldt/git-hours
-
-# hours-report
-
-Hours report based on git
+to be continued...
 
 ## Inspirations
 
