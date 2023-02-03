@@ -6,7 +6,7 @@ There are several options to get the git log in a way that will be best for date
 
 Best way to handle the data is
 
-`git log --pretty='%cd %ce %s' --graph --date=iso --date-order`
+`git log --pretty='%cd %ce %s %d' --graph --date=iso --date-order`
 
 ## The branch problem
 
@@ -14,5 +14,3 @@ For user convenience I tried to add to the report the branch name. The problem i
 branch.
 
 So the technique I used to assume the branch name was to
-
-`git log --graph --decorate --oneline --pretty='%cd %ce %s'` 

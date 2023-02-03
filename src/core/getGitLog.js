@@ -1,9 +1,10 @@
 import os from 'os';
 import { execPromise } from '../utils/execPromise.js';
+import { appConstants } from '../config/constants.js';
 
 const dir = process.cwd();
 
-const command = `git log --pretty="%cd %ce %s" --graph --date=iso --date-order`;
+const command = `git log --pretty="%cd %ce %s ${appConstants.refsIndicator}%d" --graph --date=iso --date-order`;
 
 const gitNameCommand = `git config --get remote.origin.url`;
 
