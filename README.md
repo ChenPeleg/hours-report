@@ -4,24 +4,19 @@
 
 An Estimated time spent on a git repository report.
 
-From a person working 8 hours per day, it would take more than 3 years to build Bootstrap.
-
 *Please note that the information might not be accurate enough to be used in billing.*
 
-## Install
+## Usage
 
-    $ npm install -g git-hours
+The package is written in 100% Vanilla js without dependencies (Not including dev-dependencies), to be able to run on
+most versions of NodeJs.
+That is why it's recommended not to install it but to use it like this:
 
-**NOTE:** If for some reason `git-hours` won't work, try to `npm install -g nodegit`.
-
-`git-hours` depends on [nodegit](https://github.com/nodegit/nodegit).
-It might be a bit tricky to install. If installing git-hours fails for some
-reason, probably it was because nodegit couldn't be installed.
-Check [their documentation](https://github.com/nodegit/nodegit#getting-started) for troubleshooting.
+`npx hour-report`
 
 ## How it works
 
-The algorithm for estimating hours is quite simple. For each author in the commit history, do the following:
+A short explanation on how hours are estimated:
 
 <br><br>
 
@@ -71,34 +66,31 @@ In root of a git repository run:
 
 Help
 
-    Usage: git-hours [options]
+    Usage: hours-report <options>
 
     Options:
-
-      -h, --help                                 output usage information
-      -V, --version                              output the version number
-      -d, --max-commit-diff [max-commit-diff]    maximum difference in minutes between commits counted to one session. Default: 120
-      -a, --first-commit-add [first-commit-add]  how many minutes first commit of session should add to total. Default: 120
-      -s, --since [since-certain-date]           Analyze data since certain date. [always|yesterday|tonight|lastweek|yyyy-mm-dd] Default: always'
-      -e, --email [emailOther=emailMain]         Group person by email address. Default: none
-      -u, --until [until-certain-date]           Analyze data until certain date. [always|yesterday|today|lastweek|thisweek|yyyy-mm-dd] Default: always
-      -m, --merge-request [false|true]           Include merge requests into calculation.  Default: true
-      -p, --path [git-repo]                      Git repository to analyze. Default: .
-      -b, --branch [branch-name]                 Analyze only data on the specified branch. Default: all branches
+    -e,   --email                        email address. Default: current git user email address
+    -mx,  --max-diff-for-session         maximum difference in minutes between commits counted to one session. Default: 120
+    -mn,  --min-session                  how many minutes first commit of session should add to total. Default: 30
+    -df,  --date-from                    Analyze data since certain date (git log format). default: always (with limit of 1000 rows)
+    -du,  --date-until                   Analyze data until certain date (git log format). default: now
+    -o,   --output                       output format : 'csv' | 'console' | 'all'. Default: 'csv'
+    -p,   --path                         Git repository to analyze. Default: . (current folder)
+    -h,   --help                         prints help options
 
     Examples:
 
-     - Estimate hours of project
+     - Estimate your hours for current repo
 
-         $ git-hours
+         $  hours-report 
 
      - Estimate hours in repository where developers commit more seldom: they might have 4h(240min) pause between commits
 
-         $ git-hours --max-commit-diff 240
+         $  hours-report  --max-diff-for-session=240
 
      - Estimate hours in repository where developer works 5 hours before first commit in day
 
-         $ git-hours --first-commit-add 300
+         $  hours-report  --first-commit-add 300
 
      - Estimate hours work in repository since yesterday
 
@@ -107,10 +99,7 @@ Help
      - Estimate hours work in repository since 2015-01-31
 
        $ git-hours --since 2015-01-31
-
-    - Estimate hours work in repository on the "master" branch
-
-       $ git-hours --branch master
+ 
 
     For more details, visit https://github.com/kimmobrunfeldt/git-hours
 
