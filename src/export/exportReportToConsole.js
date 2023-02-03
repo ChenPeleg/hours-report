@@ -1,6 +1,7 @@
 import { buildCsvAsString } from './buildCsvAsString.js';
 import { saveToCsvFile } from './saveToCsvFile.js';
 import { logToConsole } from '../utils/logToConsole.js';
+import { TestFrameWorkConsole } from '../utils/consoleFormat.js';
 
 const STANDARD_CELL_SIZE = 9;
 
@@ -16,8 +17,23 @@ const makeCellsEvanSize = (csv) => {
       }
       newCells.push(cell);
     }
+    const finalRow = newCells.join('');
+    if (finalRow.includes('Details')) {
+      return TestFrameWorkConsole.paint(finalRow, {
+        color: 'green',
+        background: 'BGwhite',
+      });
+    } else if (finalRow.includes('Total')) {
+      const finalRowArr = finalRow.split('Total');
+      finalRowArr[0] = finalRowArr[0].slice(0, 40);
+      finalRowArr[1] = TestFrameWorkConsole.paint(' Total' + finalRowArr[1], {
+        color: 'green',
+        background: 'BGwhite',
+      });
+      return finalRowArr.join('');
+    }
     //Details add color
-    return newCells.join('');
+    return finalRow;
   };
   return csv
     .split('\n')
