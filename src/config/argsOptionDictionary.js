@@ -3,6 +3,13 @@
  */
 export const ArgsOptionDictionary = [
   {
+    name: 'help',
+    alias: 'h',
+    type: 'string',
+    helpText: 'prints help options',
+    configOption: 'Help',
+  },
+  {
     name: 'email',
     alias: 'e',
     type: 'string',
