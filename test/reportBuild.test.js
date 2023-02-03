@@ -2,6 +2,7 @@ import { describe, it } from 'node:test';
 import { workSessionFixtures } from './fixtures/workSessionFixture.js';
 import { buildDaysFromSessions } from '../src/report/buildReportDays.js';
 import { defaultConfig } from '../src/config/defaultConfig.js';
+import assert from 'node:assert';
 
 describe('Build report', () => {
   it('Builds days from work session correctly', () => {
@@ -27,5 +28,10 @@ describe('Build report', () => {
       return dateSession;
     });
     const days = buildDaysFromSessions(sessions, defaultConfig);
+    assert.equal(
+      days[0].dayDate.getUTCDate(),
+      sessions[0].startTime.getUTCDate()
+    );
+    assert.equal(days.length, 2);
   });
 });
