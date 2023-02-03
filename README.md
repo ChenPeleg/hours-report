@@ -1,4 +1,4 @@
-[![Status badge](https://github.com/ChenPeleg/git-hours/actions/workflows/ci-tests.yml/badge.svg?branch=master)](https://github.com/kimmobrunfeldt/git-hours/actions?query=branch%3Amaster)
+[![Status badge](https://github.com/ChenPeleg/git-hours/actions/workflows/ci-tests.yml/badge.svg?branch=main)](https://github.com/ChenPeleg/git-hours/actions/?query=branch%3Amain)
 
 # git-hours
 
