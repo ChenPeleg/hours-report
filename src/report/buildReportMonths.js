@@ -50,6 +50,8 @@ export const buildReportMonths = (days, configuration) => {
     }
     lastDay = day;
   }
-  allMonths.push(CurrentMonth);
+  if (CurrentMonth.days.length) {
+    allMonths.push(CurrentMonth);
+  }
   return allMonths.map((m) => buildMonthData(m));
 };

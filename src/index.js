@@ -4,10 +4,15 @@ import { getConfiguration } from './config/getConfigurations.js';
 import { buildReportFromSession } from './report/buildReport.js';
 import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { exportReportToCsv } from './export/exportReportToCsv.js';
+import { printHelpText } from './config/printHelpText.js';
 
 export const main = async () => {
   try {
-    const config = getConfiguration(process.argv);
+    const { config, printHelp } = getConfiguration(process.argv);
+    if (printHelp) {
+      printHelpText();
+      return;
+    }
     const gitLogData = await gitLogGetLog(config);
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
 

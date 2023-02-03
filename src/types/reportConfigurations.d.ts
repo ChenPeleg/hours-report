@@ -12,5 +12,6 @@ export interface CommandLineOption {
   name: string;
   alias: string;
   type: 'boolean' | 'string' | 'number';
-  configOption?: keyof ReportConfigurations;
+  configOption?: keyof ReportConfigurations | 'Help';
+  helpText: string;
 }

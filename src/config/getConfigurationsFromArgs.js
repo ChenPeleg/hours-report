@@ -1,6 +1,3 @@
-import { ArgsOptionDictionary } from './argsOptionDictionary.js';
-import { defaultConfig } from './defaultConfig.js';
-
 /**
  * @param {string}argument
  * @param {string}nextArg
@@ -64,6 +61,7 @@ export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
   if (!argsAsString.trim().length) {
     return dataFromArgs;
   }
+
   const args = argsAsString.split(' ').filter((a) => a);
   argsLoop: for (let i = 0; i < args.length; i += 1) {
     for (let option of ArgsOption) {
@@ -76,6 +74,7 @@ export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
           // @ts-ignore
           dataFromArgs[option.configOption] = +resArgument.data;
         }
+
         if (resArgument.jumpNextArg) {
           i++;
           continue argsLoop;

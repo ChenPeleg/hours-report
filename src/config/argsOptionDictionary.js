@@ -1,47 +1,65 @@
 /**
  * @type {import("../types/reportConfigurations.js").CommandLineOption[]}
  */
+
 export const ArgsOptionDictionary = [
   {
     name: 'email',
     alias: 'e',
     type: 'string',
+    helpText: 'email address. Default: current git user email address',
     configOption: 'Email',
   },
   {
     name: 'max-diff-for-session',
     alias: 'mx',
     type: 'number',
+    helpText:
+      'maximum difference in minutes between commits counted to one session. Default: 120',
     configOption: 'MaxDiffForSession',
   },
   {
     name: 'min-session',
     alias: 'mn',
     type: 'number',
+    helpText:
+      'how many minutes first commit of session should add to total. Default: 30',
     configOption: 'MinuetsToAddToFirstCommit',
   },
   {
     name: 'date-from',
     alias: 'df',
     type: 'number',
+    helpText:
+      'Analyze data since certain date. default: always (with limit of 1000 rows)',
     configOption: 'DateFrom',
   },
   {
     name: 'date-until',
     alias: 'du',
     type: 'number',
+    helpText: 'Analyze data until certain date. default: now',
     configOption: 'DateUntil',
   },
   {
     name: 'output',
     alias: 'o',
     type: 'string',
+    helpText: "output format : 'csv' | 'console' | 'all'. Default: 'csv'",
     configOption: 'output',
   },
   {
     name: 'path',
     alias: 'p',
     type: 'string',
+    helpText: 'Git repository to analyze. Default: . (current folder)',
     configOption: 'PathToRepo',
+  },
+  {
+    name: 'help',
+    alias: 'h',
+    type: 'string',
+    helpText: 'prints help options',
+    configOption: 'Help',
   },
 ];
