@@ -1,9 +1,8 @@
-import { gitLogGetLog } from './core/gitLogGetLog.js';
-import { parseGitLogToEntries } from './core/parseGitLogToEntries.js';
-import { WorkSessionsBuild } from './core/workSessionsBuild.js';
-import { getConfiguration } from './config/getConfigurations.js';
-import { buildReportFromSession } from './report/buildReport.js';
-import { exportReportToCsv } from './export/exportReportToCsv.js';
+import {gitLogGetLog} from './core/gitLogGetLog.js';
+import {WorkSessionsBuild} from './core/workSessionsBuild.js';
+import {getConfiguration} from './config/getConfigurations.js';
+import {buildReportFromSession} from './report/buildReport.js';
+import {parseGitLogToEntries} from './core/gitLogParseToEntries.js';
 
 export const main = async () => {
   try {
@@ -13,13 +12,13 @@ export const main = async () => {
     console.log(gitLogData.gitRepoName);
     const workSessions = WorkSessionsBuild(logEntries, config);
     const report = buildReportFromSession(
-      workSessions,
-      config,
-      gitLogData.gitRepoName
+        workSessions,
+        config,
+        gitLogData.gitRepoName
     );
     // exportReportToCsv(report);
 
-    // console.log(days);
+    console.log(workSessions);
     return logEntries;
   } catch (err) {
     console.error(err);

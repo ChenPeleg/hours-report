@@ -15,13 +15,13 @@ const buildWorkSessionWithData = (
     minuetsToAddToFirstCommit
   );
   const gitComments = sessionEntries.map((ent) => ent.comment).join(', ');
-  const branches = sessionEntries.map((ent) => ent.comment).join(', ');
+  const branches = Array.from(new Set(sessionEntries.map((ent) => ent.branch)));
   return {
     logEntries: sessionEntries,
     finishTime,
     startTime,
     gitComments,
-    branches: [],
+    branches,
   };
 };
 /**
