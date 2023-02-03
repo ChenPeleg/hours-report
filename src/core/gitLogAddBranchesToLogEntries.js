@@ -11,7 +11,7 @@ const getBranchNameFromRef = (refString) => {
  * @param {import("../types/gitLogEntry.js").GitLogEntry[] }logEntries
  * @return  {import("../types/gitLogEntry.js").GitLogEntry[] }
  * */
-export const addBranchesToLogEntries = (logEntries) => {
+export const gitLogAddBranchesToLogEntries = (logEntries) => {
   let lastBranchPushed = '';
   for (const entry of logEntries) {
     if (entry.branch) {
