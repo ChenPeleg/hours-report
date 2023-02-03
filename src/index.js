@@ -6,6 +6,7 @@ import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { exportReportToCsv } from './export/exportReportToCsv.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReportToConsole } from './export/exportReportToConsole.js';
+import { exportReport } from './export/exportReport.js';
 
 export const main = async () => {
   try {
@@ -25,7 +26,7 @@ export const main = async () => {
     );
 
     //exportReportToCsv(report);
-    exportReportToConsole(report);
+    exportReport(report, config);
 
     return logEntries;
   } catch (err) {
