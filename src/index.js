@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { gitLogGetLog } from './core/gitLogGetLog.js';
 import { WorkSessionsBuild } from './core/workSessionsBuild.js';
 import { getConfiguration } from './config/getConfigurations.js';
