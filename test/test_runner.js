@@ -33,9 +33,8 @@ const mainRunner = async () => {
       }
     }
   } catch (err) {
-    console.error('error', err);
+    console.error('mainRunner Error:', err);
   }
-
   process.exit(1);
 };
 mainRunner().then();
