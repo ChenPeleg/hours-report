@@ -1,8 +1,9 @@
 import os from 'os';
+import path from 'path';
 import { execPromise } from '../utils/execPromise.js';
 import { gitLogCommand } from './gitLogbuildLogCommand.js';
 
-const dir = process.cwd();
+const proccessDir = process.cwd();
 
 const gitNameCommand = `git config --get remote.origin.url`;
 
@@ -10,6 +11,7 @@ const gitNameCommand = `git config --get remote.origin.url`;
  * @returns {Promise<{gitLog: unknown, userEmail: unknown,  gitRepoName : string}>}
  */
 export const gitLogGetLog = async (config) => {
+  const dir = path.resolve(proccessDir, config.PathToRepo);
   let lsCommand = `ls ${dir}/.git`;
 
   if (os.platform() === 'win32') {
@@ -19,7 +21,19 @@ export const gitLogGetLog = async (config) => {
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
-  const gitLog = await execPromise(gitLogCommand(dir, [])).catch((err) => {
+  const userEmail = await execPromise(`git config --get user.email`);
+  if (!config.Email) {
+    config.Email = userEmail;
+  }
+  const moreData = `--until=${
+    config.DateUntil ||
+    new Date().toLocaleDateString('en-GB', {
+      dateStyle: 'short',
+    })
+  }`; // + config.DateFrom      ? `--since=${config.DateFrom}`      : '';
+  const gitLog = await execPromise(
+    gitLogCommand(dir, config.Email, moreData)
+  ).catch((err) => {
     throw `git log command failed ${err}`;
   });
   const gitRepoNameRaw = await execPromise(
@@ -33,9 +47,5 @@ export const gitLogGetLog = async (config) => {
     .join('/')
     .replace('.git', '');
 
-  const userEmail = await execPromise(`git config --get user.email`);
-  if (!config.Email) {
-    config.Email = userEmail;
-  }
   return { gitLog, userEmail, gitRepoName };
 };
