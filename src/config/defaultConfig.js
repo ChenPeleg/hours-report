@@ -4,8 +4,8 @@
 export const defaultConfig = {
   MaxDiffForSession: 120,
   MinuetsToAddToFirstCommit: 30,
-  DateFrom: new Date(),
-  DateUntil: new Date(),
+  DateFrom: null,
+  DateUntil: null,
   Email: null,
   PathToRepo: '.',
   output: 'all',

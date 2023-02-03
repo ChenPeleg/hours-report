@@ -6,7 +6,6 @@ const ROWS_LINE = '----------------';
  */
 const buildSafeRow = (...cells) => {
   const makeDataSafe = (unsafeData) => {
-    console.log(unsafeData);
     const rgx = /[,\n"\\\r]/g;
     if (rgx.test(unsafeData)) {
       let safe = unsafeData.replace(/"/g, "'");
