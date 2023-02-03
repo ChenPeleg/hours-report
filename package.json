@@ -9,6 +9,17 @@
   "engines": {
     "node": "18"
   },
+  "files": [
+    "src/**/*"
+  ],
+  "keywords": [
+    "git",
+    "time",
+    "spent",
+    "tracking",
+    "clock",
+    "hours"
+  ],
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
