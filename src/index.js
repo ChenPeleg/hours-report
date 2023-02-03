@@ -11,7 +11,7 @@ import { exportReport } from './export/exportReport.js';
 export const main = async () => {
   try {
     const { config, printHelp } = getConfiguration(process.argv);
-    if (printHelp || true) {
+    if (printHelp) {
       printHelpText();
       return;
     }
