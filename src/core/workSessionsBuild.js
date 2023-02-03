@@ -1,6 +1,7 @@
 import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 import { groupEntriesToSessions } from './workSessionGroupEntries.js';
 import { workSessionBuildData } from './workSessionBuildData.js';
+import { addBranchesToLogEntries } from './addBranchesToLogEntries.js';
 
 /**
  * @param {import("../types/gitLogEntry.js").GitLogEntry[] }logEntries
@@ -12,6 +13,8 @@ export const WorkSessionsBuild = (logEntries, config) => {
   const sortedLogEntries = [...logEntries].sort(
     (a, b) => a.date.getTime() - b.date.getTime()
   );
+  addBranchesToLogEntries(sortedLogEntries);
+
   const basicSession = groupEntriesToSessions(
     sortedLogEntries,
     config.MaxDiffForSession

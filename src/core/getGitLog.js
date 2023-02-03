@@ -1,10 +1,9 @@
 import os from 'os';
-import { execPromise } from '../utils/execPromise.js';
-import { appConstants } from '../config/constants.js';
+import {execPromise} from '../utils/execPromise.js';
+import {gitLogCommand} from "./buildGitLogCommand.js";
 
 const dir = process.cwd();
 
-const command = `git log --pretty="%cd %ce %s ${appConstants.refsIndicator}%d" --graph --date=iso --date-order`;
 
 const gitNameCommand = `git config --get remote.origin.url`;
 
@@ -21,23 +20,23 @@ export const getGitLog = async (config) => {
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
-  const gitLog = await execPromise(`cd ${dir} && ${command}`).catch((err) => {
+  const gitLog = await execPromise(gitLogCommand(dir, [])).catch((err) => {
     throw `git log command failed ${err}`;
   });
   const gitRepoNameRaw = await execPromise(
-    `cd ${dir} && ${gitNameCommand}`
+      `cd ${dir} && ${gitNameCommand}`
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
   const gitRepoName = gitRepoNameRaw
-    .split('/')
-    .slice(-2)
-    .join('/')
-    .replace('.git', '');
+      .split('/')
+      .slice(-2)
+      .join('/')
+      .replace('.git', '');
 
   const userEmail = await execPromise(`git config --get user.email`);
   if (!config.Email) {
     config.Email = userEmail;
   }
-  return { gitLog, userEmail, gitRepoName };
+  return {gitLog, userEmail, gitRepoName};
 };
