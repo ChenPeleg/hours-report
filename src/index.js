@@ -9,7 +9,7 @@ import { printHelpText } from './config/printHelpText.js';
 export const main = async () => {
   try {
     const { config, printHelp } = getConfiguration(process.argv);
-    if (printHelp || true) {
+    if (printHelp) {
       printHelpText();
       return;
     }
