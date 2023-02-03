@@ -32,7 +32,7 @@ describe('Build report', () => {
       days[0].dayDate.getUTCDate(),
       sessions[0].startTime.getUTCDate()
     );
-    assert.equal(days.length, 3);
+    assert.equal(days.length, sessions.length);
   });
   it('Builds months from days correctly', () => {
     const fixture = workSessionFixtures.fixture1;
