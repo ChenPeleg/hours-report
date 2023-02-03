@@ -2,30 +2,7 @@
 
 # git-hours
 
-Estimate time spent on a git repository.
-
-**For example time spent on [Twitter's Bootstrap](https://github.com/twbs/bootstrap)**
-
-```javascript
-➜  bootstrap
-git:(master)
-git - hours
-{
-
-...
-
-    "total"
-:
-    {
-        "hours"
-    :
-        9959,
-            "commits"
-    :
-        11470
-    }
-}
-```
+An Estimated time spent on a git repository report.
 
 From a person working 8 hours per day, it would take more than 3 years to build Bootstrap.
 
