@@ -1,6 +1,6 @@
 import os from 'os';
 import { execPromise } from '../utils/execPromise.js';
-import { gitLogCommand } from './buildGitLogCommand.js';
+import { gitLogCommand } from './gitLogbuildLogCommand.js';
 
 const dir = process.cwd();
 

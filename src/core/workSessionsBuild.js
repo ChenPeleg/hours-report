@@ -1,4 +1,3 @@
-import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 import { groupEntriesToSessions } from './workSessionGroupEntries.js';
 import { workSessionBuildData } from './workSessionBuildData.js';
 import { gitLogAddBranchesToLogEntries } from './gitLogAddBranchesToLogEntries.js';
