@@ -15,9 +15,12 @@ const buildDayData = (day) => {
       )
     )
     .reduce((a, b) => a + b, 0);
-  dayWithData.comments = day.workSessions
-    .map((session) => session.gitComments)
-    .join('\n');
+  const dayBranches = new Set();
+  day.workSessions.forEach((s) => {
+    s.branches.forEach((b) => dayBranches.add(b));
+  });
+  dayWithData.comments = Array.from(dayBranches).join(', ');
+
   return dayWithData;
 };
 

@@ -3,6 +3,7 @@ import {WorkSessionsBuild} from './core/workSessionsBuild.js';
 import {getConfiguration} from './config/getConfigurations.js';
 import {buildReportFromSession} from './report/buildReport.js';
 import {parseGitLogToEntries} from './core/gitLogParseToEntries.js';
+import {exportReportToCsv} from './export/exportReportToCsv.js';
 
 export const main = async () => {
   try {
@@ -16,9 +17,8 @@ export const main = async () => {
         config,
         gitLogData.gitRepoName
     );
-    // exportReportToCsv(report);
+    exportReportToCsv(report);
 
-    console.log(workSessions);
     return logEntries;
   } catch (err) {
     console.error(err);
