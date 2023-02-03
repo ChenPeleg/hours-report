@@ -1,6 +1,6 @@
 {
   "name": "hours-report",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "hours report based on git repo",
   "main": "./src/index.js",
   "bin": "./src/index.js",
