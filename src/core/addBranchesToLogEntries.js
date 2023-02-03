@@ -3,7 +3,8 @@ const getBranchNameFromRef = (refString) => {
     .replace(/[(),]/g, ' ')
     .split(' ')
     .filter((r) => r.trim());
-  console.log(onlyRefs);
+  const refWithOrigin = onlyRefs.find((r) => r.includes('origin'));
+  return refWithOrigin ? refWithOrigin.replace('/origin', '') : '';
 };
 
 /**
@@ -11,10 +12,12 @@ const getBranchNameFromRef = (refString) => {
  * @return  {import("../types/gitLogEntry.js").GitLogEntry[] }
  * */
 export const addBranchesToLogEntries = (logEntries) => {
+  let lastBranchPushed = '';
   for (const entry of logEntries) {
     if (entry.branch) {
-      getBranchNameFromRef(entry.branch);
-      // console.log(entry.branch);
+      lastBranchPushed = getBranchNameFromRef(entry.branch);
+    } else {
+      entry.branch = lastBranchPushed;
     }
   }
   return logEntries;
