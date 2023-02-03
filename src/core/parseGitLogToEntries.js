@@ -1,4 +1,5 @@
 import { DateAndTimeUtil } from '../utils/dateAndTime.js';
+import { appConstants } from '../config/constants.js';
 
 const GIT_LOG_SEPARATOR = '\n*';
 /**
@@ -12,12 +13,17 @@ const gitLogLineToEntry = (line) => {
     const time = lineElements[1];
     const timeZone = lineElements[2];
     const email = lineElements[3];
-    const comment = lineElements.filter((elm, i) => i > 3).join(' ');
+    const commentsAndRefs = lineElements.filter((elm, i) => i > 3).join(' ');
+    const comment = commentsAndRefs.includes(appConstants.refsIndicator)
+      ? commentsAndRefs.split(appConstants.refsIndicator)[0]
+      : commentsAndRefs;
     const dateObj = DateAndTimeUtil.dateAndTimeToDateObj(date, time, timeZone);
+    let branch = '';
     return {
       comment,
       date: dateObj,
       email,
+      branch,
     };
   } catch (err) {
     throw `gitLogLineToEntry error ${err.toString()} line: ${line}`;
