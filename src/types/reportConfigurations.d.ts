@@ -13,4 +13,5 @@ export interface CommandLineOption {
   alias: string;
   type: 'boolean' | 'string' | 'number';
   configOption?: keyof ReportConfigurations;
+  helpText: string;
 }
