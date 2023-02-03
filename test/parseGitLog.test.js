@@ -6,9 +6,9 @@ import { parseGitLogToEntries } from '../src/core/gitLogParseToEntries.js';
 describe('Parse git log', () => {
   it('should parse git logs correctly', () => {
     const fixture = gitLogsFixtures.fixture1
-      .split('\n*')
+      .split('\n')
       .slice(0, 31)
-      .join('\n*');
+      .join('\n');
     const result = parseGitLogToEntries(fixture);
     assert.equal(result.length, 30);
     assert.equal(result[0].email, 'cp@gmail.com');

@@ -6,7 +6,7 @@ There are several options to get the git log in a way that will be best for date
 
 Best way to handle the data is
 
-`git log --pretty='%cd %ce %s %d' --graph --date=iso --date-order`
+`git log --pretty='%cd %ce %s %d'--date=iso --date-order`
 
 ## The branch problem
 
