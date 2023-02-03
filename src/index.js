@@ -5,6 +5,7 @@ import { buildReportFromSession } from './report/buildReport.js';
 import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { exportReportToCsv } from './export/exportReportToCsv.js';
 import { printHelpText } from './config/printHelpText.js';
+import { exportReportToConsole } from './export/exportReportToConsole.js';
 
 export const main = async () => {
   try {
@@ -23,7 +24,8 @@ export const main = async () => {
       gitLogData.gitRepoName
     );
 
-    exportReportToCsv(report);
+    //exportReportToCsv(report);
+    exportReportToConsole(report);
 
     return logEntries;
   } catch (err) {
