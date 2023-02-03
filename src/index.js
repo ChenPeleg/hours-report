@@ -1,25 +1,25 @@
-import { getGitLog } from './core/getGitLog.js';
-import { parseGitLogToEntries } from './core/parseGitLogToEntries.js';
+import { gitLogGetLog } from './core/gitLogGetLog.js';
 import { WorkSessionsBuild } from './core/workSessionsBuild.js';
 import { getConfiguration } from './config/getConfigurations.js';
 import { buildReportFromSession } from './report/buildReport.js';
+import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { exportReportToCsv } from './export/exportReportToCsv.js';
 
 export const main = async () => {
   try {
     const config = getConfiguration(process.argv);
-    const gitLogData = await getGitLog(config);
+    const gitLogData = await gitLogGetLog(config);
     const logEntries = parseGitLogToEntries(gitLogData.gitLog);
-    console.log(gitLogData.gitRepoName);
+
     const workSessions = WorkSessionsBuild(logEntries, config);
     const report = buildReportFromSession(
       workSessions,
       config,
       gitLogData.gitRepoName
     );
-    // exportReportToCsv(report);
 
-    // console.log(days);
+    exportReportToCsv(report);
+
     return logEntries;
   } catch (err) {
     console.error(err);

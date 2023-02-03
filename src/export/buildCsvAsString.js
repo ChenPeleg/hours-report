@@ -1,11 +1,12 @@
 const CELLS_PER_ROW = 15;
-const ROWS_LINE = '-------';
+const ROWS_LINE = '----------------';
 /**
  * @param {string[]| any} cells
  * @return {string[]}
  */
 const buildSafeRow = (...cells) => {
   const makeDataSafe = (unsafeData) => {
+    console.log(unsafeData);
     const rgx = /[,\n"\\\r]/g;
     if (rgx.test(unsafeData)) {
       let safe = unsafeData.replace(/"/g, "'");
@@ -14,7 +15,6 @@ const buildSafeRow = (...cells) => {
     }
     return unsafeData;
   };
-
   return cells.map((cell) => makeDataSafe(cell));
 };
 
@@ -34,35 +34,33 @@ export const buildCsvAsString = (report) => {
     repoName[0] = report.repoName.split('/')[0];
   } catch (err) {}
 
+  r('Hours report ', '', report.repoName, '', '', '');
   r(
-    'Hours report ',
+    `For: ${report.userEmail}`,
     '',
-    repoName[1],
     '',
-    '-',
-    repoName[0],
     '',
-    report.userEmail
+    new Date().toLocaleDateString('en-GB', {
+      dateStyle: 'short',
+    })
   );
-  r(
-    report.userEmail,
-    '',
-    '',
-    new Date().toLocaleDateString('en-GB', { dateStyle: 'short' })
-  );
+  r('', '');
+  r(ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE);
+  r('', '');
 
   r('   ', '  ', '   ', '   ', ' ');
   report.months.forEach((month) => {
     const monthName = month.MonthDate.toLocaleString('en-GB', {
       month: 'long',
     });
-    r(monthName, '   Day', '   Date', '   Hours', ' ', ' ');
+    r(monthName, '   Day', '   Date', '   Hours', '   Details', ' ');
     month.days.forEach((day) => {
       r(
         '',
-        `${day.dayDate.toLocaleDateString('en-GB', { weekday: 'short' })}`,
+        `  ${day.dayDate.toLocaleDateString('en-GB', { weekday: 'short' })}`,
         `${day.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`,
-        roundHours(day.minuetSum).toString()
+        roundHours(day.minuetSum).toString(),
+        `   ${day.comments}`
       );
     });
     r('', '');
@@ -80,9 +78,7 @@ export const buildCsvAsString = (report) => {
   });
 
   const textRows = csvRows.map((row) => {
-    for (let c = row.length; c < CELLS_PER_ROW; c++) {
-      console.log(row);
-    }
+    for (let c = row.length; c < CELLS_PER_ROW; c++) {}
     return row.join();
   });
   return textRows.join('\n');

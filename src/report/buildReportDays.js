@@ -15,9 +15,15 @@ const buildDayData = (day) => {
       )
     )
     .reduce((a, b) => a + b, 0);
-  dayWithData.comments = day.workSessions
-    .map((session) => session.gitComments)
-    .join('\n');
+  const dayBranches = new Set();
+  day.workSessions.forEach((s) => {
+    s.branches.forEach((b) => dayBranches.add(b.trim()));
+  });
+  dayWithData.comments = Array.from(dayBranches)
+    .filter((b) => b.trim())
+    .join('; ');
+  dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim();
+  console.log(dayWithData.comments);
   return dayWithData;
 };
 
