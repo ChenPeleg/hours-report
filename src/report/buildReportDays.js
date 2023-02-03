@@ -17,10 +17,13 @@ const buildDayData = (day) => {
     .reduce((a, b) => a + b, 0);
   const dayBranches = new Set();
   day.workSessions.forEach((s) => {
-    s.branches.forEach((b) => dayBranches.add(b));
+    s.branches.forEach((b) => dayBranches.add(b.trim()));
   });
-  dayWithData.comments = Array.from(dayBranches).join(', ');
-
+  dayWithData.comments = Array.from(dayBranches)
+    .filter((b) => b.trim())
+    .join('; ');
+  dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim();
+  console.log(dayWithData.comments);
   return dayWithData;
 };
 
