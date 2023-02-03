@@ -18,7 +18,7 @@ export const getGitLog = async (config) => {
   }
 
   await execPromise(lsCommand).catch((err) => {
-    throw `${dir} is not a valid Git directory`;
+    throw `${dir} is not a valid Git directory. ${err}`;
   });
   const gitLog = await execPromise(`cd ${dir} && ${command}`).catch((err) => {
     throw `git log command failed ${err}`;

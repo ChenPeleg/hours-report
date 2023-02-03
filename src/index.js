@@ -17,7 +17,7 @@ export const main = async () => {
       config,
       gitLogData.gitRepoName
     );
-    exportReportToCsv(report);
+    // exportReportToCsv(report);
 
     // console.log(days);
     return logEntries;
