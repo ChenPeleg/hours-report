@@ -7,10 +7,12 @@ import { buildReportFromSession } from './report/buildReport.js';
 import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReport } from './export/exportReport.js';
+import { veryBasicHash } from './utils/veryBasicHash.js';
 
 export const main = async () => {
   try {
     const { config, printHelp } = getConfiguration(process.argv);
+    // return console.log(veryBasicHash('fasdfasdf'));
     if (printHelp) {
       printHelpText();
       return;

@@ -15,6 +15,15 @@ export const exportReport = async (report, config) => {
   }
   if (config.output === 'csv' || config.output === 'all') {
     const fileLocation = await saveToCsvFile(csv, config);
-    logToConsole(`Hours report exported successfully to \n ${fileLocation}`);
+    logToConsole(
+      `Hours report exported successfully to \n file:///${fileLocation.replace(
+        /\\/g,
+        '/'
+      )}`
+    );
+
+    logToConsole(
+      `\n Link 2 to \n http://file:///C:/Projects/Sidur/build/index.html`
+    );
   }
 };

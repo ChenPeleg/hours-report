@@ -8,14 +8,18 @@ import { tmpdir } from 'os';
  * @return {Promise<string>}
  */
 export const saveToCsvFile = async (csvText, config) => {
-  const fileName = `hours-report` + ((Math.random() * 1000) | 0);
+  const fileHash = (Math.random() * 1000) | 0;
+  const fileName = `hours-report-` + fileHash;
   const dirToSaveFile = tmpdir();
-  const reportFolderPath = path.resolve(dirToSaveFile, `./hours-report/`);
+  const reportFolderPath = path.resolve(
+    dirToSaveFile,
+    `./hours-report${fileHash}/`
+  );
   if (!existsSync(reportFolderPath)) {
     mkdirSync(reportFolderPath);
   }
   const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
 
   appendFileSync(reportFilePath, csvText);
-  return reportFilePath;
+  return reportFolderPath;
 };
