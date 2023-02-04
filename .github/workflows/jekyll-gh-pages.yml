@@ -31,6 +31,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: copy Jekyll && Ruby files
+        run: ls
+      - name: copy Jekyll && Ruby files
+        run: |
+          cp "./docs/ruby/text1.txt" "./text1.txt"
+      - name: copy Jekyll && Ruby files
+        run: |
+          ls
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
