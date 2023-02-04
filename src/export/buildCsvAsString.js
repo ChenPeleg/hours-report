@@ -40,6 +40,9 @@ export const buildCsvAsString = (report) => {
   let csvRows = [];
   const now = new Date();
   const r = (...args) => csvRows.push(buildSafeRow(...args));
+  const addYear = (year) =>
+    r(ROWS_LINE, `--| ${year} |--`, ROWS_LINE, ROWS_LINE) && r('');
+  let currentYear = 0;
   const repoName = [report.repoName, ''];
   try {
     repoName[1] = report.repoName.split('/')[1];
@@ -64,14 +67,17 @@ export const buildCsvAsString = (report) => {
 
     report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
   );
-  r('', '');
-  r(ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE);
+
   r('', '');
 
   report.months.forEach((month) => {
     const monthName = month.MonthDate.toLocaleString('en-GB', {
       month: 'long',
     });
+    if (month.MonthDate.getFullYear() !== currentYear) {
+      currentYear = month.MonthDate.getFullYear();
+      addYear(currentYear);
+    }
     r(monthName, '   Day', '   Date', '   Hours', '   Details', ' ');
     month.days.forEach((day) => {
       r(

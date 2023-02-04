@@ -1,3 +1,3 @@
 export const appConstants = {
-  refsIndicator: "<GIT_REFS!@#$%^&*>"
+  refsIndicator: '<GIT_REFS!@#$%^&*>',
 };
