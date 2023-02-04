@@ -1,6 +1,5 @@
-import assert from 'assert';
 import { readFileSync } from 'fs';
-import { describe, it } from 'node:test';
+
 import path from 'path';
 import { execPromise } from '../../src/utils/execPromise.js';
 import { logToConsole } from '../../src/utils/logToConsole.js';
@@ -16,7 +15,7 @@ const cleanStringsToFindInAccessability = [
 
 const removeCommasAndMultiSpaces = (text) =>
   text.replace(/,/g, ' ').replace(/  +/g, ' ');
- 
+
 const eq = (val1, val2) => {
   if (val1 !== val2) {
     throw `Assertion Error ${val1} !== ${val2}`;
