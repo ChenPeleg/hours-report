@@ -1,8 +1,9 @@
-
 name: CI Tests
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
