@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
       - name: check modified files
@@ -41,12 +41,10 @@ jobs:
           do
             echo $file
             if [[ $file != docs/* ]]; then
-              echo "This modified file is not under the 'docs' folder."
-              echo "::set-output name=run_job::false"
+              echo "This modified file is not under the 'docs' folder." 
               echo "run_job=false" >> $GITHUB_OUTPUT
               break
-            else
-              echo "::set-output name=run_job::true"
+            else 
               echo "run_job=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
