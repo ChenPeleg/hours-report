@@ -14,7 +14,10 @@ export const exportLogs = (folder) => {
     mkdirSync(folder);
   }
   appendFileSync(
-    path.resolve(folder, `hours-report${new Date().getMilliseconds()}.log`),
+    path.resolve(
+      folder,
+      `hours-report-log-${new Date().getMilliseconds()}.log`
+    ),
     logger.getLogs()
   );
 };
