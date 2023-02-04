@@ -8,11 +8,17 @@ import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReport } from './export/exportReport.js';
 import { veryBasicHash } from './utils/veryBasicHash.js';
+import { atob, btoa } from 'buffer';
 
 export const main = async () => {
   try {
     const { config, printHelp } = getConfiguration(process.argv);
-    // return console.log(veryBasicHash('fasdfasdf'));
+    const res = veryBasicHash('fasdfasdfagsdg3333dfsgfasdf');
+    console.log(res);
+    const b64 = Buffer.from(res).toString('base64');
+    const ab = atob(res);
+    console.log(ab);
+
     if (printHelp) {
       printHelpText();
       return;
