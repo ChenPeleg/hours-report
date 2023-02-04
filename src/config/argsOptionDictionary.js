@@ -53,7 +53,7 @@ export const ArgsOptionDictionary = [
     alias: 'o',
     type: 'string',
     helpText: 'output folder. Default: temp/hours-report',
-    configOption: 'outputFormat',
+    configOption: 'outputFolder',
   },
   {
     name: 'path',

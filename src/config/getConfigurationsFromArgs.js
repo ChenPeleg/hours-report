@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger.js';
+
 /**
  * @param {string}argument
  * @param {string}nextArg
@@ -58,6 +60,7 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
 export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
   /** @type {Partial<import("../types/reportConfigurations.js").ReportConfigurations>}  */
   let dataFromArgs = {};
+  logger.info('cmd args:', argsAsString);
   if (!argsAsString.trim().length) {
     return dataFromArgs;
   }
@@ -85,5 +88,9 @@ export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
     }
     throw new Error(`${args[i]} is not a legal command.`);
   }
+  logger.info(
+    'config from args set:',
+    Object.keys(dataFromArgs).map((k) => `${k}:${dataFromArgs[k]}`)
+  );
   return dataFromArgs;
 };

@@ -26,7 +26,7 @@ export const exportReport = async (report, config) => {
   logger.info(
     'exportReport success',
     'format:',
-    config.outputFormat,
+    JSON.stringify(config),
     fileLocation ? 'location: ' + fileLocation : ''
   );
 };
