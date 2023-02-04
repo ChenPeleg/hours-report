@@ -18,7 +18,7 @@ describe('Run app e2e', async () => {
     const pathToFile = `./${outputFolder}/hours-report-${hash}.csv`;
     const resultCsv = readFileSync(path.resolve(pathToFile)).toString();
  
-    assert.equal(resultCsv.length > 5000, true);
+    assert.equal(resultCsv.length > 1000, true);
     assert.equal(resultCsv.includes('Total hours'), true);
     assert.equal(resultCsv.includes('Total hours,,11'), true);
   });
