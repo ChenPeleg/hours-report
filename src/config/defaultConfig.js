@@ -8,5 +8,5 @@ export const defaultConfig = {
   DateUntil: null,
   Email: null,
   PathToRepo: '.',
-  output: 'all',
+  output: 'csv',
 };
