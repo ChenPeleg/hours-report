@@ -2,13 +2,13 @@ title: Accessability
 description: Accessability on the web
 theme: just-the-docs
 
-logo: "/assets/images/logo.png"
+#logo: "/assets/images/logo.png"
 
-url: https://drorsoft.github.io/accessability
+url: https://chenpeleg.github.io/hours-report/
 
 
 aux_links:
-  View on GitHub: https://github.com/drorsoft/accessibility
+  View on GitHub: https://chenpeleg.github.io/hours-report/
 
 callouts:
   warning:
@@ -23,7 +23,6 @@ callouts:
   important:
     title: Important
     color: purple
-  
   
   
   
