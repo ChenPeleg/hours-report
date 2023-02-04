@@ -11,7 +11,7 @@ import { logger } from '../utils/logger.js';
 export const exportReport = async (report, config) => {
   let fileLocation;
   const csv = buildCsvAsString(report);
-  if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
+  if (config.outputFormat === 'console' || config.outputFormat === 'all') {
     await exportReportToConsole(csv);
   }
   if (config.outputFormat === 'csv' || config.outputFormat === 'all') {

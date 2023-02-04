@@ -16,6 +16,7 @@ const gitLogLineToEntry = (line) => {
     const commentsAndRefs = lineElements.filter((elm, i) => i > 3).join(' ');
 
     const comment = commentsAndRefs.split(appConstants.refsIndicator)[0];
+
     const branch = commentsAndRefs.split(appConstants.refsIndicator)[1];
 
     const dateObj = DateAndTimeUtil.dateAndTimeToDateObj(date, time, timeZone);
