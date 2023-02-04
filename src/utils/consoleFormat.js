@@ -5,7 +5,7 @@ process.stdout.cursorTo = process.stdout.cursorTo || (() => {});
 process.stdout.write =
   process.stdout.write ||
   ((t) => {
-    t?.length > 1 ? logToConsole('') : null;
+    t && t.length > 1 ? logToConsole('') : null;
   });
 // @ts-ignore
 process.stdout.clearLine =
@@ -87,8 +87,9 @@ export class TestFrameWorkConsole {
         ? { ...argsOptions }
         : { color: argsOptions };
 
-    const fg = options?.color ? colors.fg[options.color] : '';
-    const bg = options?.background ? colors.bg[options.background] : '';
+    const fg = options && options.color ? colors.fg[options.color] : '';
+    const bg =
+      options && options.background ? colors.bg[options.background] : '';
     const reset = colors.reset;
     return `${fg}${bg}${text}${reset}`;
   }

@@ -94,7 +94,7 @@ const reformatMainData = (text, passed) => {
     let paintErrorLines = 0;
     finalArr = finalArr
       .map((l, i) => {
-        if (formatUrl[i + 1]?.includes('passed')) {
+        if (formatUrl[i + 1] && formatUrl[i + 1].includes('passed')) {
           return '';
         }
         if (l.includes('ERR_TEST_FAILURE')) {
