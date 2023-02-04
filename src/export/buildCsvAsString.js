@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger.js';
+
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = '----------------';
 /**
@@ -32,7 +34,9 @@ export const buildCsvAsString = (report) => {
   try {
     repoName[1] = report.repoName.split('/')[1];
     repoName[0] = report.repoName.split('/')[0];
-  } catch (err) {}
+  } catch (err) {
+    logger.error(err);
+  }
 
   r('Hours report ', '', report.repoName, '', '', '');
   r(

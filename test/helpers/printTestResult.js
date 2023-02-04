@@ -1,6 +1,7 @@
 import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
 import path from 'path';
 import { logToConsole } from '../../src/utils/logToConsole.js';
+import { logger } from '../../src/utils/logger.js';
 /**
  * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
  */
@@ -133,6 +134,7 @@ export const printTestResult = (resultsAsText, passed = true) => {
     logToConsole(mainData);
     writeFinalResults(conclusionsObj.conclusions);
   } catch (err) {
+    logger.error(err);
     logToConsole(resultsAsText);
   }
 };
