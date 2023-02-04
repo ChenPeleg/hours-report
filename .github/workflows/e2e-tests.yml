@@ -23,9 +23,8 @@ jobs:
           cache: 'npm'
       - name: unzip files for the e2e test
         run: |
-          mkdir ../e2e-content
-          unzip ./test/e2e/zip/*.zip -d ../e2e-content
-          cd ../e2e-content
+          unzip ./test/e2e/zip/*.zip -d ../
+          cd ../
           ls
 
 
