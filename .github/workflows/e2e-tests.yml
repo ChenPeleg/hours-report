@@ -24,6 +24,10 @@ jobs:
       - name: unzip files for the e2e test
         run: |
           unzip ./test/e2e/zip/*.zip -d ../
+      - name: Check that the folders exist
+        run: |
           cd ../
+          ls
+          cd accessibility
           ls
       - run: npm run e2e
