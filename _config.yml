@@ -1,0 +1,30 @@
+title: Accessability
+description: Accessability on the web
+theme: just-the-docs
+
+logo: "/assets/images/logo.png"
+
+url: https://drorsoft.github.io/accessability
+
+
+aux_links:
+  View on GitHub: https://github.com/drorsoft/accessibility
+
+callouts:
+  warning:
+    title: Warning
+    color: red
+  wrong:
+    title: don't
+    color: red
+  right:
+    title: do
+    color: green
+  important:
+    title: Important
+    color: purple
+  
+  
+  
+  
+  
