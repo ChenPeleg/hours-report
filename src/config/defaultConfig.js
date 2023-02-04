@@ -6,7 +6,7 @@ export const defaultConfig = {
   MinuetsToAddToFirstCommit: 30,
   DateFrom: null,
   DateUntil: null,
-  Email: null,
+  Email: 'fsdfs',
   PathToRepo: '.',
   outputFormat: 'csv',
   outputFolder: '',

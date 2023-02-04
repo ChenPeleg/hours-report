@@ -47,6 +47,16 @@ export const gitLogGetLog = async (config) => {
     .slice(-2)
     .join('/')
     .replace('.git', '');
-  logger.info('git log get log', gitRepoName);
+  logger.info(
+    'git log get log',
+    'repo: ',
+    gitRepoName,
+    'log length: ',
+    gitLog.length
+  );
+  if (gitLog.length < 5) {
+    throw 'No git log entries found. Try changing the Email, dates and so on.';
+  }
+
   return { gitLog, userEmail, gitRepoName };
 };

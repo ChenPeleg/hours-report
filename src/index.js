@@ -8,6 +8,7 @@ import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReport } from './export/exportReport.js';
 import { exportLogs } from './export/exportLogs.js';
+import { logToConsole } from './utils/logToConsole.js';
 
 export const main = async () => {
   try {
@@ -29,6 +30,9 @@ export const main = async () => {
     await exportReport(report, config);
   } catch (err) {
     console.error(err);
+    logToConsole(
+      'For more information visit https://chenpeleg.github.io/hours-report/.'
+    );
   } finally {
     exportLogs('./logs');
   }
