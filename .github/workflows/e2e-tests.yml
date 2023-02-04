@@ -1,4 +1,4 @@
-name: CI Tests
+name: E2E Tests
 
 on:
   push:
@@ -21,4 +21,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm test
+      - name: unzip files for the e2e test
+        run: |
+          mkdir ../e2e-content
+          unzip ./test/e2e/zip/*.zip ../e2e-content
+          ls ../e2e-content
+
+
+#      - run: npm test
