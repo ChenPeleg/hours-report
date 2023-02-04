@@ -9,12 +9,13 @@ import { logger } from '../utils/logger.js';
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
  */
 export const exportReport = async (report, config) => {
+  let fileLocation;
   const csv = buildCsvAsString(report);
   if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
     await exportReportToConsole(csv);
   }
   if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
-    const fileLocation = await saveToCsvFile(csv, config);
+    fileLocation = await saveToCsvFile(csv, config);
     logToConsole(
       `Hours report exported successfully to \n file:///${fileLocation.replace(
         /\\/g,
@@ -22,5 +23,10 @@ export const exportReport = async (report, config) => {
       )}`
     );
   }
-  logger.info('exportReport success', config.outputFormat);
+  logger.info(
+    'exportReport success',
+    'format:',
+    config.outputFormat,
+    fileLocation ? 'location: ' + fileLocation : ''
+  );
 };
