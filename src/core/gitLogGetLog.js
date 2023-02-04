@@ -9,7 +9,7 @@ const proccessDir = process.cwd();
 const gitNameCommand = `git config --get remote.origin.url`;
 
 /**@param {import('../types/reportConfigurations.js').ReportConfigurations}config
- * @returns {Promise<{gitLog: unknown, userEmail: unknown,  gitRepoName : string}>}
+ * @returns {Promise<{gitLog: string,    gitRepoName : string}>}
  */
 export const gitLogGetLog = async (config) => {
   const dir = path.resolve(proccessDir, config.PathToRepo);
@@ -22,8 +22,9 @@ export const gitLogGetLog = async (config) => {
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
-  const userEmail = await execPromise(`git config --get user.email`);
+
   if (!config.Email) {
+    const userEmail = await execPromise(`git config --get user.email`);
     config.Email = userEmail;
   }
   const moreData = `--until=${
@@ -61,5 +62,5 @@ export const gitLogGetLog = async (config) => {
     throw errMessage;
   }
 
-  return { gitLog, userEmail, gitRepoName };
+  return { gitLog, gitRepoName };
 };
