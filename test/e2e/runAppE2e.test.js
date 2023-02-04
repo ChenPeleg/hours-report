@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs';
-
 import path from 'path';
 import { execPromise } from '../../src/utils/execPromise.js';
 import { logToConsole } from '../../src/utils/logToConsole.js';
