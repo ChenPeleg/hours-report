@@ -33,7 +33,7 @@ jobs:
             else
               echo "::set-output name=run_job::true"
             fi
-          done &lt; files.txt
+          done < files.txt
 
   job_for_docs:
     name: Job for 'docs' folder
