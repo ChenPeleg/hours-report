@@ -26,6 +26,4 @@ jobs:
           unzip ./test/e2e/zip/*.zip -d ../
           cd ../
           ls
-
-
-#      - run: npm test
+      - run: npm run e2e
