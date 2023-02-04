@@ -31,14 +31,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Check files
-        run: ls
+
       - name: copy Jekyll && Ruby files
         run: |
           cp -r ./docs/ruby/. ./
-      - name: Check files 2
-        run: |
-          ls
+          cp ./docs/index.md ./
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
