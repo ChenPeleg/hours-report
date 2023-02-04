@@ -3,7 +3,7 @@
   "version": "1.0.10",
   "description": "hours report based on git repo",
   "main": "./src/index.js",
-  "bin": "bin/index.js",
+  "bin": "./src/index.js",
   "files": [
     "src/**/*"
   ],
