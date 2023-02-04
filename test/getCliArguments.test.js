@@ -15,6 +15,7 @@ describe('Get Arguments from list', () => {
       ' --email=my-email@gmail.com -mx=200 -mn=100',
       ArgsOptionDictionary
     );
+
     assert.equal(argumantResult.Email, 'my-email@gmail.com');
     assert.equal(argumantResult.MaxDiffForSession, 200);
     assert.equal(argumantResult.MinuetsToAddToFirstCommit, 100);
