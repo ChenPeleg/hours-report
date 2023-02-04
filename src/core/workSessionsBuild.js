@@ -1,6 +1,7 @@
 import { groupEntriesToSessions } from './workSessionGroupEntries.js';
 import { workSessionBuildData } from './workSessionBuildData.js';
 import { gitLogAddBranchesToLogEntries } from './gitLogAddBranchesToLogEntries.js';
+import { logger } from '../utils/logger.js';
 
 /**
  * @param {import("../types/gitLogEntry.js").GitLogEntry[] }logEntries
@@ -18,5 +19,6 @@ export const WorkSessionsBuild = (logEntries, config) => {
     sortedLogEntries,
     config.MaxDiffForSession
   );
+  logger.info('workSessionBuildData');
   return workSessionBuildData(basicSession, config.MinuetsToAddToFirstCommit);
 };

@@ -7,7 +7,6 @@ import { buildReportFromSession } from './report/buildReport.js';
 import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReport } from './export/exportReport.js';
-import { exportLogs } from './export/exportLogs.js';
 
 export const main = async () => {
   try {
@@ -30,7 +29,7 @@ export const main = async () => {
   } catch (err) {
     console.error(err);
   } finally {
-    exportLogs('./logs');
+    // exportLogs('./logs');
   }
 };
 
