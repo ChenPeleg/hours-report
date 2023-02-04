@@ -18,7 +18,17 @@ const buildSafeRow = (...cells) => {
   };
   return cells.map((cell) => makeDataSafe(cell));
 };
-
+const limitCellLength = (rowAsString, separator = ';', maxLength = 100) => {
+  const entries = rowAsString.split(separator);
+  let finalString = '';
+  for (const entry of entries) {
+    if (finalString.length + entry.length > maxLength) {
+      break;
+    }
+    finalString += entry + separator;
+  }
+  return finalString;
+};
 const roundHours = (minuets) => Math.ceil(minuets / 60);
 
 /**
@@ -64,7 +74,7 @@ export const buildCsvAsString = (report) => {
         `  ${day.dayDate.toLocaleDateString('en-GB', { weekday: 'short' })}`,
         `${day.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`,
         roundHours(day.minuetSum).toString(),
-        `   ${day.comments}`
+        limitCellLength(`   ${day.comments}`)
       );
     });
 

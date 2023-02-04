@@ -25,7 +25,7 @@ const buildDayData = (day) => {
   dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim();
   if (!dayWithData.comments) {
     dayWithData.comments = day.workSessions
-      .map((ws) => ws.gitComments)
+      .map((ws) => ws.gitComments.trim())
       .join('; ');
   }
   return dayWithData;
