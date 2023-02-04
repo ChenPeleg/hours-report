@@ -4,7 +4,6 @@ import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
 
 /**
- *
  * @param report
  * @param config
  */
@@ -15,6 +14,11 @@ export const exportReport = async (report, config) => {
   }
   if (config.output === 'csv' || config.output === 'all') {
     const fileLocation = await saveToCsvFile(csv, config);
-    logToConsole(`Hours report exported successfully to \n ${fileLocation}`);
+    logToConsole(
+      `Hours report exported successfully to \n file:///${fileLocation.replace(
+        /\\/g,
+        '/'
+      )}`
+    );
   }
 };

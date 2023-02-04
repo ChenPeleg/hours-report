@@ -1,5 +1,7 @@
-import { appendFileSync } from 'fs';
+import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
+import { tmpdir } from 'os';
+import { veryBasicHash } from '../utils/veryBasicHash.js';
 
 /**
  * @param { string } csvText
@@ -7,10 +9,22 @@ import path from 'path';
  * @return {Promise<string>}
  */
 export const saveToCsvFile = async (csvText, config) => {
-  const fileName = `hours-report` + ((Math.random() * 1000) | 0);
-  appendFileSync(
-    path.resolve(config.PathToRepo, `./output/${fileName}.csv`),
-    csvText
+  const fileHash = veryBasicHash(csvText);
+  const fileName = `hours-report-` + fileHash;
+  const dirToSaveFile = tmpdir();
+  const reportFolderPath = path.resolve(
+    dirToSaveFile,
+    `./hours-report-${fileHash}/`
   );
-  return path.resolve(`./output/${fileName}.csv`);
+  const reportLogsFolderPath = path.resolve(reportFolderPath, fileHash);
+  if (!existsSync(reportFolderPath)) {
+    mkdirSync(reportFolderPath);
+  }
+  if (!existsSync(reportLogsFolderPath)) {
+    mkdirSync(reportLogsFolderPath);
+  }
+  const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
+
+  appendFileSync(reportFilePath, csvText);
+  return reportLogsFolderPath;
 };
