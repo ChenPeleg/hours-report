@@ -55,7 +55,10 @@ export const gitLogGetLog = async (config) => {
     gitLog.length
   );
   if (gitLog.length < 5) {
-    throw 'No git log entries found. Try changing the Email, dates and so on.';
+    const errMessage =
+      'No git log entries found. Try changing the Email, dates and so etc.';
+    logger.error(errMessage);
+    throw errMessage;
   }
 
   return { gitLog, userEmail, gitRepoName };
