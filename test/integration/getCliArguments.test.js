@@ -1,8 +1,8 @@
 import { describe, it } from 'node:test';
-import { getConfigurationsFromArgs } from '../src/config/getConfigurationsFromArgs.js';
-import { ArgsOptionDictionary } from '../src/config/argsOptionDictionary.js';
+import { getConfigurationsFromArgs } from '../../src/config/getConfigurationsFromArgs.js';
+import { ArgsOptionDictionary } from '../../src/config/argsOptionDictionary.js';
 import assert from 'node:assert';
-import { getConfiguration } from '../src/config/getConfigurations.js';
+import { getConfiguration } from '../../src/config/getConfigurations.js';
 
 describe('Get Arguments from list', () => {
   it('ping 2', () => {

@@ -1,18 +1,18 @@
 import { describe, it } from 'node:test';
-import { workSessionFixtures } from './fixtures/workSessionFixture.js';
-import { buildDaysFromSessions } from '../src/report/buildReportDays.js';
-import { defaultConfig } from '../src/config/defaultConfig.js';
+import { workSessionFixtures } from '../fixtures/workSessionFixture.js';
+import { buildDaysFromSessions } from '../../src/report/buildReportDays.js';
+import { defaultConfig } from '../../src/config/defaultConfig.js';
 import assert from 'node:assert';
 
 describe('Build report', () => {
   it('Builds days from work session correctly', () => {
     const fixture = workSessionFixtures.fixture1;
     /**
-     * @type import('../src/types/workSession.js').WorkSession[]
+     * @type import('../../src/types/workSession.js').WorkSession[]
      */
     const sessions = fixture.map((s) => {
       /**
-       * @type import('../src/types/workSession.js').WorkSession
+       * @type import('../../src/types/workSession.js').WorkSession
        */
       const dateSession = {
         ...s,

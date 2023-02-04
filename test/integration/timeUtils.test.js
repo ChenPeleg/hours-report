@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { DateAndTimeUtil } from '../src/utils/dateAndTime.js';
+import { DateAndTimeUtil } from '../../src/utils/dateAndTime.js';
 
 describe('Time utils', () => {
   describe('yearAndDateToDateObj', () => {

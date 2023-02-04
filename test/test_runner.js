@@ -21,11 +21,14 @@ const getTapDataAsync = (testFiles) => {
     stream.on('error', (err) => reject(err));
   });
 };
-const mainRunner = async () => {
+
+const testRunner = async (testType = 'integration') => {
+  const testFilesPath = `./test/${testType}`;
   try {
-    const testFiles = (await getTestFiles(path.resolve('./test')))
+    const testFiles = (await getTestFiles(path.resolve(testFilesPath)))
       .filter((f) => f.includes('test.js'))
-      .map((p) => path.resolve('./test', p));
+      .map((p) => path.resolve(testFilesPath, p));
+
     const result = await getTapDataAsync(testFiles);
     if (result) {
       printTestResult(result.data, result.pass);
@@ -38,4 +41,9 @@ const mainRunner = async () => {
   }
   process.exit(1);
 };
-mainRunner().then();
+
+const testFolder = ['integration', 'e2e'].includes(process.argv[2])
+  ? process.argv[2]
+  : undefined;
+
+testRunner(testFolder).then();
