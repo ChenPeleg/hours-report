@@ -58,11 +58,16 @@ export const buildCsvAsString = (report) => {
       now.getFullYear() - 2000
     }`
   );
+  r(
+    'Total hours',
+    '',
+
+    report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
+  );
   r('', '');
   r(ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE);
   r('', '');
 
-  r('   ', '  ', '   ', '   ', ' ');
   report.months.forEach((month) => {
     const monthName = month.MonthDate.toLocaleString('en-GB', {
       month: 'long',
