@@ -43,9 +43,11 @@ jobs:
             if [[ $file != docs/* ]]; then
               echo "This modified file is not under the 'docs' folder."
               echo "::set-output name=run_job::false"
+              echo "run_job=false" >> $GITHUB_OUTPUT
               break
             else
               echo "::set-output name=run_job::true"
+              echo "run_job=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
 
