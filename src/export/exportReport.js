@@ -2,10 +2,11 @@ import { buildCsvAsString } from './buildCsvAsString.js';
 import { saveToCsvFile } from './saveToCsvFile.js';
 import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
+import { logger } from '../utils/logger.js';
 
 /**
  * @param report
- * @param config
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
  */
 export const exportReport = async (report, config) => {
   const csv = buildCsvAsString(report);
@@ -21,4 +22,5 @@ export const exportReport = async (report, config) => {
       )}`
     );
   }
+  logger.info('exportReport success', config.output);
 };

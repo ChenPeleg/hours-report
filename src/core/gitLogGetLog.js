@@ -2,6 +2,7 @@ import os from 'os';
 import path from 'path';
 import { execPromise } from '../utils/execPromise.js';
 import { gitLogCommand } from './gitLogbuildLogCommand.js';
+import { logger } from '../utils/logger.js';
 
 const proccessDir = process.cwd();
 
@@ -46,6 +47,6 @@ export const gitLogGetLog = async (config) => {
     .slice(-2)
     .join('/')
     .replace('.git', '');
-
+  logger.info('git log get log', gitRepoName);
   return { gitLog, userEmail, gitRepoName };
 };

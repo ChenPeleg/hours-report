@@ -1,3 +1,5 @@
+import { logger } from '../utils/logger.js';
+
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = '----------------';
 /**
@@ -16,7 +18,17 @@ const buildSafeRow = (...cells) => {
   };
   return cells.map((cell) => makeDataSafe(cell));
 };
-
+const limitCellLength = (rowAsString, separator = ';', maxLength = 100) => {
+  const entries = rowAsString.split(separator);
+  let finalString = '';
+  for (const entry of entries) {
+    if (finalString.length + entry.length > maxLength) {
+      break;
+    }
+    finalString += entry + separator;
+  }
+  return finalString;
+};
 const roundHours = (minuets) => Math.ceil(minuets / 60);
 
 /**
@@ -28,11 +40,16 @@ export const buildCsvAsString = (report) => {
   let csvRows = [];
   const now = new Date();
   const r = (...args) => csvRows.push(buildSafeRow(...args));
+  const addYear = (year) =>
+    r(ROWS_LINE, `--| ${year} |--`, ROWS_LINE, ROWS_LINE) && r('');
+  let currentYear = 0;
   const repoName = [report.repoName, ''];
   try {
     repoName[1] = report.repoName.split('/')[1];
     repoName[0] = report.repoName.split('/')[0];
-  } catch (err) {}
+  } catch (err) {
+    logger.error(err);
+  }
 
   r('Hours report ', '', report.repoName, '', '', '');
   r(
@@ -44,15 +61,23 @@ export const buildCsvAsString = (report) => {
       now.getFullYear() - 2000
     }`
   );
-  r('', '');
-  r(ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE, ROWS_LINE);
+  r(
+    'Total hours',
+    '',
+
+    report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
+  );
+
   r('', '');
 
-  r('   ', '  ', '   ', '   ', ' ');
   report.months.forEach((month) => {
     const monthName = month.MonthDate.toLocaleString('en-GB', {
       month: 'long',
     });
+    if (month.MonthDate.getFullYear() !== currentYear) {
+      currentYear = month.MonthDate.getFullYear();
+      addYear(currentYear);
+    }
     r(monthName, '   Day', '   Date', '   Hours', '   Details', ' ');
     month.days.forEach((day) => {
       r(
@@ -60,7 +85,7 @@ export const buildCsvAsString = (report) => {
         `  ${day.dayDate.toLocaleDateString('en-GB', { weekday: 'short' })}`,
         `${day.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`,
         roundHours(day.minuetSum).toString(),
-        `   ${day.comments}`
+        limitCellLength(`   ${day.comments}`)
       );
     });
 

@@ -16,7 +16,7 @@ const makeCellsEvanSize = (csv) => {
       newCells.push(cell);
     }
     const finalRow = newCells.join('');
-    if (finalRow.includes('Details')) {
+    if (finalRow.includes('Details') || finalRow.includes('Hours report')) {
       return TestFrameWorkConsole.paint(finalRow, {
         color: 'green',
         background: 'BGwhite',

@@ -1,6 +1,7 @@
 import { ArgsOptionDictionary } from './argsOptionDictionary.js';
 import { defaultConfig } from './defaultConfig.js';
 import { getConfigurationsFromArgs } from './getConfigurationsFromArgs.js';
+import { logger } from '../utils/logger.js';
 
 /**
  * @param {string[]} commandLineArgs
@@ -21,8 +22,10 @@ export const getConfiguration = (commandLineArgs) => {
       }
     }
   } catch (err) {
+    logger.error(err);
     printHelp = true;
     console.error(err);
   }
+  logger.info('getConfiguration', config.toString());
   return { config, printHelp };
 };
