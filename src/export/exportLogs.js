@@ -2,12 +2,19 @@ import { buildCsvAsString } from './buildCsvAsString.js';
 import { saveToCsvFile } from './saveToCsvFile.js';
 import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
+import { appendFileSync, existsSync, mkdirSync } from 'fs';
+import { logger } from '../utils/logger.js';
+import path from 'path';
 
 /**
- * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
+ * @param {string} folder
  */
-export const exportLogs = async (config) => {
-  if (config.output === 'csv') {
-    // await exportReportToConsole(csv);
+export const exportLogs = (folder) => {
+  if (!existsSync(folder)) {
+    mkdirSync(folder);
   }
+  appendFileSync(
+    path.resolve(folder, `hours-report${new Date().getMilliseconds()}.log`),
+    logger.getLogs()
+  );
 };

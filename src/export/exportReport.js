@@ -4,7 +4,8 @@ import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
 
 /**
- * @param  {import('../types/Report.js').Report}report
+ * @param report
+ *
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
  */
 export const exportReport = async (report, config) => {

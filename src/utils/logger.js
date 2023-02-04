@@ -10,12 +10,12 @@ export const logger = {
     logs.push([new Date().toString(), 'Error', ...args]);
   },
   getLogs() {
-    return logs.map((log) =>
-      log
-        .map((logParts) =>
-          logParts.toString().replace(/\n/g, ' ').join('     ')
-        )
-        .join('\n')
-    );
+    return logs
+      .map((log) =>
+        log
+          .map((logParts) => logParts.toString().replace(/\n/g, ' '))
+          .join('     ')
+      )
+      .join('\n');
   },
 };

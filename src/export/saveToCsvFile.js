@@ -2,6 +2,7 @@ import { appendFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import { tmpdir } from 'os';
 import { veryBasicHash } from '../utils/veryBasicHash.js';
+import { exportLogs } from './exportLogs.js';
 
 /**
  * @param { string } csvText
@@ -26,5 +27,6 @@ export const saveToCsvFile = async (csvText, config) => {
   const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
 
   appendFileSync(reportFilePath, csvText);
+  exportLogs(reportLogsFolderPath);
   return reportLogsFolderPath;
 };
