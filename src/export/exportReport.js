@@ -4,7 +4,6 @@ import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
 
 /**
- *
  * @param report
  * @param config
  */
@@ -20,10 +19,6 @@ export const exportReport = async (report, config) => {
         /\\/g,
         '/'
       )}`
-    );
-
-    logToConsole(
-      `\n Link 2 to \n http://file:///C:/Projects/Sidur/build/index.html`
     );
   }
 };
