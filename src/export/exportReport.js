@@ -10,10 +10,10 @@ import { logger } from '../utils/logger.js';
  */
 export const exportReport = async (report, config) => {
   const csv = buildCsvAsString(report);
-  if (config.output === 'csv' || config.output === 'all') {
+  if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
     await exportReportToConsole(csv);
   }
-  if (config.output === 'csv' || config.output === 'all') {
+  if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
     const fileLocation = await saveToCsvFile(csv, config);
     logToConsole(
       `Hours report exported successfully to \n file:///${fileLocation.replace(
@@ -22,5 +22,5 @@ export const exportReport = async (report, config) => {
       )}`
     );
   }
-  logger.info('exportReport success', config.output);
+  logger.info('exportReport success', config.outputFormat);
 };

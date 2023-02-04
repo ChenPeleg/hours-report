@@ -5,7 +5,8 @@ export interface ReportConfigurations {
   DateUntil: Date; // Analyze data until certain date. [always|yesterday|today|lastweek|thisweek|yyyy-mm-dd] Default: today
   Email: string; //  email address. Default: current git user email address
   PathToRepo: string; //  Git repository to analyze. Default: .
-  output: 'csv' | 'console' | 'all';
+  outputFormat: 'csv' | 'console' | 'all';
+  outputFolder: string;
 }
 
 export interface CommandLineOption {

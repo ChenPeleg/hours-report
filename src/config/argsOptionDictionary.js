@@ -42,11 +42,18 @@ export const ArgsOptionDictionary = [
     configOption: 'DateUntil',
   },
   {
+    name: 'format',
+    alias: 'fr',
+    type: 'string',
+    helpText: "output format : 'csv' | 'console' | 'all'. Default: 'csv'",
+    configOption: 'outputFormat',
+  },
+  {
     name: 'output',
     alias: 'o',
     type: 'string',
-    helpText: "output format : 'csv' | 'console' | 'all'. Default: 'csv'",
-    configOption: 'output',
+    helpText: 'output folder. Default: temp/hours-report',
+    configOption: 'outputFormat',
   },
   {
     name: 'path',
