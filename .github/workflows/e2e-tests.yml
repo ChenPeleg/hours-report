@@ -25,7 +25,8 @@ jobs:
         run: |
           mkdir ../e2e-content
           unzip ./test/e2e/zip/*.zip ../e2e-content
-          ls ../e2e-content
+          cd ../e2e-content
+          ls
 
 
 #      - run: npm test
