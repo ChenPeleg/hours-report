@@ -1,0 +1,22 @@
+// 'dark'
+a {
+    color: rgb(88, 1, 135);
+}
+.dark a {
+    color: rgb(6, 164, 204);
+}
+div.flex-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+@media (max-width: 31.24rem) {
+    div.flex-middle {
+        width: 100%;
+        button {
+            width: 80%;
+        }
+    }
+}
