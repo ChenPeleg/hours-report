@@ -3,7 +3,8 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - main1
+      - main
+      - gh-pages
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -64,7 +65,7 @@ jobs:
 
       - name: copy Jekyll && Ruby files
         run: |
-          cp -r ./docs/ruby/. ./
+          cp -r ./docs/gems/. ./
           cp ./docs/index.md ./
 
       - name: Setup Ruby
