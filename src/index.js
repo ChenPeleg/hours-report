@@ -26,17 +26,17 @@ export const main = async () => {
     const report = buildReportFromSession(
       workSessions,
       config,
-      gitLogData.gitRepoName,
+      gitLogData.gitRepoName
     );
     await exportReport(report, config);
   } catch (err) {
     logger.error(err);
     console.error(err);
     logToConsole(
-      'For more information visit https://chenpeleg.github.io/hours-report/.',
+      'For more information visit https://chenpeleg.github.io/hours-report/.'
     );
   } finally {
-    // for debuting
+    // for debugging
     // exportLogs('./logs');
   }
 };
