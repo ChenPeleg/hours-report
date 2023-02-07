@@ -1,5 +1,5 @@
 [![Status badge](https://github.com/ChenPeleg/hours-report/actions/workflows/ci-tests.yml/badge.svg?branch=main)](https://github.com/ChenPeleg/hours-report/actions/?query=branch%3Amain)
-[![NPM Version](https://img.shields.io/node/v/hours-report.svg?style=flat)](https://npmjs.org/package/hours-report)
+[![npm version](https://badge.fury.io/js/hours-report.svg)](https://badge.fury.io/js/hours-report)
 [![Node version](https://img.shields.io/node/v/hours-report.svg?style=flat)](http://nodejs.org/download/)
 
 # hours-report
