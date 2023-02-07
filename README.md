@@ -14,7 +14,11 @@ That is why it's recommended not to install it but to use it like this:
 
 `npx hour-report`
 
-Help
+## Output
+
+The output is default to output a csv file, that
+
+## Options
 
     Usage: hours-report <options>
 
@@ -39,14 +43,51 @@ Help
 
          $  hours-report  --max-diff-for-session=240
 
-## How it works
-
-A short explanation on how hours are estimated:
-
-to be continued...
+For more information see [the docs](https://chenpeleg.github.io/hours-report/).
 
 ## Inspirations
 
 Got the inspiration
 from [git-hours](https://github.com/kimmobrunfeldt/git-hours), [git-time](https://github.com/vmf91/git-time) and more.
+
+## Support
+
+### Running with npx
+
++ [x] Node.js 12
++ [x] Node.js 14
++ [x] Node.js 16
++ [x] Node.js 18
+
+The package is written in vanilla JS so no dependencies (only Typescript as dev dependency).
+This is so it can support version 12-18 of nodeJS.
+
+### Development
+
++ [x] Node.js 19
+
+To develop modify etc. use node 18 and above.
+All the test are written in node test runner that is available for this version, and the types dev-dependencies.
+
+#### Installation
+
+```console
+$ npm i hours-report
+``` 
+
+#### Unit testing
+
+The unites testing is done with the new *experimental* [NodeJs test runner](https://nodejs.org/api/test.html).
+
+```console
+$ npm test
+``` 
+
+#### E2e test
+
+contains only one test (used for CI purposes and to check node versions compatibility)
+
+```console
+$ npm run e2e
+``` 
 
