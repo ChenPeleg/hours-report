@@ -30,7 +30,4 @@ jobs:
           cd accessibility
           echo "----- accessibility ---- "
           ls
-      - name: try to run command
-        run: |
-          npm run start:legacy -- -o=./output -p=../accessibility -e=chenpeleg@gmail.com
       - run: npm run e2e
