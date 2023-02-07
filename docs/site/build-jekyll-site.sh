@@ -1,5 +1,5 @@
 
-git clone https://github.com/ChenPeleg/minimal-mistakes-pages.git ./jeklly-site
+git clone https://github.com/ChenPeleg/chirpy-docs.git ./jeklly-site
 rm -rf ./jeklly-site/docs
 echo "=== check the existance of the pages files"
 ls ./jeklly-site
