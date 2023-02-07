@@ -70,6 +70,8 @@ jobs:
           cp -r ./docs/site/. ./
           chmod +x ./build-jekyll-site.sh
           ./build-jekyll-site.sh
+          cp -r ./docs/site/. ./
+        # needs to override the theme files again in cas of conflict
         shell: bash
       - name: Test files
         run: |

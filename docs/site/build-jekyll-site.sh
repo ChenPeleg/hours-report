@@ -1,4 +1,7 @@
-#git clone git@github.com:whatever .
+git https://github.com/ChenPeleg/minimal-mistakes-pages.git ./
+echo "=== check the existance of the pages files"
+ls
+
 echo "=== check for index.md file"
 if [ -e ./docs/index.md ]
 then
