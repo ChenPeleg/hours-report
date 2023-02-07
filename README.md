@@ -21,7 +21,7 @@ Help
     Options:
     -e,   --email                        email address. Default: current git user email address
     -mx,  --max-diff-for-session         maximum difference in minutes between commits counted to one session. Default: 120
-    -mn,  --min-session                  how many minutes first commit of session should add to total. Default: 30
+    -mn,  --min-session                  how many minutes the first commit of a session should add to total. Default: 30
     -df,  --date-from                    Analyze data since certain date (git log format). default: always (with limit of 1000 rows)
     -du,  --date-until                   Analyze data until certain date (git log format). default: now
     -fr,  --format                       output format : 'csv' | 'console' | 'all'. Default: 'csv'

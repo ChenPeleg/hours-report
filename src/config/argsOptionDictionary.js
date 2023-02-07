@@ -1,5 +1,5 @@
 /**
- * @type {import("../types/reportConfigurations.js").CommandLineOption[]}
+ * @type {import('../types/reportConfigurations.js').CommandLineOption[]}
  */
 
 export const ArgsOptionDictionary = [
@@ -23,7 +23,7 @@ export const ArgsOptionDictionary = [
     alias: 'mn',
     type: 'number',
     helpText:
-      'how many minutes first commit of session should add to total. Default: 30',
+      'how many minutes the first commit of a session should add to total. Default: 30',
     configOption: 'MinuetsToAddToFirstCommit',
   },
   {
