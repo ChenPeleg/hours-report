@@ -56,8 +56,8 @@ jobs:
   # Build job
   build-jekyll:
     name: Build-jekyll if files in docs changed
-    needs: check
-    if: needs.check.outputs.run_job == 'true'
+    #    needs: check
+    #    if: needs.check.outputs.run_job == 'true'
     runs-on: ubuntu-latest
 
     steps:
