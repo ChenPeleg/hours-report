@@ -21,3 +21,4 @@ ls | xargs -I {} mv {} 2023-2-2-{}
 cd ..
 echo "=== copying the post files (with dates) to _posts ==="
 cp -r ./docs/. ./_posts
+cp -r ./docs/site/. ./
