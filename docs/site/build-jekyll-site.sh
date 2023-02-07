@@ -3,6 +3,7 @@ git clone https://github.com/ChenPeleg/minimal-mistakes-pages.git ./jeklly-site
 rm -rf ./jeklly-site/docs
 echo "=== check the existance of the pages files"
 ls ./jeklly-site
+cp -r ./jeklly-site/. ./
 echo "=== check for index.md file"
 if [ -e ./docs/index.md ]
 then
