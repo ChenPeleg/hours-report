@@ -36,7 +36,8 @@ export const main = async () => {
       'For more information visit https://chenpeleg.github.io/hours-report/.'
     );
   } finally {
-    exportLogs('./logs');
+    // for debugging
+    // exportLogs('./logs');
   }
 };
 

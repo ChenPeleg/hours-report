@@ -32,7 +32,7 @@ export const gitLogGetLog = async (config) => {
     new Date().toLocaleDateString('en-GB', {
       dateStyle: 'short',
     })
-  }`; // + config.DateFrom      ? `--since=${config.DateFrom}`      : '';
+  } ${config.DateFrom ? `--since=${config.DateFrom}` : ''}`;
   const gitLog = await execPromise(
     gitLogCommand(dir, config.Email, moreData)
   ).catch((err) => {
