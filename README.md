@@ -18,6 +18,223 @@ That is why it's recommended not to install it but to use it like this:
 
 The output is default to output a csv file, that
 
+    <table style="border-collapse:collapse;table-layout:fixed;width:728pt;">
+        <col class="cell" style="width:25pt">
+        <tr>
+            <td class="cell" colspan="3">Hours report<span>
+                </span></td>
+            <td class="cell" colspan="3">
+                MyOrgenaztion/My-Project</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+
+        </tr>
+        <tr  >
+            <td  class="cell" colspan="4" style="height:14pt">
+                For: johngrey@repo.com</td>
+            <td class="cell"></td>
+            <td class="cell">7.2.23</td>
+            <td class="cell"> </td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" colspan="3">Total
+                hours</td>
+            <td class="cell">37</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" >--------------</span>
+            </td>
+            <td class="cell">---| 2023 |---</td>
+            <td class="cell">------------ </td>
+            <td class="cell" colspan="2">----------------</td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" >January
+            </td>
+            <td class="cell"><span></span>Day</td>
+            <td class="cell"><span></span>Date</td>
+            <td class="cell"><span></span>Hours</td>
+            <td class="cell"><span></span>Details</td>
+            <td class="cell"> </td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr   >
+            <td  class="cell" ></td>
+            <td class="cell">Wed</td>
+            <td class="cell">25.1</td>
+            <td class="cell">3</td>
+            <td class="cell" colspan=3D8>
+                 Initial commit;
+            </td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Thu</td>
+            <td class="cell">26.1</td>
+            <td class="cell">5</td>
+            <td class="cell" colspan=3D10>
+                added inspiration; added reportConfigurations.d.ts; </td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Mon</td>
+            <td class="cell">30.1</td>
+            <td class="cell">6</td>
+            <td class="cell" colspan="2">
+                utils_function_fix#130;
+            </td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Tue</td>
+            <td class="cell">31.1</td>
+            <td class="cell">3</td>
+            <td class="cell" colspan="2">
+                git log to entries;
+            </td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" >-------------<span style="display:none">-----</span>
+            </td>
+            <td class="cell">---------------</td>
+            <td class="cell">---------------</td>
+            <td class="cell">---------------</td>
+            <td class="cell">---------------</td>
+            <td class="cell">--------------</td>
+            <td class="cell">Total: 15</td>
+            <td class="cell"> </td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr   >
+            <td  class="cell" >February</td>
+            <td class="cell"><span></span>Day</td>
+            <td class="cell"><span></span>Date</td>
+            <td class="cell"><span></span>Hours</td>
+            <td class="cell"><span></span>Details</td>
+            <td class="cell"><span></span></td>
+            <td class="cell"></td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Thu</td>
+            <td class="cell">2.2</td>
+            <td class="cell">8</td>
+            <td class="cell" colspan=3D4>
+                git log to entries; build work hours ;
+            </td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Fri</td>
+            <td class="cell">3.2</td>
+            <td class="cell">6</td>
+            <td class="cell" colspan=3D10>
+                 payment_status_update_#15
+            </td>
+        </tr>
+        <tr   >
+            <td  class="cell" ></td>
+            <td class="cell">Sat</td>
+            <td class="cell">4.2</td>
+            <td class="cell">5</td>
+            <td class="cell" colspan=3D8>
+                hot_bug_fix_45#
+            </td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Sun</td>
+            <td class="cell">5.2</td>
+            <td class="cell">2</td>
+            <td class="cell" colspan="3">
+                prod; refactoring package;
+            </td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" ></td>
+            <td class="cell">Tue</td>
+            <td class="cell">7.2</td>
+            <td class="cell">2</td>
+            <td class="cell" colspan="3">
+                refactoring package;
+            </td>
+            <td class="cell"></td>
+        </tr>
+        <tr  >
+            <td  class="cell" >------------<span style="display:none">----</span>
+            </td>
+            <td class="cell">------------</td>
+            <td class="cell">------------</td>
+            <td class="cell">------------</td>
+            <td class="cell">------------</td>
+            <td class="cell">------------</td>
+            <td class="cell">Total: 22</td>
+            <td class="cell"> </td>
+        </tr>
+        <![if supportMisalignedColumns]>
+        <tr height=3D0 style="display:none">
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+            <td width=3D69 style="width:52pt"></td>
+        </tr>
+        <![endif]>
+    </table>
+
 ## Options
 
     Usage: hours-report <options>
