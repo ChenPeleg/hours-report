@@ -67,7 +67,7 @@ jobs:
           fetch-depth: 0
       - name: Change and folders to match Jekyll structure
         run: |
-          cp -r ./docs/site/. ./
+          cp -r ./docs/site/build-jekyll-site.sh ./build-jekyll-site.sh
           chmod +x ./build-jekyll-site.sh
           ./build-jekyll-site.sh
           cp -r ./docs/site/. ./
