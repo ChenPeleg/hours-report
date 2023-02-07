@@ -3,7 +3,7 @@ name: CI Tests
 on:
   push:
     branches:
-      - main_
+      - main
 # delete this
 jobs:
   build:
