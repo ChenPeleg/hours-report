@@ -16,9 +16,11 @@ That is why it's recommended not to install it but to use it like this:
 
 ## Output
 
-The output is default to output a csv file, that
+The output is default to output a csv file, like this:
 
 ![report-example](https://chenpeleg.github.io/hours-report/assets/img/report-example.png)
+
+The file could then be saved to Excel, Google Sheets etc.
 
 ## Options
 
