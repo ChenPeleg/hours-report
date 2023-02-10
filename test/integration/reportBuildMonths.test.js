@@ -10,13 +10,9 @@ import { DateAndTimeUtil } from '../../src/utils/dateAndTime.js';
 describe('Build report', () => {
   it('Builds months from days correctly', () => {
     const fixture = dayFixture.fixture1;
-    /**
-     * @type  import('../../src/types/Day.js').Day[]
-     */
+    /** @type import('../../src/types/Day.js').Day[] */
     const jsDays = fixture.map((s) => {
-      /**
-       * @type import('../../src/types/Day.js').Day
-       */
+      /** @type import('../../src/types/Day.js').Day */
       const oneDay = {
         ...s,
         dayDate: new Date(s.dayDate),
@@ -48,13 +44,9 @@ describe('Build report', () => {
   });
   it('Builds Report from sessions correctly', () => {
     const fixture = workSessionFixtures.fixture1;
-    /**
-     * @type import('../../src/types/workSession.js').WorkSession[]
-     */
+    /** @type import('../../src/types/workSession.js').WorkSession[] */
     const sessions = fixture.map((s) => {
-      /**
-       * @type import('../../src/types/workSession.js').WorkSession
-       */
+      /** @type import('../../src/types/workSession.js').WorkSession */
       const dateSession = {
         ...s,
         startTime: new Date(s.startTime),

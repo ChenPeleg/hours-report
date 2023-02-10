@@ -4,9 +4,9 @@ import { gitLogAddBranchesToLogEntries } from './gitLogAddBranchesToLogEntries.j
 import { logger } from '../utils/logger.js';
 
 /**
- * @param {import("../types/gitLogEntry.js").GitLogEntry[] }logEntries
- * @param {import("../types/reportConfigurations.js").ReportConfigurations}config
- * @return {import("../types/workSession.js").WorkSession[]}
+ * @param {import('../types/gitLogEntry.js').GitLogEntry[]} logEntries
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
+ * @returns {import('../types/workSession.js').WorkSession[]}
  */
 export const WorkSessionsBuild = (logEntries, config) => {
   // They are sorted from start time (past) to end time (present)

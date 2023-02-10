@@ -3,8 +3,8 @@ import { logger } from '../utils/logger.js';
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = '----------------';
 /**
- * @param {string[]| any} cells
- * @return {string[]}
+ * @param {string[] | any} cells
+ * @returns {string[]}
  */
 const buildSafeRow = (...cells) => {
   const makeDataSafe = (unsafeData) => {
@@ -32,11 +32,11 @@ const limitCellLength = (rowAsString, separator = ';', maxLength = 100) => {
 const roundHours = (minuets) => Math.ceil(minuets / 60);
 
 /**
- * @param  {import("../types/Report.js").Report} report
- * @return {string}
+ * @param {import('../types/Report.js').Report} report
+ * @returns {string}
  */
 export const buildCsvAsString = (report) => {
-  /** @type {Array<string[]>}  */
+  /** @type {string[][]} */
   let csvRows = [];
   const now = new Date();
   const r = (...args) => csvRows.push(buildSafeRow(...args));

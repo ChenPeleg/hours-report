@@ -3,8 +3,8 @@ import { appConstants } from '../config/constants.js';
 
 const GIT_LOG_SEPARATOR = '\n';
 /**
- * @param {string }line
- * @return {import("../types/gitLogEntry.js").GitLogEntry}
+ * @param {string} line
+ * @returns {import('../types/gitLogEntry.js').GitLogEntry}
  */
 const gitLogLineToEntry = (line) => {
   try {
@@ -31,9 +31,8 @@ const gitLogLineToEntry = (line) => {
   }
 };
 /**
- *
  * @param gitLogAsString
- * @return {import('../types/gitLogEntry.js').GitLogEntry[]}
+ * @returns {import('../types/gitLogEntry.js').GitLogEntry[]}
  */
 export const parseGitLogToEntries = (gitLogAsString) => {
   const lines = gitLogAsString.split(GIT_LOG_SEPARATOR);

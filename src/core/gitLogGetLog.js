@@ -8,8 +8,9 @@ const proccessDir = process.cwd();
 
 const gitNameCommand = `git config --get remote.origin.url`;
 
-/**@param {import('../types/reportConfigurations.js').ReportConfigurations}config
- * @returns {Promise<{gitLog: string,    gitRepoName : string}>}
+/**
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
+ * @returns {Promise<{ gitLog: string; gitRepoName: string }>}
  */
 export const gitLogGetLog = async (config) => {
   const dir = path.resolve(proccessDir, config.PathToRepo);

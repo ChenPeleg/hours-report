@@ -1,9 +1,9 @@
 import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 /**
- * @param { import("../types/gitLogEntry.js").GitLogEntry[]} sessionEntries
- * @param { number } minuetsToAddToFirstCommit
- * @return { import("../types/workSession.js").WorkSession}
+ * @param {import('../types/gitLogEntry.js').GitLogEntry[]} sessionEntries
+ * @param {number} minuetsToAddToFirstCommit
+ * @returns {import('../types/workSession.js').WorkSession}
  */
 const buildWorkSessionWithData = (
   sessionEntries,
@@ -28,9 +28,11 @@ const buildWorkSessionWithData = (
   };
 };
 /**
- * @param {{logEntries: import("../types/gitLogEntry.js").GitLogEntry[]} []} entryGroup
- * @param { number } minuetsToAddToFirstCommit
- * @return {import("../types/workSession.js").WorkSession[]}}
+ * @param {{
+ *   logEntries: import('../types/gitLogEntry.js').GitLogEntry[];
+ * }[]} entryGroup
+ * @param {number} minuetsToAddToFirstCommit
+ * @returns {import('../types/workSession.js').WorkSession[]} }
  */
 export const workSessionBuildData = (entryGroup, minuetsToAddToFirstCommit) =>
   entryGroup.map((group) =>

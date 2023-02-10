@@ -5,7 +5,7 @@ import { gitEntryFixtures } from '../fixtures/gitLogEntry.fixtures.js';
 import { defaultConfig } from '../../src/config/defaultConfig.js';
 import { DateAndTimeUtil } from '../../src/utils/dateAndTime.js';
 
-/** @typedef { import('../../src/types/gitLogEntry.js').GitLogEntry  }GitLogEntry */
+/** @typedef {import('../../src/types/gitLogEntry.js').GitLogEntry} GitLogEntry */
 
 describe('Work session build', () => {
   it('groups git log entries correctly', () => {

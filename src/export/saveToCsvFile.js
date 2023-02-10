@@ -5,9 +5,9 @@ import { veryBasicHash } from '../utils/veryBasicHash.js';
 import { exportLogs } from './exportLogs.js';
 
 /**
- * @param { string } csvText
+ * @param {string} csvText
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
- * @return {Promise<string>}
+ * @returns {Promise<string>}
  */
 export const saveToCsvFile = async (csvText, config) => {
   const fileHash = veryBasicHash(csvText);

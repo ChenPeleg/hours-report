@@ -2,10 +2,10 @@ import { buildDaysFromSessions } from './buildReportDays.js';
 import { buildReportMonths } from './buildReportMonths.js';
 
 /**
- * @param {import("../types/workSession.js").WorkSession[]} workSessions
- * @param {import("../types/reportConfigurations.js").ReportConfigurations} configuration
+ * @param {import('../types/workSession.js').WorkSession[]} workSessions
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} configuration
  * @param {string} repoName
- * @return {import('../types/Report.js').Report}
+ * @returns {import('../types/Report.js').Report}
  */
 export const buildReportFromSession = (
   workSessions,

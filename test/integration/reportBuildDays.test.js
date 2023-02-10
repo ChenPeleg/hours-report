@@ -7,13 +7,9 @@ import assert from 'node:assert';
 describe('Build report', () => {
   it('Builds days from work session correctly', () => {
     const fixture = workSessionFixtures.fixture1;
-    /**
-     * @type import('../../src/types/workSession.js').WorkSession[]
-     */
+    /** @type import('../../src/types/workSession.js').WorkSession[] */
     const sessions = fixture.map((s) => {
-      /**
-       * @type import('../../src/types/workSession.js').WorkSession
-       */
+      /** @type import('../../src/types/workSession.js').WorkSession */
       const dateSession = {
         ...s,
         startTime: new Date(s.startTime),
