@@ -8,9 +8,9 @@ const getBranchNameFromRef = (refString) => {
 };
 
 /**
- * @param {import("../types/gitLogEntry.js").GitLogEntry[] }logEntries
- * @return  {import("../types/gitLogEntry.js").GitLogEntry[] }
- * */
+ * @param {import('../types/gitLogEntry.js').GitLogEntry[]} logEntries
+ * @returns {import('../types/gitLogEntry.js').GitLogEntry[]}
+ */
 export const gitLogAddBranchesToLogEntries = (logEntries) => {
   let lastBranchPushed = '';
   for (const entry of logEntries) {

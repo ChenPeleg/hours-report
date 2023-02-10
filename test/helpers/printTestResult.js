@@ -3,7 +3,15 @@ import path from 'path';
 import { logToConsole } from '../../src/utils/logToConsole.js';
 import { logger } from '../../src/utils/logger.js';
 /**
- * @typedef {{todo: string, duration_ms: string, fail: string, tests: string, pass: string, cancelled: string, skipped: string}} Conclusions
+ * @typedef {{
+ *   todo: string;
+ *   duration_ms: string;
+ *   fail: string;
+ *   tests: string;
+ *   pass: string;
+ *   cancelled: string;
+ *   skipped: string;
+ * }} Conclusions
  */
 /** @param {Conclusions} conclusions */
 const writeFinalResults = (conclusions) => {
@@ -121,7 +129,7 @@ const reformatMainData = (text, passed) => {
 
 /**
  * @param {string} resultsAsText
- * @return string
+ * @returns String
  */
 export const printTestResult = (resultsAsText, passed = true) => {
   try {

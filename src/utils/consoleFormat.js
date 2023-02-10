@@ -45,7 +45,10 @@ const colors = {
   },
 };
 
-/**@typedef {{color? : keyof typeof colors.fg, background? : keyof typeof colors.bg  } | keyof typeof colors.fg} logOptions */
+/**
+ * @typedef {| { color?: keyof typeof colors.fg; background?: keyof typeof colors.bg }
+ *   | keyof typeof colors.fg} logOptions
+ */
 
 export class TestFrameWorkConsole {
   constructor() {}
@@ -57,7 +60,7 @@ export class TestFrameWorkConsole {
     logToConsole(...args);
   }
 
-  /**@type {(ms: number, resolveWith? : any)=>Promise<any>} */
+  /** @type {(ms: number, resolveWith?: any) => Promise<any>} */
   static async wait(ms, resolveWith = true) {
     return new Promise((res, rej) => {
       setTimeout(() => {
@@ -74,12 +77,12 @@ export class TestFrameWorkConsole {
     TestFrameWorkConsole.print(text, { color: 'red' });
   }
 
-  /** @type {(text : string, options?: logOptions)=>void} */
+  /** @type {(text: string, options?: logOptions) => void} */
   static print(text, options = undefined) {
     logToConsole(TestFrameWorkConsole.paint(text, options));
   }
 
-  /** @type {(text : string, options?: logOptions)=>string} */
+  /** @type {(text: string, options?: logOptions) => string} */
 
   static paint(text, argsOptions = undefined) {
     let options =

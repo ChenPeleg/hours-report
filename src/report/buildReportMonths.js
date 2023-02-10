@@ -1,8 +1,8 @@
 import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 /**
- * @param { import('../types/Month.js').Month } month
- * @return {import('../types/Month.js').Month  }
+ * @param {import('../types/Month.js').Month} month
+ * @returns {import('../types/Month.js').Month}
  */
 const buildMonthData = (month) => {
   const monthWithData = { ...month };
@@ -15,24 +15,24 @@ const buildMonthData = (month) => {
 };
 
 /**
- * @param {import("../types/Day.js").Day []} days
- * @param {import("../types/reportConfigurations.js").ReportConfigurations} configuration
- * @return {import("../types/Month.js").Month[] }
+ * @param {import('../types/Day.js').Day[]} days
+ * @param {import('../types/reportConfigurations.js').ReportConfigurations} configuration
+ * @returns {import('../types/Month.js').Month[]}
  */
 
 export const buildReportMonths = (days, configuration) => {
-  /** @type {import("../types/Month.js").Month   } */
+  /** @type {import('../types/Month.js').Month} */
   const EmptyMonth = {
     days: [],
     minuetSum: 0,
     MonthDate: new Date(),
     comments: '',
   };
-  /** @type {import("../types/Month.js").Month[]} */
+  /** @type {import('../types/Month.js').Month[]} */
   let allMonths = [];
-  /** @type {import("../types/Month.js").Month   } */
+  /** @type {import('../types/Month.js').Month} */
   let CurrentMonth = { ...EmptyMonth, days: [] };
-  /** @type {import("../types/Day.js").Day }*/
+  /** @type {import('../types/Day.js').Day} */
   let lastDay;
   for (let day of days) {
     if (

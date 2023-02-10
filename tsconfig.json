@@ -3,13 +3,8 @@
     "allowJs": true,
     "checkJs": true,
     "moduleResolution": "NodeNext",
-    //    "typeRoots": [
-    //      "./typings"
-    //    ],
     "outFile": "./justANameToMakeTSHappy.js",
     "module": "System",
-    "lib": [
-      "ESNext"
-    ]
+    "lib": ["ESNext"]
   }
 }

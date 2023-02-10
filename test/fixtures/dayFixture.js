@@ -20,7 +20,7 @@ export const dayFixture = {
           finishTime: '2023-01-27T11:32:30.000Z',
           startTime: '2023-01-27T10:27:11.000Z',
           gitComments:
-              'fixed Line Imports     n, added custom node test runner',
+            'fixed Line Imports     n, added custom node test runner',
           branches: [''],
         },
       ],
@@ -48,7 +48,7 @@ export const dayFixture = {
           finishTime: '2023-01-28T11:32:30.000Z',
           startTime: '2023-01-28T10:27:11.000Z',
           gitComments:
-              'fixed Line Imports     n, added custom node test runner',
+            'fixed Line Imports     n, added custom node test runner',
           branches: [''],
         },
       ],
@@ -76,7 +76,7 @@ export const dayFixture = {
           finishTime: '2023-01-29T19:54:05.000Z',
           startTime: '2023-01-29T14:03:37.000Z',
           gitComments:
-              'added a stream promise, failing test runner, failing te st runner 2, added more documentation, working diagnostics, added test runner old, all tests passing , go all tap data as string, refactored to check if test failed, refactored to check if test fa iled 2, refact ored for the test runner to return 0 on success, refactored for the test runner to return 0 on success 2, added consoleFormat.js, manipulating conclusions text, added nicer text, added nicer text 2, chang ed the name runner, replaced test runner, tests should fail, added bolder colors, test should faild, test should pass, added parse fit   log function, uninstalled command line args',
+            'added a stream promise, failing test runner, failing te st runner 2, added more documentation, working diagnostics, added test runner old, all tests passing , go all tap data as string, refactored to check if test failed, refactored to check if test fa iled 2, refact ored for the test runner to return 0 on success, refactored for the test runner to return 0 on success 2, added consoleFormat.js, manipulating conclusions text, added nicer text, added nicer text 2, chang ed the name runner, replaced test runner, tests should fail, added bolder colors, test should faild, test should pass, added parse fit   log function, uninstalled command line args',
           branches: [''],
         },
       ],
@@ -104,7 +104,7 @@ export const dayFixture = {
           finishTime: '2023-02-02T11:32:30.000Z',
           startTime: null,
           gitComments:
-              'fixed Line Imports     n, added custom node test runner',
+            'fixed Line Imports     n, added custom node test runner',
           branches: [''],
         },
       ],
@@ -132,7 +132,7 @@ export const dayFixture = {
           finishTime: '2023-02-03T11:32:30.000Z',
           startTime: null,
           gitComments:
-              'fixed Line Imports     n, added custom node test runner',
+            'fixed Line Imports     n, added custom node test runner',
           branches: [''],
         },
       ],

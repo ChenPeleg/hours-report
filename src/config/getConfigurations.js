@@ -5,7 +5,11 @@ import { logger } from '../utils/logger.js';
 
 /**
  * @param {string[]} commandLineArgs
- * @return  {{config : import('../types/reportConfigurations.js').ReportConfigurations, printHelp : boolean }} */
+ * @returns {{
+ *   config: import('../types/reportConfigurations.js').ReportConfigurations;
+ *   printHelp: boolean;
+ * }}
+ */
 export const getConfiguration = (commandLineArgs) => {
   let printHelp = false;
   const config = { ...defaultConfig };

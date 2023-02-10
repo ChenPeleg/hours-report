@@ -1,8 +1,8 @@
 import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 /**
- * @param {import('../types/Day.js').Day } day
- * @return {import('../types/Day.js').Day   }
+ * @param {import('../types/Day.js').Day} day
+ * @returns {import('../types/Day.js').Day}
  */
 const buildDayData = (day) => {
   const dayWithData = { ...day };
@@ -34,21 +34,21 @@ const buildDayData = (day) => {
 /**
  * @param {import('../types/workSession.js').WorkSession[]} workSessions
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} configuration
- * @return {import('../types/Day.js').Day [] }
+ * @returns {import('../types/Day.js').Day[]}
  */
 export const buildDaysFromSessions = (workSessions, configuration) => {
-  /** @type {import('../types/Day.js').Day   } */
+  /** @type {import('../types/Day.js').Day} */
   const EmptyDay = {
     workSessions: [],
     dayDate: new Date(),
     comments: '',
     minuetSum: 0,
   };
-  /** @type {import('../types/Day.js').Day [] } */
+  /** @type {import('../types/Day.js').Day[]} */
   let allDays = [];
-  /** @type {import('../types/Day.js').Day   } */
+  /** @type {import('../types/Day.js').Day} */
   let CurrentDay = { ...EmptyDay, workSessions: [] };
-  /** @type {import('../types/workSession.js').WorkSession } */
+  /** @type {import('../types/workSession.js').WorkSession} */
   let lastSession;
   for (let session of workSessions) {
     if (

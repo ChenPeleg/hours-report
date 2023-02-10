@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - main
-
+      - publish
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x, 16.x, 18.x ]
+        node-version: [12.x, 14.x, 16.x, 18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -25,9 +25,6 @@ jobs:
           unzip ./test/e2e/zip/*.zip -d ../
       - name: Check that the folders exist
         run: |
-          cd ../
-          ls
+          cd ../ 
           cd accessibility
-          echo "----- accessibility ---- "
-          ls
       - run: npm run e2e

@@ -1,10 +1,10 @@
 import { logger } from '../utils/logger.js';
 
 /**
- * @param {string}argument
- * @param {string}nextArg
- * @param {string } optionLiteral
- * @return { true  }
+ * @param {string} argument
+ * @param {string} nextArg
+ * @param {string} optionLiteral
+ * @returns {true}
  */
 const validateArgumentText = (argument, nextArg, optionLiteral) => {
   const restOfText = argument.replace(optionLiteral, '').trim();
@@ -18,10 +18,10 @@ const validateArgumentText = (argument, nextArg, optionLiteral) => {
 };
 
 /**
- * @param {string}argument
- * @param {string}nextArg
- * @param {import("../types/reportConfigurations.js").CommandLineOption } option
- * @return { null | {data : string, jumpNextArg: boolean}}
+ * @param {string} argument
+ * @param {string} nextArg
+ * @param {import('../types/reportConfigurations.js').CommandLineOption} option
+ * @returns {null | { data: string; jumpNextArg: boolean }}
  */
 const getArgumentFromArgs = (argument, nextArg, option) => {
   if (
@@ -54,11 +54,15 @@ const getArgumentFromArgs = (argument, nextArg, option) => {
 };
 
 /**
- * @param {string } argsAsString
- * @param {import("../types/reportConfigurations.js").CommandLineOption[]} ArgsOption
+ * @param {string} argsAsString
+ * @param {import('../types/reportConfigurations.js').CommandLineOption[]} ArgsOption
  */
 export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
-  /** @type {Partial<import("../types/reportConfigurations.js").ReportConfigurations>}  */
+  /**
+   * @type {Partial<
+   *   import('../types/reportConfigurations.js').ReportConfigurations
+   * >}
+   */
   let dataFromArgs = {};
   logger.info('cmd args:', argsAsString);
   if (!argsAsString.trim().length) {

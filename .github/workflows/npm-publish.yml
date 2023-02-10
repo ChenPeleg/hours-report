@@ -1,15 +1,16 @@
 name: Publish Package to npmjs
 on:
-  push:
+  workflow_run:
+    workflows: ['CI Tests', 'E2E Tests']
+    types:
+      - completed
     branches:
-      - prod
       - publish
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'

@@ -5,7 +5,7 @@ import { printTestResult } from './helpers/printTestResult.js';
 
 /**
  * @param testFiles
- * @return {Promise<{data: string, pass: boolean}>}
+ * @returns {Promise<{ data: string; pass: boolean }>}
  */
 const getTapDataAsync = (testFiles) => {
   let allData = '';
