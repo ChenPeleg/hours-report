@@ -1,5 +1,6 @@
 import { platform } from 'os';
 import child_process from 'child_process';
+import { logToConsole } from './logToConsole.js';
 
 /**
  * Tries to open the folder in the os for user convenience. This happens async
@@ -26,8 +27,10 @@ export const openExplorerIn = async (path) => {
       cmd = `open`;
       break;
   }
+
   let proccess = child_process.spawn(cmd, [path]);
   proccess.on('error', (err) => {
+    logToConsole(err);
     proccess.kill();
   });
 };
