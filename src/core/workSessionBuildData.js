@@ -1,4 +1,4 @@
-import {DateAndTimeUtil} from '../utils/dateAndTime.js';
+import { DateAndTimeUtil } from '../utils/dateAndTime.js';
 
 /**
  * @param { import("../types/gitLogEntry.js").GitLogEntry[]} sessionEntries
@@ -6,17 +6,17 @@ import {DateAndTimeUtil} from '../utils/dateAndTime.js';
  * @return { import("../types/workSession.js").WorkSession}
  */
 const buildWorkSessionWithData = (
-    sessionEntries,
-    minuetsToAddToFirstCommit
+  sessionEntries,
+  minuetsToAddToFirstCommit
 ) => {
   const finishTime = sessionEntries.slice(-1)[0].date;
   const startTime = DateAndTimeUtil.subtractMinutesFromDate(
-      sessionEntries[0].date,
-      minuetsToAddToFirstCommit
+    sessionEntries[0].date,
+    minuetsToAddToFirstCommit
   );
   const gitComments = sessionEntries
-      .map((ent) => ent.comment.trim())
-      .join('; ');
+    .map((ent) => ent.comment.trim())
+    .join('; ');
   const branches = Array.from(new Set(sessionEntries.map((ent) => ent.branch)));
 
   return {
@@ -33,6 +33,6 @@ const buildWorkSessionWithData = (
  * @return {import("../types/workSession.js").WorkSession[]}}
  */
 export const workSessionBuildData = (entryGroup, minuetsToAddToFirstCommit) =>
-    entryGroup.map((group) =>
-        buildWorkSessionWithData(group.logEntries, minuetsToAddToFirstCommit)
-    );
+  entryGroup.map((group) =>
+    buildWorkSessionWithData(group.logEntries, minuetsToAddToFirstCommit)
+  );

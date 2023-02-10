@@ -6,7 +6,6 @@ on:
       - main
       - gh-pages
 
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -18,7 +17,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -51,7 +50,6 @@ jobs:
               echo "run_job=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
-
 
   # Build job
   build-jekyll:
@@ -90,18 +88,18 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: 3 # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
-          JEKYLL_ENV: "production"
+          JEKYLL_ENV: 'production'
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+          path: '_site${{ steps.pages.outputs.base_path }}'
 
   deploy:
     environment:
