@@ -3,6 +3,7 @@ import { saveToCsvFile } from './saveToCsvFile.js';
 import { exportReportToConsole } from './exportReportToConsole.js';
 import { logToConsole } from '../utils/logToConsole.js';
 import { logger } from '../utils/logger.js';
+import { openExplorerIn } from '../utils/open-explorer.js';
 
 /**
  * @param report
@@ -22,6 +23,7 @@ export const exportReport = async (report, config) => {
         '/'
       )}`
     );
+    setTimeout(() => openExplorerIn(fileLocation), 1000);
   }
   logger.info(
     'exportReport success',

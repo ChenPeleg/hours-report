@@ -1,6 +1,13 @@
 import { platform } from 'os';
 import child_process from 'child_process';
 
+/**
+ * Tries to open the folder in the os for user convenience. This happens async
+ * and may steal focus from the main thread.
+ *
+ * @param {string} path
+ * @returns {Promise<void>}
+ */
 export const openExplorerIn = async (path) => {
   let cmd = '';
   switch (

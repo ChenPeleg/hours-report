@@ -7,7 +7,6 @@ import { buildReportFromSession } from './report/buildReport.js';
 import { parseGitLogToEntries } from './core/gitLogParseToEntries.js';
 import { printHelpText } from './config/printHelpText.js';
 import { exportReport } from './export/exportReport.js';
-import { exportLogs } from './export/exportLogs.js';
 import { logToConsole } from './utils/logToConsole.js';
 import { logger } from './utils/logger.js';
 
