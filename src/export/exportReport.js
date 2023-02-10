@@ -6,12 +6,12 @@ import { logger } from '../utils/logger.js';
 import { openExplorerIn } from '../utils/open-explorer.js';
 
 /**
- * @param report
+ * @param {import('../types/Report.js').Report} report
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
  */
 export const exportReport = async (report, config) => {
   logger.info(
-    `exportReport received a report with ${report.months} months data`
+    `exportReport received a report with ${report.months.length} months data`
   );
   let fileLocation;
   const csv = buildCsvAsString(report);

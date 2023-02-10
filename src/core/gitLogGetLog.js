@@ -26,6 +26,7 @@ export const gitLogGetLog = async (config) => {
   if (!config.Email) {
     const userEmail = await execPromise(`git config --get user.email`);
     config.Email = userEmail;
+    logger.info(`user email form git config: ${userEmail}`);
   }
   const moreData = `--until=${
     config.DateUntil ||
@@ -38,6 +39,7 @@ export const gitLogGetLog = async (config) => {
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
+  logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(
     `cd ${dir} && ${gitNameCommand}`
   ).catch((err) => {
