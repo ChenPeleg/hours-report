@@ -19,8 +19,8 @@ export const exportReport = async (report, config) => {
     const saveFileResult = await saveToCsvFile(csv, config);
     fileLocation = saveFileResult.filePath;
     logToConsole(
-      '\n \x1b[32m ✔ \x1b[0m ',
-      `Hours report exported successfully to \n file:///${fileLocation.replace(
+      '\n\x1b[32m ✔ \x1b[0m',
+      `Hours report exported successfully to: \n    file:///${fileLocation.replace(
         /\\/g,
         '/'
       )}`
