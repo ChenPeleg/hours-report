@@ -15,7 +15,7 @@ export const saveToCsvFile = async (csvText, config) => {
   const reportFolderPath = config.outputFolder
     ? path.resolve('./', config.outputFolder)
     : path.resolve(tmpdir(), `./hours-report-${fileHash}/`);
-  const reportLogsFolderPath = path.resolve(reportFolderPath, fileHash);
+  const reportLogsFolderPath = path.resolve(reportFolderPath, 'logs');
   if (!existsSync(reportFolderPath)) {
     mkdirSync(reportFolderPath);
   }
