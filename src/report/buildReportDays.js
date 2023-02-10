@@ -4,6 +4,7 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  * @param {import('../types/Day.js').Day} day
  * @returns {import('../types/Day.js').Day}
  */
+
 const buildDayData = (day) => {
   const dayWithData = { ...day };
   dayWithData.dayDate = day.workSessions[0].startTime;

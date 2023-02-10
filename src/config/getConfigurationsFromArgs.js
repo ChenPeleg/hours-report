@@ -64,7 +64,7 @@ export const getConfigurationsFromArgs = (argsAsString, ArgsOption) => {
    * >}
    */
   let dataFromArgs = {};
-  logger.info('cmd args:', argsAsString);
+  logger.info('cmd args:', argsAsString.trim() || 'no args');
   if (!argsAsString.trim().length) {
     return dataFromArgs;
   }

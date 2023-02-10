@@ -7,6 +7,7 @@ import { buildReportMonths } from './buildReportMonths.js';
  * @param {string} repoName
  * @returns {import('../types/Report.js').Report}
  */
+
 export const buildReportFromSession = (
   workSessions,
   configuration,

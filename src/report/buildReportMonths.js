@@ -4,6 +4,7 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  * @param {import('../types/Month.js').Month} month
  * @returns {import('../types/Month.js').Month}
  */
+
 const buildMonthData = (month) => {
   const monthWithData = { ...month };
   monthWithData.MonthDate = month.days[0].workSessions[0].startTime;

@@ -7,7 +7,7 @@ import { exportLogs } from './exportLogs.js';
 /**
  * @param {string} csvText
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
- * @returns {Promise<string>}
+ * @returns {Promise<{ filePath: string; folderPath: string }>}
  */
 export const saveToCsvFile = async (csvText, config) => {
   const fileHash = veryBasicHash(csvText);
@@ -15,7 +15,7 @@ export const saveToCsvFile = async (csvText, config) => {
   const reportFolderPath = config.outputFolder
     ? path.resolve('./', config.outputFolder)
     : path.resolve(tmpdir(), `./hours-report-${fileHash}/`);
-  const reportLogsFolderPath = path.resolve(reportFolderPath, fileHash);
+  const reportLogsFolderPath = path.resolve(reportFolderPath, 'logs');
   if (!existsSync(reportFolderPath)) {
     mkdirSync(reportFolderPath);
   }
@@ -26,5 +26,5 @@ export const saveToCsvFile = async (csvText, config) => {
 
   writeFileSync(reportFilePath, csvText);
   exportLogs(reportLogsFolderPath);
-  return reportLogsFolderPath;
+  return { folderPath: reportFolderPath, filePath: reportFilePath };
 };

@@ -19,7 +19,6 @@ export const gitLogGetLog = async (config) => {
   if (os.platform() === 'win32') {
     lsCommand = `dir ${dir}\\.git`;
   }
-
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
@@ -27,6 +26,7 @@ export const gitLogGetLog = async (config) => {
   if (!config.Email) {
     const userEmail = await execPromise(`git config --get user.email`);
     config.Email = userEmail;
+    logger.info(`user email form git config: ${userEmail}`);
   }
   const moreData = `--until=${
     config.DateUntil ||
@@ -39,6 +39,7 @@ export const gitLogGetLog = async (config) => {
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
+  logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(
     `cd ${dir} && ${gitNameCommand}`
   ).catch((err) => {
@@ -61,6 +62,8 @@ export const gitLogGetLog = async (config) => {
       'No git log entries found. Try changing the Email, dates and so etc.';
     logger.error(errMessage);
     throw errMessage;
+  } else {
+    logger.info(`Recieved git log. length: ${gitLog.length} chars`);
   }
 
   return { gitLog, gitRepoName };
