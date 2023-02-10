@@ -26,5 +26,5 @@ export const saveToCsvFile = async (csvText, config) => {
 
   writeFileSync(reportFilePath, csvText);
   exportLogs(reportLogsFolderPath);
-  return reportLogsFolderPath;
+  return reportFolderPath;
 };
