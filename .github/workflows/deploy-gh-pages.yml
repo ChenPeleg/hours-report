@@ -6,7 +6,6 @@ on:
       - main
       - gh-pages
 
-
   workflow_dispatch:
 
 
