@@ -6,16 +6,15 @@ on:
       - main
       - gh-pages
 
-  # Allows you to run this workflow manually from the Actions tab
+
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -50,12 +49,12 @@ jobs:
               echo "run_job=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
+  
 
-  # Build job
   build-jekyll:
     name: Build-jekyll if files in docs changed
     needs: check
-    #    if: needs.check.outputs.run_job == 'true'
+    if: needs.check.outputs.run_job == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -88,7 +87,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3 # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: 3
           bundler-cache: true
 
       - name: Build site
