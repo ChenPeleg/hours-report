@@ -22,7 +22,7 @@
   "scripts": {
     "start": "node ./src/index.js",
     "test": " node ./test/test_runner.js integration",
-    "e2e": " node --experimental-modules ./test/e2e/runAppE2e.test.js",
+    "e2e": " node ./test/e2e/runAppE2e.test.js",
     "format": "prettier --write .",
     "lint": "eslint --fix ."
   },
