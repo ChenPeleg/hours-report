@@ -11,7 +11,6 @@ const cleanStringsToFindInAccessability = [
   'December Day Date Hours Details',
   'Thu 22.12 6 Initial commit; graphics; just the docs theme;',
 ];
-process.env['NODE_ENV'] = 'e2e';
 
 const removeCommasAndMultiSpaces = (text) =>
   text.replace(/,/g, ' ').replace(/  +/g, ' ');
@@ -29,9 +28,13 @@ const e2eTest = async () => {
   const resLines = exceResopnse.split('\n').slice(2);
   const outputLine = resLines.find((l) => l.includes(outputFolder));
 
-  const hash = outputLine.split(outputFolder + '/')[1];
-  const pathToFile = `./${outputFolder}/hours-report-${hash}.csv`;
+  const fileName = outputLine
+    .split(outputFolder + '/')
+    .filter((l) => l.trim())[1];
+
+  const pathToFile = `./${outputFolder}/${fileName}`;
   const resultCsv = readFileSync(path.resolve(pathToFile)).toString();
+  console.log(resultCsv);
 
   const cleanText = removeCommasAndMultiSpaces(resultCsv);
 

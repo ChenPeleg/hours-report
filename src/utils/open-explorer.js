@@ -30,7 +30,6 @@ export const openExplorerIn = async (path) => {
 
   let proccess = child_process.spawn(cmd, [path]);
   proccess.on('error', (err) => {
-    logToConsole(err);
     proccess.kill();
   });
 };

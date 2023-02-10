@@ -28,11 +28,7 @@ export const exportReport = async (report, config) => {
         '/'
       )}`
     );
-    setTimeout(
-      () => {},
-      // openExplorerIn(saveFileResult.folderPath)
-      1000
-    );
+    setTimeout(() => openExplorerIn(saveFileResult.folderPath), 1000);
   }
   logger.info(
     'exportReport success',
