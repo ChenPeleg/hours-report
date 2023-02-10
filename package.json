@@ -8,7 +8,7 @@
     "src/**/*"
   ],
   "engines": {
-    "node": "12.0.0"
+    "node": ">=12.0.0"
   },
   "keywords": [
     "git",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/ChenPeleg/hours-report/issues"
   },
-  "homepage": "https://github.com/ChenPeleg/hours-report#readme",
+  "homepage": "https://chenpeleg.github.io/hours-report/",
   "devDependencies": {
     "@types/node": "^18.11.18",
     "prettier": "^2.8.3",
