@@ -19,7 +19,6 @@ export const gitLogGetLog = async (config) => {
   if (os.platform() === 'win32') {
     lsCommand = `dir ${dir}\\.git`;
   }
-
   await execPromise(lsCommand).catch((err) => {
     throw `${dir} is not a valid Git directory. ${err}`;
   });
@@ -61,6 +60,8 @@ export const gitLogGetLog = async (config) => {
       'No git log entries found. Try changing the Email, dates and so etc.';
     logger.error(errMessage);
     throw errMessage;
+  } else {
+    logger.info(`Recieved git log. length: ${gitLog.length} chars`);
   }
 
   return { gitLog, gitRepoName };

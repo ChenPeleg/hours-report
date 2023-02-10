@@ -10,6 +10,9 @@ import { openExplorerIn } from '../utils/open-explorer.js';
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
  */
 export const exportReport = async (report, config) => {
+  logger.info(
+    `exportReport received a report with ${report.months} months data`
+  );
   let fileLocation;
   const csv = buildCsvAsString(report);
   if (config.outputFormat === 'console' || config.outputFormat === 'all') {
