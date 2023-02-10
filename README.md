@@ -1,6 +1,6 @@
 [![Status badge](https://github.com/ChenPeleg/hours-report/actions/workflows/ci-tests.yml/badge.svg?branch=main)](https://github.com/ChenPeleg/hours-report/actions/?query=branch%3Amain)
 [![npm version](https://badge.fury.io/js/hours-report.svg)](https://badge.fury.io/js/hours-report)
-[Licence(https://img.shields.io/github/license/ChenPeleg/hours-report.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://github.com/ChenPeleg/hours-report/LICENCE)
+[![Licence](https://img.shields.io/github/license/ChenPeleg/hours-report.svg?style=flat&colorA=18181B&colorB=28CF8D)](https://github.com/ChenPeleg/hours-report/LICENCE)
 
 # hours-report
 
