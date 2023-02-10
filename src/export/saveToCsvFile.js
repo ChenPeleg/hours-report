@@ -7,7 +7,7 @@ import { exportLogs } from './exportLogs.js';
 /**
  * @param {string} csvText
  * @param {import('../types/reportConfigurations.js').ReportConfigurations} config
- * @returns {Promise<string>}
+ * @returns {Promise<{ filePath: string; folderPath: string }>}
  */
 export const saveToCsvFile = async (csvText, config) => {
   const fileHash = veryBasicHash(csvText);
@@ -26,5 +26,5 @@ export const saveToCsvFile = async (csvText, config) => {
 
   writeFileSync(reportFilePath, csvText);
   exportLogs(reportLogsFolderPath);
-  return reportFolderPath;
+  return { folderPath: reportFolderPath, filePath: reportFilePath };
 };

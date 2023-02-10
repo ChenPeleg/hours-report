@@ -16,14 +16,15 @@ export const exportReport = async (report, config) => {
     await exportReportToConsole(csv);
   }
   if (config.outputFormat === 'csv' || config.outputFormat === 'all') {
-    fileLocation = await saveToCsvFile(csv, config);
+    const saveFileResult = await saveToCsvFile(csv, config);
+    fileLocation = saveFileResult.filePath;
     logToConsole(
       `Hours report exported successfully to \n file:///${fileLocation.replace(
         /\\/g,
         '/'
       )}`
     );
-    setTimeout(() => openExplorerIn(fileLocation), 1000);
+    setTimeout(() => openExplorerIn(saveFileResult.folderPath), 1000);
   }
   logger.info(
     'exportReport success',
