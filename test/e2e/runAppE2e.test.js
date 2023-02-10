@@ -11,6 +11,7 @@ const cleanStringsToFindInAccessability = [
   'December Day Date Hours Details',
   'Thu 22.12 6 Initial commit; graphics; just the docs theme;',
 ];
+process.env['NODE_ENV'] = 'e2e';
 
 const removeCommasAndMultiSpaces = (text) =>
   text.replace(/,/g, ' ').replace(/  +/g, ' ');
