@@ -1,18 +1,4 @@
 import { logToConsole } from './logToConsole.js';
-// @ts-ignore
-process.stdout.cursorTo = process.stdout.cursorTo || (() => {});
-// @ts-ignore
-process.stdout.write =
-  process.stdout.write ||
-  ((t) => {
-    t && t.length > 1 ? logToConsole('') : null;
-  });
-// @ts-ignore
-process.stdout.clearLine =
-  process.stdout.clearLine ||
-  (() => {
-    logToConsole('');
-  });
 
 const colors = {
   reset: '\x1b[0m',
@@ -53,9 +39,6 @@ const colors = {
 export class TestFrameWorkConsole {
   constructor() {}
 
-  animationOn = false;
-  animationText = '';
-
   static log(...args) {
     logToConsole(...args);
   }
@@ -95,77 +78,5 @@ export class TestFrameWorkConsole {
       options && options.background ? colors.bg[options.background] : '';
     const reset = colors.reset;
     return `${fg}${bg}${text}${reset}`;
-  }
-
-  static statusBar(len, pos, options = null) {
-    if (pos === 0) {
-      process.stdout.write('▒'.repeat(len));
-      process.stdout.cursorTo(0);
-      return;
-    }
-    process.stdout.cursorTo(pos - 1);
-    process.stdout.write('▓');
-  }
-
-  static rewrite(text) {
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    process.stdout.write(text);
-  }
-
-  static async runAnimation() {
-    const c = TestFrameWorkConsole;
-    const wait = TestFrameWorkConsole.wait;
-    const cubes = 40;
-    const maxMsToPassOne = 50; // 150;
-    const minMSTopassOne = 1;
-    for (let i = 0; i <= cubes; i++) {
-      c.statusBar(cubes, i);
-      await wait(Math.random() * 100 > 90 ? maxMsToPassOne : minMSTopassOne);
-    }
-  }
-
-  circleAnimation(action = 'AUTO', baseText = '', speed = 80) {
-    if (this.animationOn && action === 'ON') {
-      return;
-    }
-    this.animationOn =
-      action === 'ON' || (action === 'AUTO' && !this.animationOn)
-        ? true
-        : false;
-
-    if (!this.animationOn) {
-      this.animationText = baseText || this.animationText;
-      process.stdout.write(colors.hideCursor + ' ');
-      process.stdout.cursorTo(0);
-      process.stdout.write(
-        this.animationText + TestFrameWorkConsole.paint(' ✔', 'green')
-      );
-      logToConsole('');
-      this.animationText = '';
-
-      return;
-    }
-    this.animationText = baseText;
-    const lines = ['-', '/', '|', '\\'];
-    let state = 0;
-    let cursor = baseText.length + 2;
-    let saftey = 0;
-
-    const animate = () => {
-      if (!this.animationOn || saftey++ > 100) {
-        return;
-      }
-      state++;
-      state = state < lines.length ? state : 0;
-      process.stdout.write(colors.hideCursor + lines[state]);
-      process.stdout.cursorTo(cursor);
-      setTimeout(() => {
-        animate();
-      }, speed);
-    };
-    process.stdout.write(colors.hideCursor + baseText);
-    process.stdout.cursorTo(cursor);
-    animate();
   }
 }
