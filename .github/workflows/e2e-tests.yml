@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+      - publish
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,9 +25,6 @@ jobs:
           unzip ./test/e2e/zip/*.zip -d ../
       - name: Check that the folders exist
         run: |
-          cd ../
-          ls
+          cd ../ 
           cd accessibility
-          echo "----- accessibility ---- "
-          ls
       - run: npm run e2e

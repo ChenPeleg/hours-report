@@ -1,13 +1,13 @@
 name: Deploy GitHub Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: ['CI Tests']
+    types:
+      - completed
     branches:
       - main
       - gh-pages
-
-  workflow_dispatch:
-
 
 permissions:
   contents: read
@@ -48,7 +48,6 @@ jobs:
               echo "run_job=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
-  
 
   build-jekyll:
     name: Build-jekyll if files in docs changed
