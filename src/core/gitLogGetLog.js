@@ -29,10 +29,7 @@ export const gitLogGetLog = async (config) => {
     logger.info(`user email form git config: ${userEmail}`);
   }
   const moreData = `--until=${
-    config.DateUntil ||
-    new Date().toLocaleDateString('en-GB', {
-      dateStyle: 'short',
-    })
+    config.DateUntil || new Date().getFullYear() + 1
   } ${config.DateFrom ? `--since=${config.DateFrom}` : ''}`;
   const gitLog = await execPromise(
     gitLogCommand(dir, config.Email, moreData)
