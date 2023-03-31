@@ -1,48 +1,48 @@
-import { readFileSync } from 'fs'
-import path from 'path'
-import { execPromise } from '../../src/utils/execPromise.js'
-import { logToConsole } from '../../src/utils/logToConsole.js'
+import { readFileSync } from 'fs';
+import path from 'path';
+import { execPromise } from '../../src/utils/execPromise.js';
+import { logToConsole } from '../../src/utils/logToConsole.js';
 
-const outputFolder = 'output'
+const outputFolder = 'output';
 
 const cleanStringsToFindInAccessability = [
   'Hours report drorsoft/accessibility',
   'Total hours 11',
   'December Day Date Hours Details',
   'Thu 22.12 6 Initial commit; graphics; just the docs theme;',
-]
+];
 
 const removeCommasAndMultiSpaces = (text) =>
-  text.replace(/,/g, ' ').replace(/  +/g, ' ')
+  text.replace(/,/g, ' ').replace(/  +/g, ' ');
 
 const eq = (val1, val2) => {
   if (val1 !== val2) {
-    throw `Assertion Error ${val1} !== ${val2}`
+    throw `Assertion Error ${val1} !== ${val2}`;
   }
-}
+};
 
 const e2eTest = async () => {
   const exceResopnse = await execPromise(
     `npm run start -- -o=./${outputFolder} -p=../accessibility -e=chenpeleg@gmail.com`
-  )
-  const resLines = exceResopnse.split('\n').slice(2)
-  const outputLine = resLines.find((l) => l.includes(outputFolder))
+  );
+  const resLines = exceResopnse.split('\n').slice(2);
+  const outputLine = resLines.find((l) => l.includes(outputFolder));
 
   const fileName = outputLine
     .split(outputFolder + '/')
-    .filter((l) => l.trim())[1]
+    .filter((l) => l.trim())[1];
 
-  const pathToFile = `./${outputFolder}/${fileName}`
-  const resultCsv = readFileSync(path.resolve(pathToFile)).toString()
-  console.log(resultCsv)
+  const pathToFile = `./${outputFolder}/${fileName}`;
+  const resultCsv = readFileSync(path.resolve(pathToFile)).toString();
+  console.log(resultCsv);
 
-  const cleanText = removeCommasAndMultiSpaces(resultCsv)
+  const cleanText = removeCommasAndMultiSpaces(resultCsv);
 
-  eq(cleanText.length > 100, true)
+  eq(cleanText.length > 100, true);
   for (const text of cleanStringsToFindInAccessability) {
-    eq(cleanText.includes(text), true)
+    eq(cleanText.includes(text), true);
   }
-  logToConsole('e2e passed')
-}
+  logToConsole('e2e passed');
+};
 
-e2eTest().then()
+e2eTest().then();
