@@ -2,7 +2,7 @@ name: E2E Tests
 
 on:
   workflow_run:
-    workflows: [ 'CI Tests' ]
+    workflows: ['CI Tests']
     types:
       - completed
     branches:
@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x, 16.x, 18.x ]
+        node-version: [12.x, 14.x, 16.x, 18.x]
 
     steps:
       - uses: actions/checkout@v3

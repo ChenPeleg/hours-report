@@ -63,5 +63,5 @@ $ npm test
 contains only one test (used for CI purposes and to check node versions compatibility)
 
 ```console
-$ npm run e2e 
+$ npm run e2e
 ```

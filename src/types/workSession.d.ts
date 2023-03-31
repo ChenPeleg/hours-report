@@ -1,9 +1,9 @@
-import { GitLogEntry } from './gitLogEntry.js';
+import { GitLogEntry } from './gitLogEntry.js'
 
 export interface WorkSession {
-  startTime: Date;
-  finishTime: Date;
-  logEntries: GitLogEntry[];
-  gitComments: string;
-  branches: string[];
+  startTime: Date
+  finishTime: Date
+  logEntries: GitLogEntry[]
+  gitComments: string
+  branches: string[]
 }
