@@ -1,4 +1,4 @@
-import { logToConsole } from './logToConsole.js';
+import { logToConsole } from './logToConsole.js'
 
 const colors = {
   reset: '\x1b[0m',
@@ -29,7 +29,7 @@ const colors = {
     BGcyan: '\x1b[46m',
     BGwhite: '\x1b[47m',
   },
-};
+}
 
 /**
  * @typedef {| { color?: keyof typeof colors.fg; background?: keyof typeof colors.bg }
@@ -40,29 +40,29 @@ export class TestFrameWorkConsole {
   constructor() {}
 
   static log(...args) {
-    logToConsole(...args);
+    logToConsole(...args)
   }
 
   /** @type {(ms: number, resolveWith?: any) => Promise<any>} */
   static async wait(ms, resolveWith = true) {
     return new Promise((res, rej) => {
       setTimeout(() => {
-        res(resolveWith);
-      }, ms);
-    });
+        res(resolveWith)
+      }, ms)
+    })
   }
 
   static green(text) {
-    TestFrameWorkConsole.print(text, { color: 'green' });
+    TestFrameWorkConsole.print(text, { color: 'green' })
   }
 
   static red(text) {
-    TestFrameWorkConsole.print(text, { color: 'red' });
+    TestFrameWorkConsole.print(text, { color: 'red' })
   }
 
   /** @type {(text: string, options?: logOptions) => void} */
   static print(text, options = undefined) {
-    logToConsole(TestFrameWorkConsole.paint(text, options));
+    logToConsole(TestFrameWorkConsole.paint(text, options))
   }
 
   /** @type {(text: string, options?: logOptions) => string} */
@@ -71,12 +71,12 @@ export class TestFrameWorkConsole {
     let options =
       typeof argsOptions === 'object'
         ? { ...argsOptions }
-        : { color: argsOptions };
+        : { color: argsOptions }
 
-    const fg = options && options.color ? colors.fg[options.color] : '';
+    const fg = options && options.color ? colors.fg[options.color] : ''
     const bg =
-      options && options.background ? colors.bg[options.background] : '';
-    const reset = colors.reset;
-    return `${fg}${bg}${text}${reset}`;
+      options && options.background ? colors.bg[options.background] : ''
+    const reset = colors.reset
+    return `${fg}${bg}${text}${reset}`
   }
 }

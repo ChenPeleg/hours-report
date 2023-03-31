@@ -151,4 +151,4 @@ export const gitEntryFixtures = {
       email: 'cp@gmail.com',
     },
   ],
-};
+}

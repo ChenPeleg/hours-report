@@ -8,4 +8,4 @@ export const defaultConfig = {
   PathToRepo: '.',
   outputFormat: 'csv',
   outputFolder: '',
-};
+}

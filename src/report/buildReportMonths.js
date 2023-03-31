@@ -1,4 +1,4 @@
-import { DateAndTimeUtil } from '../utils/dateAndTime.js';
+import { DateAndTimeUtil } from '../utils/dateAndTime.js'
 
 /**
  * @param {import('../types/Month.js').Month} month
@@ -6,14 +6,14 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  */
 
 const buildMonthData = (month) => {
-  const monthWithData = { ...month };
-  monthWithData.MonthDate = month.days[0].workSessions[0].startTime;
+  const monthWithData = { ...month }
+  monthWithData.MonthDate = month.days[0].workSessions[0].startTime
   monthWithData.minuetSum = month.days
     .map((d) => d.minuetSum)
-    .reduce((a, b) => a + b, 0);
+    .reduce((a, b) => a + b, 0)
 
-  return monthWithData;
-};
+  return monthWithData
+}
 
 /**
  * @param {import('../types/Day.js').Day[]} days
@@ -28,13 +28,13 @@ export const buildReportMonths = (days, configuration) => {
     minuetSum: 0,
     MonthDate: new Date(),
     comments: '',
-  };
+  }
   /** @type {import('../types/Month.js').Month[]} */
-  let allMonths = [];
+  let allMonths = []
   /** @type {import('../types/Month.js').Month} */
-  let CurrentMonth = { ...EmptyMonth, days: [] };
+  let CurrentMonth = { ...EmptyMonth, days: [] }
   /** @type {import('../types/Day.js').Day} */
-  let lastDay;
+  let lastDay
   for (let day of days) {
     if (
       !lastDay ||
@@ -43,16 +43,16 @@ export const buildReportMonths = (days, configuration) => {
         lastDay.workSessions[0].startTime
       )
     ) {
-      CurrentMonth.days.push(day);
+      CurrentMonth.days.push(day)
     } else if (lastDay) {
-      allMonths.push(CurrentMonth);
-      CurrentMonth = { ...EmptyMonth, days: [] };
-      CurrentMonth.days.push(day);
+      allMonths.push(CurrentMonth)
+      CurrentMonth = { ...EmptyMonth, days: [] }
+      CurrentMonth.days.push(day)
     }
-    lastDay = day;
+    lastDay = day
   }
   if (CurrentMonth.days.length) {
-    allMonths.push(CurrentMonth);
+    allMonths.push(CurrentMonth)
   }
-  return allMonths.map((m) => buildMonthData(m));
-};
+  return allMonths.map((m) => buildMonthData(m))
+}

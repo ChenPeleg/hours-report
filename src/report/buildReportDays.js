@@ -1,4 +1,4 @@
-import { DateAndTimeUtil } from '../utils/dateAndTime.js';
+import { DateAndTimeUtil } from '../utils/dateAndTime.js'
 
 /**
  * @param {import('../types/Day.js').Day} day
@@ -6,8 +6,8 @@ import { DateAndTimeUtil } from '../utils/dateAndTime.js';
  */
 
 const buildDayData = (day) => {
-  const dayWithData = { ...day };
-  dayWithData.dayDate = day.workSessions[0].startTime;
+  const dayWithData = { ...day }
+  dayWithData.dayDate = day.workSessions[0].startTime
   dayWithData.minuetSum = day.workSessions
     .map((session) =>
       DateAndTimeUtil.getMinutesBetweenDates(
@@ -15,22 +15,22 @@ const buildDayData = (day) => {
         session.finishTime
       )
     )
-    .reduce((a, b) => a + b, 0);
-  const dayBranches = new Set();
+    .reduce((a, b) => a + b, 0)
+  const dayBranches = new Set()
   day.workSessions.forEach((s) => {
-    s.branches.forEach((b) => dayBranches.add(b.trim()));
-  });
+    s.branches.forEach((b) => dayBranches.add(b.trim()))
+  })
   dayWithData.comments = Array.from(dayBranches)
     .filter((b) => b.trim())
-    .join('; ');
-  dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim();
+    .join('; ')
+  dayWithData.comments = dayWithData.comments.replace(/_/g, ' ').trim()
   if (!dayWithData.comments) {
     dayWithData.comments = day.workSessions
       .map((ws) => ws.gitComments.trim())
-      .join('; ');
+      .join('; ')
   }
-  return dayWithData;
-};
+  return dayWithData
+}
 
 /**
  * @param {import('../types/workSession.js').WorkSession[]} workSessions
@@ -44,13 +44,13 @@ export const buildDaysFromSessions = (workSessions, configuration) => {
     dayDate: new Date(),
     comments: '',
     minuetSum: 0,
-  };
+  }
   /** @type {import('../types/Day.js').Day[]} */
-  let allDays = [];
+  let allDays = []
   /** @type {import('../types/Day.js').Day} */
-  let CurrentDay = { ...EmptyDay, workSessions: [] };
+  let CurrentDay = { ...EmptyDay, workSessions: [] }
   /** @type {import('../types/workSession.js').WorkSession} */
-  let lastSession;
+  let lastSession
   for (let session of workSessions) {
     if (
       !lastSession ||
@@ -59,17 +59,17 @@ export const buildDaysFromSessions = (workSessions, configuration) => {
         session.startTime
       )
     ) {
-      CurrentDay.workSessions.push(session);
+      CurrentDay.workSessions.push(session)
     } else if (lastSession) {
-      allDays.push(CurrentDay);
-      CurrentDay = { ...EmptyDay, workSessions: [] };
-      CurrentDay.workSessions.push(session);
+      allDays.push(CurrentDay)
+      CurrentDay = { ...EmptyDay, workSessions: [] }
+      CurrentDay.workSessions.push(session)
     }
-    lastSession = session;
+    lastSession = session
   }
   if (CurrentDay.workSessions.length) {
-    allDays.push(CurrentDay);
+    allDays.push(CurrentDay)
   }
 
-  return allDays.map((d) => buildDayData(d));
-};
+  return allDays.map((d) => buildDayData(d))
+}

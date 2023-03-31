@@ -69,4 +69,4 @@ export const gitLogsFixtures = {
     ' 2023-01-25 19:19:02 +0200 cp@gmail.com added test\n' +
     ' 2023-01-25 18:58:57 +0200 cp@gmail.com First commit\n' +
     ' 2023-01-25 18:55:01 +0200 noreply@github.com Initial commit',
-};
+}
