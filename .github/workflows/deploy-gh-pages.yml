@@ -2,7 +2,7 @@ name: Deploy GitHub Pages
 
 on:
   workflow_run:
-    workflows: ['CI Tests']
+    workflows: ["CI Tests"]
     types:
       - completed
     branches:
@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -91,12 +91,12 @@ jobs:
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
-          JEKYLL_ENV: 'production'
+          JEKYLL_ENV: "production"
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: '_site${{ steps.pages.outputs.base_path }}'
+          path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
     environment:

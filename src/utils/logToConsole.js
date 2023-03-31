@@ -1,1 +1,1 @@
-export const logToConsole = (...args) => console['log'](...args)
+export const logToConsole = (...args) => console["log"](...args);
