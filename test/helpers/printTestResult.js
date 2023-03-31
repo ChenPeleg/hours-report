@@ -4,13 +4,13 @@ import { logToConsole } from '../../src/utils/logToConsole.js'
 import { logger } from '../../src/utils/logger.js'
 /**
  * @typedef {{
- *   todo: string;
- *   duration_ms: string;
- *   fail: string;
- *   tests: string;
- *   pass: string;
- *   cancelled: string;
- *   skipped: string;
+ *   todo: string
+ *   duration_ms: string
+ *   fail: string
+ *   tests: string
+ *   pass: string
+ *   cancelled: string
+ *   skipped: string
  * }} Conclusions
  */
 /** @param {Conclusions} conclusions */
