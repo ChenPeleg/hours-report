@@ -1,7 +1,7 @@
-import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js';
-import path from 'path';
-import { logToConsole } from '../../src/utils/logToConsole.js';
-import { logger } from '../../src/utils/logger.js';
+import { TestFrameWorkConsole } from '../../src/utils/consoleFormat.js'
+import path from 'path'
+import { logToConsole } from '../../src/utils/logToConsole.js'
+import { logger } from '../../src/utils/logger.js'
 /**
  * @typedef {{
  *   todo: string;
@@ -15,7 +15,7 @@ import { logger } from '../../src/utils/logger.js';
  */
 /** @param {Conclusions} conclusions */
 const writeFinalResults = (conclusions) => {
-  const { skipped, fail, pass } = conclusions;
+  const { skipped, fail, pass } = conclusions
   if (+skipped) {
     logToConsole(
       TestFrameWorkConsole.paint(
@@ -24,7 +24,7 @@ const writeFinalResults = (conclusions) => {
           background: 'BGyellow',
         })}`
       )
-    );
+    )
   }
   if (+fail) {
     logToConsole(
@@ -34,7 +34,7 @@ const writeFinalResults = (conclusions) => {
           background: 'BGred',
         })}`
       )
-    );
+    )
   }
   logToConsole(
     TestFrameWorkConsole.paint(
@@ -44,12 +44,12 @@ const writeFinalResults = (conclusions) => {
       })}`,
       { background: 'BGblack' }
     )
-  );
-};
+  )
+}
 
 const getConclusions = (resultsAsText) => {
-  const resultArr = resultsAsText.split('\n');
-  const resultRows = resultArr.slice(-9);
+  const resultArr = resultsAsText.split('\n')
+  const resultRows = resultArr.slice(-9)
 
   const conclusions = {
     tests: '',
@@ -59,20 +59,20 @@ const getConclusions = (resultsAsText) => {
     skipped: '',
     todo: '',
     duration_ms: '',
-  };
+  }
   Object.keys(conclusions).forEach((key) => {
-    const corispondingData = resultRows.find((r) => r.includes(`# ${key}`));
-    if (corispondingData) {
-      conclusions[key] = corispondingData.replace(`# ${key}`, '').trim();
+    const correspondingData = resultRows.find((r) => r.includes(`# ${key}`))
+    if (correspondingData) {
+      conclusions[key] = correspondingData.replace(`# ${key}`, '').trim()
     }
-  });
+  })
 
-  return { conclusionsText: resultRows.join('\n'), conclusions };
-};
+  return { conclusionsText: resultRows.join('\n'), conclusions }
+}
 
 const reformatMainData = (text, passed) => {
-  text = text.replace(/# tests[\s\S]*# todo/g, '');
-  const lines = text.split('\n');
+  text = text.replace(/# tests[\s\S]*# todo/g, '')
+  const lines = text.split('\n')
   const argumentsForLineRemoval = [
     passed ? '# Subtest' : 'TAP version',
     ' stdout: |-',
@@ -83,49 +83,49 @@ const reformatMainData = (text, passed) => {
     '---',
     'duration_ms',
     'TAP version',
-  ];
+  ]
   const removedRedundant = lines.filter(
     (l) => !argumentsForLineRemoval.some((a) => l.includes(a))
-  );
-  const currentPath = path.resolve('').replace(/\\/g, '\\\\');
+  )
+  const currentPath = path.resolve('').replace(/\\/g, '\\\\')
 
   const formatUrl = removedRedundant.map((l) => {
-    l = l.replace(currentPath, '');
-    l = l.replace(/\\/g, ' ');
-    l = l.replace('not ok ', TestFrameWorkConsole.paint('failed X ', 'red'));
-    l = l.replace('ok ', TestFrameWorkConsole.paint('passed ✔ ', 'green'));
-    return l;
-  });
-  let finalArr = formatUrl;
+    l = l.replace(currentPath, '')
+    l = l.replace(/\\/g, ' ')
+    l = l.replace('not ok ', TestFrameWorkConsole.paint('failed X ', 'red'))
+    l = l.replace('ok ', TestFrameWorkConsole.paint('passed ✔ ', 'green'))
+    return l
+  })
+  let finalArr = formatUrl
 
   if (!passed) {
-    let paintErrorLines = 0;
+    let paintErrorLines = 0
     finalArr = finalArr
       .map((l, i) => {
         if (formatUrl[i + 1] && formatUrl[i + 1].includes('passed')) {
-          return '';
+          return ''
         }
         if (l.includes('ERR_TEST_FAILURE')) {
-          return '\n';
+          return '\n'
         }
-        l = l.replace('# Subtest', 'Description');
+        l = l.replace('# Subtest', 'Description')
         if (l.includes('Expected')) {
-          paintErrorLines = 8;
-          l = TestFrameWorkConsole.paint(`${l}`, 'yellow');
+          paintErrorLines = 8
+          l = TestFrameWorkConsole.paint(`${l}`, 'yellow')
         }
         if (paintErrorLines > 0) {
-          --paintErrorLines;
-          l = TestFrameWorkConsole.paint(`${l}`, 'yellow');
+          --paintErrorLines
+          l = TestFrameWorkConsole.paint(`${l}`, 'yellow')
         }
         if (l.includes(' stack: |-')) {
-          paintErrorLines = 0;
+          paintErrorLines = 0
         }
-        return l;
+        return l
       })
-      .filter((l) => l);
+      .filter((l) => l)
   }
-  return finalArr.join('\n');
-};
+  return finalArr.join('\n')
+}
 
 /**
  * @param {string} resultsAsText
@@ -133,16 +133,16 @@ const reformatMainData = (text, passed) => {
  */
 export const printTestResult = (resultsAsText, passed = true) => {
   try {
-    const conclusionsObj = getConclusions(resultsAsText);
+    const conclusionsObj = getConclusions(resultsAsText)
     const textWithoutConclutions = resultsAsText.replace(
       conclusionsObj.conclusionsText,
       ''
-    );
-    const mainData = reformatMainData(textWithoutConclutions, passed);
-    logToConsole(mainData);
-    writeFinalResults(conclusionsObj.conclusions);
+    )
+    const mainData = reformatMainData(textWithoutConclutions, passed)
+    logToConsole(mainData)
+    writeFinalResults(conclusionsObj.conclusions)
   } catch (err) {
-    logger.error(err);
-    logToConsole(resultsAsText);
+    logger.error(err)
+    logToConsole(resultsAsText)
   }
-};
+}
