@@ -67,4 +67,4 @@ export const ArgsOptionDictionary = [
     helpText: 'prints help options',
     configOption: 'Help',
   },
-];
+]

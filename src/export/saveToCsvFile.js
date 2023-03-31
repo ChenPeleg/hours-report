@@ -1,8 +1,8 @@
-import { appendFileSync, existsSync, mkdirSync, writeFileSync } from 'fs';
-import path from 'path';
-import { tmpdir } from 'os';
-import { veryBasicHash } from '../utils/veryBasicHash.js';
-import { exportLogs } from './exportLogs.js';
+import { appendFileSync, existsSync, mkdirSync, writeFileSync } from 'fs'
+import path from 'path'
+import { tmpdir } from 'os'
+import { veryBasicHash } from '../utils/veryBasicHash.js'
+import { exportLogs } from './exportLogs.js'
 
 /**
  * @param {string} csvText
@@ -10,21 +10,21 @@ import { exportLogs } from './exportLogs.js';
  * @returns {Promise<{ filePath: string; folderPath: string }>}
  */
 export const saveToCsvFile = async (csvText, config) => {
-  const fileHash = veryBasicHash(csvText);
-  const fileName = `hours-report-` + fileHash;
+  const fileHash = veryBasicHash(csvText)
+  const fileName = `hours-report-` + fileHash
   const reportFolderPath = config.outputFolder
     ? path.resolve('./', config.outputFolder)
-    : path.resolve(tmpdir(), `./hours-report-${fileHash}/`);
-  const reportLogsFolderPath = path.resolve(reportFolderPath, 'logs');
+    : path.resolve(tmpdir(), `./hours-report-${fileHash}/`)
+  const reportLogsFolderPath = path.resolve(reportFolderPath, 'logs')
   if (!existsSync(reportFolderPath)) {
-    mkdirSync(reportFolderPath);
+    mkdirSync(reportFolderPath)
   }
   if (!existsSync(reportLogsFolderPath)) {
-    mkdirSync(reportLogsFolderPath);
+    mkdirSync(reportLogsFolderPath)
   }
-  const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
+  const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`)
 
-  writeFileSync(reportFilePath, csvText);
-  exportLogs(reportLogsFolderPath);
-  return { folderPath: reportFolderPath, filePath: reportFilePath };
-};
+  writeFileSync(reportFilePath, csvText)
+  exportLogs(reportLogsFolderPath)
+  return { folderPath: reportFolderPath, filePath: reportFilePath }
+}

@@ -1,13 +1,13 @@
-import { log } from 'util';
+import { log } from 'util'
 
-const logs = [];
+const logs = []
 
 export const logger = {
   info(...args) {
-    logs.push([new Date().toISOString(), 'Info', ...args]);
+    logs.push([new Date().toISOString(), 'Info', ...args])
   },
   error(...args) {
-    logs.push([new Date().toISOString(), 'Error', ...args]);
+    logs.push([new Date().toISOString(), 'Error', ...args])
   },
   getLogs() {
     return logs
@@ -16,6 +16,6 @@ export const logger = {
           .map((logParts) => logParts.toString().replace(/\n/g, ' '))
           .join('     ')
       )
-      .join('\n');
+      .join('\n')
   },
-};
+}

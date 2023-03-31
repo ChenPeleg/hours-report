@@ -141,4 +141,4 @@ export const dayFixture = {
       minuetSum: null,
     },
   ],
-};
+}
