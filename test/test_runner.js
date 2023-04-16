@@ -5,7 +5,7 @@ import { printTestResult } from "./helpers/printTestResult.js";
 
 /**
  * @param testFiles
- * @returns {Promise<{ data: string; pass: boolean }>}
+ * @returns {Promise<{ data: string; pass: boolean; passData: any[] }>}
  */
 const getTapDataAsync = (testFiles) => {
   let allData = "";
@@ -15,9 +15,13 @@ const getTapDataAsync = (testFiles) => {
     const stream = run({
       files: testFiles,
     });
+    const passData = [];
     stream.on("data", (data) => (allData += data.toString()));
     stream.on("test:fail", (data) => (pass = false));
-    stream.on("close", (data) => resolve({ data: allData, pass }));
+    stream.on("test:pass", (data) => {
+      passData.push(data);
+    });
+    stream.on("close", (data) => resolve({ data: allData, pass, passData }));
     stream.on("error", (err) => reject(err));
   });
 };
