@@ -152,11 +152,13 @@ export const printTestResult = (
         .map((f) => tests.findLast((t) => t.file === f))
         .map(
           (t) =>
-            `ok ${t.testNumber} - ${t.file
-              .split("/")
-              .reduce((a, b) => b)
-              .replace(/(\.test\.js)|(\/test\/)/g, " ")
-              .replace("/", " ")}`
+            `ok ${t.testNumber} - ${
+              t.file
+              // .split("/")
+              // .reduce((a, b) => b)
+              // .replace(/(\.test\.js)|(\/test\/)/g, " ")
+              // .replace("/", " ")
+            }`
         );
 
       resultsAsText = testsSet.map((text) => text).join("\n") + "\n";
