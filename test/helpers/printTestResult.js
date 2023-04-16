@@ -129,20 +129,42 @@ const reformatMainData = (text, passed) => {
 
 /**
  * @param {string} resultsAsText
+ * @param {boolean} passed
+ * @param {any[]} resultsAsTestObjects
  * @returns String
  */
-export const printTestResult = (resultsAsText, passed = true) => {
+export const printTestResult = (
+  resultsAsText,
+  passed,
+  resultsAsTestObjects
+) => {
   try {
-    const conclusionsObj = getConclusions(resultsAsText);
-    const textWithoutConclutions = resultsAsText.replace(
+    let conclusionsObj = getConclusions(resultsAsText);
+
+    if (resultsAsText.includes("[object Object][object Object]") && passed) {
+      const tests = resultsAsTestObjects.map((t) => ({
+        file: t.file || t.name,
+        testNumber: t.testNumber,
+      }));
+
+      const testsSet = Array.from(new Set(tests.map((t) => t.file)))
+        // @ts-ignore
+        .map((f) => tests.findLast((t) => t.file === f))
+        .map((t) => `ok ${t.testNumber} - ${t.file}`);
+
+      resultsAsText = testsSet.join("\n") + "\n";
+      conclusionsObj.conclusions.pass = testsSet.length.toString();
+    }
+    const textWithoutConclusions = resultsAsText.replace(
       conclusionsObj.conclusionsText,
       ""
     );
-    const mainData = reformatMainData(textWithoutConclutions, passed);
+
+    const mainData = reformatMainData(textWithoutConclusions, passed);
     logToConsole(mainData);
     writeFinalResults(conclusionsObj.conclusions);
   } catch (err) {
-    logger.error(err);
+    console.log("error", err);
     logToConsole(resultsAsText);
   }
 };

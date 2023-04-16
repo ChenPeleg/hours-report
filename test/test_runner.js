@@ -35,7 +35,7 @@ const testRunner = async (testType = "integration") => {
 
     const result = await getTapDataAsync(testFiles);
     if (result) {
-      printTestResult(result.data, result.pass);
+      printTestResult(result.data, result.pass, result.passData);
       if (result.pass) {
         return true;
       }
