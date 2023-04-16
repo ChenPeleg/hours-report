@@ -155,7 +155,11 @@ export const printTestResult = (
       resultsAsText =
         testsSet
           .map((text) =>
-            text.replace(/(\.test\.js)|(\/test\/)/g, " ").replace("/", " ")
+            text
+              .split("/")
+              .reduce((a, b) => b)
+              .replace(/(\.test\.js)|(\/test\/)/g, " ")
+              .replace("/", " ")
           )
           .join("\n") + "\n";
       conclusionsObj.conclusions.pass = testsSet.length.toString();
