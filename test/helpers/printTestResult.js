@@ -150,18 +150,16 @@ export const printTestResult = (
       const testsSet = Array.from(new Set(tests.map((t) => t.file)))
         // @ts-ignore
         .map((f) => tests.findLast((t) => t.file === f))
-        .map((t) => `ok ${t.testNumber} - ${t.file}`);
-
-      resultsAsText =
-        testsSet
-          .map((text) =>
-            text
+        .map(
+          (t) =>
+            `ok ${t.testNumber} - ${t.file
               .split("/")
               .reduce((a, b) => b)
               .replace(/(\.test\.js)|(\/test\/)/g, " ")
-              .replace("/", " ")
-          )
-          .join("\n") + "\n";
+              .replace("/", " ")}`
+        );
+
+      resultsAsText = testsSet.map((text) => text).join("\n") + "\n";
       conclusionsObj.conclusions.pass = testsSet.length.toString();
     }
     const textWithoutConclusions = resultsAsText.replace(
