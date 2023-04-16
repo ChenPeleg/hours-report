@@ -152,7 +152,12 @@ export const printTestResult = (
         .map((f) => tests.findLast((t) => t.file === f))
         .map((t) => `ok ${t.testNumber} - ${t.file}`);
 
-      resultsAsText = testsSet.join("\n") + "\n";
+      resultsAsText =
+        testsSet
+          .map((text) =>
+            text.replace(/(\.test\.js)|(\/test\/)/g, " ").replace("/", " ")
+          )
+          .join("\n") + "\n";
       conclusionsObj.conclusions.pass = testsSet.length.toString();
     }
     const textWithoutConclusions = resultsAsText.replace(
