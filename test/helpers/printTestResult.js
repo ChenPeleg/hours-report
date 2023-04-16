@@ -93,6 +93,7 @@ const reformatMainData = (text, passed) => {
     l = l.replace(currentPath, "");
     l = l.replace(/\\/g, " ");
     l = l.replace(/\//g, " ");
+    l = l.replace(/(\s+)/g, " ");
     l = l.replace("not ok ", TestFrameWorkConsole.paint("failed X ", "red"));
     l = l.replace("ok ", TestFrameWorkConsole.paint("passed ✔ ", "green"));
     return l;
