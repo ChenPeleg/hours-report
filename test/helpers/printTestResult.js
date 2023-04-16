@@ -92,6 +92,7 @@ const reformatMainData = (text, passed) => {
   const formatUrl = removedRedundant.map((l) => {
     l = l.replace(currentPath, "");
     l = l.replace(/\\/g, " ");
+    l = l.replace(/\//g, " ");
     l = l.replace("not ok ", TestFrameWorkConsole.paint("failed X ", "red"));
     l = l.replace("ok ", TestFrameWorkConsole.paint("passed ✔ ", "green"));
     return l;
@@ -150,16 +151,7 @@ export const printTestResult = (
       const testsSet = Array.from(new Set(tests.map((t) => t.file)))
         // @ts-ignore
         .map((f) => tests.findLast((t) => t.file === f))
-        .map(
-          (t) =>
-            `ok ${t.testNumber} - ${
-              t.file
-              // .split("/")
-              // .reduce((a, b) => b)
-              // .replace(/(\.test\.js)|(\/test\/)/g, " ")
-              // .replace("/", " ")
-            }`
-        );
+        .map((t) => `ok ${t.testNumber} - ${t.file}`);
 
       resultsAsText = testsSet.map((text) => text).join("\n") + "\n";
       conclusionsObj.conclusions.pass = testsSet.length.toString();
