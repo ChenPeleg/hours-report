@@ -4,11 +4,32 @@
  * @returns {import("../xlsx/types/worksheet.types.js").Workbook}
  */
 export const buildXlsxData = (csvText, report) => {
+  const last3Months = report.months.slice(-3);
+
   return {
     name: "sheetReport",
-    sheets: [getMainSheetFromCsv(csvText)],
+    sheets: [getMainSheetFromCsv(csvText), creatASheetForMonth(last3Months[0])],
   };
 };
+
+/**
+ * @param {import("../types/Month.js").Month} month
+ * @returns {import("../xlsx/types/worksheet.types.js").Sheet}
+ */
+function creatASheetForMonth(month) {
+  /** @type {import("../xlsx/types/worksheet.types.js").Row[]} */
+  const rows = [];
+  /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
+  const sheet = { name: month.MonthDate.getMonth().toString(), rows: rows };
+
+  month.days.forEach((d) => {
+    d.workSessions.forEach((s) => {
+      if (d) {
+      }
+    });
+  });
+  return sheet;
+}
 
 /**
  * Creates the main report from the csv data
