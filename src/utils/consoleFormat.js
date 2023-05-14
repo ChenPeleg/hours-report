@@ -37,8 +37,6 @@ const colors = {
  */
 
 export class TestFrameWorkConsole {
-  constructor() {}
-
   static log(...args) {
     logToConsole(...args);
   }

@@ -5,6 +5,8 @@
     "moduleResolution": "NodeNext",
     "outFile": "./justANameToMakeTSHappy.js",
     "module": "System",
-    "lib": ["ESNext"]
+    "lib": [
+      "ESNext"
+    ]
   }
 }
