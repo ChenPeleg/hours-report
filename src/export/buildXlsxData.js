@@ -12,7 +12,8 @@ export const buildXlsxData = (csvText) => {
     const cells = r.split(",");
     cells.forEach((c, ci) => {
       oneRow.cells.push({
-        value: 10 || "asdf ",
+        value: c,
+        dataType: isNaN(+c) ? "string" : "number",
         style: {},
       });
     });
@@ -24,38 +25,3 @@ export const buildXlsxData = (csvText) => {
     sheets: [{ rows: firstSheet.rows, name: "sheet_1" }],
   };
 };
-
-function mockRows() {
-  return [
-    {
-      cells: [
-        {
-          value: 10,
-          style: {},
-        },
-        {
-          value: "",
-          style: {},
-        },
-        {
-          value: "Text",
-          style: {},
-        },
-        {
-          value: 40,
-          style: {
-            background: "#FF0000",
-          },
-        },
-        {
-          value: "Text With style",
-          style: {
-            font: {
-              color: "#FF0000",
-            },
-          },
-        },
-      ],
-    },
-  ];
-}

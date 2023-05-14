@@ -32,18 +32,26 @@ const renameFile = async (oldPath, newPath) => {
 };
 
 /** @param {string} fileName */
-/** @param {string} outDir */
-export const runZipper = async (fileName = "workbook", outDir = "out") => {
+/**
+ * @param {string} fileName
+ * @param {string} tempDir
+ * @param {string} outDir
+ */
+export const runZipper = async (
+  fileName = "workbook",
+  tempDir = "temp",
+  outDir = "out"
+) => {
   if (platform() === "win32") {
     const psCommand = `Compress-Archive -Path * -DestinationPath ${resolve(
       outDir
     )}/${fileName}.zip`;
     const res = await execPromise(psCommand, {
-      cwd: "temp",
+      cwd: tempDir,
       shell: "powershell.exe",
     });
   } else {
-    const psCommand = `cd ${resolve("temp")} && zip -r ${resolve(
+    const psCommand = `cd ${resolve(tempDir)} && zip -r ${resolve(
       outDir
     )}/${fileName}.zip ./*`;
     const res = await execPromise(psCommand);
