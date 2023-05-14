@@ -13,18 +13,41 @@ export const buildXlsxData = (csvText, report) => {
 };
 
 /**
+ * Creates a xlsx cell object
+ *
+ * @param {number | string} data
+ * @returns {import("../xlsx/types/worksheet.types.js").Cell}
+ */
+function c(data) {
+  return {
+    value: data,
+    dataType: isNaN(+data) ? "string" : "number",
+    style: {},
+  };
+}
+
+/**
  * @param {import("../types/Month.js").Month} month
  * @returns {import("../xlsx/types/worksheet.types.js").Sheet}
  */
 function creatASheetForMonth(month) {
   /** @type {import("../xlsx/types/worksheet.types.js").Row[]} */
-  const rows = [];
+  const rows = [{ cells: [] }];
+
+  const monthName = month.MonthDate.toLocaleString("en-GB", {
+    month: "long",
+  });
+  const yearName = month.MonthDate.getFullYear();
+  rows.push({ cells: [c(`${monthName} ${yearName} Report`)] });
+  rows.push({ cells: [] });
+
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
-  const sheet = { name: month.MonthDate.getMonth().toString(), rows: rows };
+  const sheet = { name: monthName, rows: rows };
 
   month.days.forEach((d) => {
     d.workSessions.forEach((s) => {
       if (d) {
+        rows.push({ cells: [c(d.dayDate.getDate())] });
       }
     });
   });
@@ -45,12 +68,8 @@ function getMainSheetFromCsv(csvText) {
     /** @type {import("../xlsx/types/worksheet.types.js").Row} */
     const oneRow = { cells: [] };
     const cells = r.split(",");
-    cells.forEach((c, ci) => {
-      oneRow.cells.push({
-        value: c,
-        dataType: isNaN(+c) ? "string" : "number",
-        style: {},
-      });
+    cells.forEach((cellData, ci) => {
+      oneRow.cells.push(c(cellData));
     });
     firstSheet.rows.push(oneRow);
   });
