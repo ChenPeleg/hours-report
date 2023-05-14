@@ -9,9 +9,10 @@ import { buildXlsxData } from "./buildXlsxData.js";
 /**
  * @param {string} csvText
  * @param {import("../types/reportConfigurations.js").ReportConfigurations} config
+ * @param {import("../types/Report.js").Report} report
  * @returns {Promise<{ filePath: string; folderPath: string }>}
  */
-export const saveToCsvOrXlsxFile = async (csvText, config) => {
+export const saveToCsvOrXlsxFile = async (csvText, config, report) => {
   const fileHash = veryBasicHash(csvText);
   const fileName = `hours-report-` + fileHash;
   const reportFolderPath = config.outputFolder
@@ -26,7 +27,7 @@ export const saveToCsvOrXlsxFile = async (csvText, config) => {
   }
   const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
   if (config.outputFormat === "xlsx") {
-    const xlsxData = buildXlsxData(csvText);
+    const xlsxData = buildXlsxData(csvText, report);
     xlsxData.name = fileName;
     await exportToXls(
       xlsxData,

@@ -4,9 +4,6 @@ import { exportReportToConsole } from "./exportReportToConsole.js";
 import { logToConsole } from "../utils/logToConsole.js";
 import { logger } from "../utils/logger.js";
 import { openExplorerIn } from "../utils/open-explorer.js";
-import { exportToXls } from "../xlsx/index.js";
-import { tmpdir } from "os";
-import path from "path";
 
 /**
  * @param {import("../types/Report.js").Report} report
@@ -27,7 +24,7 @@ export const exportReport = async (report, config) => {
     config.outputFormat === "all" ||
     config.outputFormat === "xlsx"
   ) {
-    const saveFileResult = await saveToCsvOrXlsxFile(csv, config);
+    const saveFileResult = await saveToCsvOrXlsxFile(csv, config, report);
     fileLocation = saveFileResult.filePath;
     logToConsole(
       "\n\x1b[32m ✔ \x1b[0m",
