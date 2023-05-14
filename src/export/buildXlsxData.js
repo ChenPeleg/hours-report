@@ -1,8 +1,9 @@
 /**
  * @param {string} csvText
+ * @param {import("../types/Report.js").Report} report
  * @returns {import("../xlsx/types/worksheet.types.js").Workbook}
  */
-export const buildXlsxData = (csvText) => {
+export const buildXlsxData = (csvText, report) => {
   const rows = csvText.split("\n");
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
   const firstSheet = { rows: [], name: "main_report" };
