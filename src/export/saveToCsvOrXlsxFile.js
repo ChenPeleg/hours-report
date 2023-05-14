@@ -9,7 +9,7 @@ import { exportLogs } from "./exportLogs.js";
  * @param {import("../types/reportConfigurations.js").ReportConfigurations} config
  * @returns {Promise<{ filePath: string; folderPath: string }>}
  */
-export const saveToCsvFile = async (csvText, config) => {
+export const saveToCsvOrXlsxFile = async (csvText, config) => {
   const fileHash = veryBasicHash(csvText);
   const fileName = `hours-report-` + fileHash;
   const reportFolderPath = config.outputFolder
@@ -23,8 +23,12 @@ export const saveToCsvFile = async (csvText, config) => {
     mkdirSync(reportLogsFolderPath);
   }
   const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
+  if (config.outputFormat === "xlsx") {
+    console.log("writing file xlsx");
+  } else if (config.outputFormat === "csv") {
+    writeFileSync(reportFilePath, csvText);
+  }
 
-  writeFileSync(reportFilePath, csvText);
   exportLogs(reportLogsFolderPath);
   return { folderPath: reportFolderPath, filePath: reportFilePath };
 };

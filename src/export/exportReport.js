@@ -1,9 +1,12 @@
 import { buildCsvAsString } from "./buildCsvAsString.js";
-import { saveToCsvFile } from "./saveToCsvFile.js";
+import { saveToCsvOrXlsxFile } from "./saveToCsvOrXlsxFile.js";
 import { exportReportToConsole } from "./exportReportToConsole.js";
 import { logToConsole } from "../utils/logToConsole.js";
 import { logger } from "../utils/logger.js";
 import { openExplorerIn } from "../utils/open-explorer.js";
+import { exportToXls } from "../xlsx/index.js";
+import { tmpdir } from "os";
+import path from "path";
 
 /**
  * @param {import("../types/Report.js").Report} report
@@ -19,8 +22,12 @@ export const exportReport = async (report, config) => {
   if (config.outputFormat === "console" || config.outputFormat === "all") {
     await exportReportToConsole(csv);
   }
-  if (config.outputFormat === "csv" || config.outputFormat === "all") {
-    const saveFileResult = await saveToCsvFile(csv, config);
+  if (
+    config.outputFormat === "csv" ||
+    config.outputFormat === "all" ||
+    config.outputFormat === "xlsx"
+  ) {
+    const saveFileResult = await saveToCsvOrXlsxFile(csv, config);
     fileLocation = saveFileResult.filePath;
     logToConsole(
       "\n\x1b[32m ✔ \x1b[0m",
@@ -30,8 +37,6 @@ export const exportReport = async (report, config) => {
       )}`
     );
     setTimeout(() => openExplorerIn(saveFileResult.folderPath), 1000);
-  } else if (config.outputFormat === "xlsx") {
-    console.log("export xlsx");
   }
   logger.info(
     "exportReport success",
