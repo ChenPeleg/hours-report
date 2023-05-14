@@ -8,7 +8,6 @@
   },
   "extends": [
     "prettier",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
@@ -18,6 +17,7 @@
   "rules": {
     "prettier/prettier": [
       "error"
-    ]
+    ],
+    "@typescript-eslint/ban-ts-comment": 0
   }
 }
