@@ -19,3 +19,11 @@ export const exportToXls = async (data, tempDir, outDir) => {
 //   tempDir,
 //   path.resolve("output")
 // ).then((r) => r);
+
+async function example() {
+  const tempDir = path.resolve(`output`, "temp");
+  await main({ name: "empty", sheets: [] }, { tempDir: "temp", outDir: "out" });
+  console.log("success!");
+}
+
+example();
