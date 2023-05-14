@@ -8,7 +8,10 @@ export const buildXlsxData = (csvText, report) => {
 
   return {
     name: "sheetReport",
-    sheets: [getMainSheetFromCsv(csvText), creatASheetForMonth(last3Months[0])],
+    sheets: [
+      getMainSheetFromCsv(csvText),
+      creatASheetForMonth(report.months[1]),
+    ],
   };
 };
 
