@@ -1,5 +1,5 @@
 import { buildCsvAsString } from "./buildCsvAsString.js";
-import { saveToCsvFile } from "./saveToCsvFile.js";
+import { saveToCsvOrXlsxFile } from "./saveToCsvOrXlsxFile.js";
 import { exportReportToConsole } from "./exportReportToConsole.js";
 import { logToConsole } from "../utils/logToConsole.js";
 import { appendFileSync, existsSync, mkdirSync } from "fs";
