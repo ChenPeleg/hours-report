@@ -12,8 +12,8 @@ export const buildXlsxData = (csvText) => {
     const cells = r.split(",");
     cells.forEach((c, ci) => {
       oneRow.cells.push({
-        value: c || "asdf ",
-        style: { font: { color: "#000000" } },
+        value: 10 || "asdf ",
+        style: {},
       });
     });
     firstSheet.rows.push(oneRow);
@@ -21,7 +21,7 @@ export const buildXlsxData = (csvText) => {
 
   return {
     name: "sheetReport",
-    sheets: [{ rows: mockRows(), name: "sheet_1" }],
+    sheets: [{ rows: firstSheet.rows, name: "sheet_1" }],
   };
 };
 
@@ -34,7 +34,7 @@ function mockRows() {
           style: {},
         },
         {
-          value: 20,
+          value: "",
           style: {},
         },
         {
