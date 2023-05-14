@@ -8,9 +8,9 @@ import fs from "node:fs";
 export const deleteFilesFromDir = async (directory = "temp") => {
   const dir = resolve(directory);
   if (existsSync(dir)) {
-    fs.rmSync(dir, { recursive: true, force: true });
   }
 
+  fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
 };
 
@@ -59,9 +59,9 @@ export const runZipper = async (fileName = "workbook", outDir = "out") => {
 export const copyFilesToTempDir = (fileObject, tempDir) => {
   for (const file in fileObject) {
     const dir = resolve(tempDir, ...fileObject[file].url.slice(0, -1));
-    if (!existsSync(dir)) {
-      mkdirSync(dir, { recursive: true });
-    }
+
+    mkdirSync(dir, { recursive: true });
+
     writeFileSync(
       resolve(tempDir, ...fileObject[file].url),
       fileObject[file].content,
