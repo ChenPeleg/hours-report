@@ -16,7 +16,7 @@ export const buildXlsxData = (csvText, report) => {
 };
 
 /**
- * Creates a xlsx cell object
+ * Creates a xlsx cell object for the sheet
  *
  * @param {number | string} data
  * @returns {import("../xlsx/types/worksheet.types.js").Cell}
