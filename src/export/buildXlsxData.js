@@ -4,6 +4,19 @@
  * @returns {import("../xlsx/types/worksheet.types.js").Workbook}
  */
 export const buildXlsxData = (csvText, report) => {
+  return {
+    name: "sheetReport",
+    sheets: [getMainSheetFromCsv(csvText)],
+  };
+};
+
+/**
+ * Creates the main report from the csv data
+ *
+ * @param {string} csvText
+ * @returns {import("../xlsx/types/worksheet.types.js").Sheet}
+ */
+function getMainSheetFromCsv(csvText) {
   const rows = csvText.split("\n");
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
   const firstSheet = { rows: [], name: "main_report" };
@@ -20,9 +33,5 @@ export const buildXlsxData = (csvText, report) => {
     });
     firstSheet.rows.push(oneRow);
   });
-
-  return {
-    name: "sheetReport",
-    sheets: [{ rows: firstSheet.rows, name: "sheet_1" }],
-  };
-};
+  return { rows: firstSheet.rows, name: "main_report" };
+}
