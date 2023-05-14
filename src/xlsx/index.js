@@ -9,21 +9,5 @@ import { tmpdir } from "os";
  * @returns {Promise<void>}
  */
 export const exportToXls = async (data, tempDir, outDir) => {
-  return await main(null, { tempDir: tempDir, outDir: outDir });
+  await main(data, { tempDir, outDir });
 };
-// const tempDir = path.resolve(`output`, "temp");
-// console.log(tempDir);
-//
-// exportToXls(
-//   { name: "empty", sheets: [] },
-//   tempDir,
-//   path.resolve("output")
-// ).then((r) => r);
-
-async function example() {
-  const tempDir = path.resolve(`output`, "temp");
-  await main({ name: "empty", sheets: [] }, { tempDir: "temp", outDir: "out" });
-  console.log("success!");
-}
-
-example();

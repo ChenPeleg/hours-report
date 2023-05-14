@@ -4,6 +4,7 @@ import { tmpdir } from "os";
 import { veryBasicHash } from "../utils/veryBasicHash.js";
 import { exportLogs } from "./exportLogs.js";
 import { exportToXls } from "../xlsx/index.js";
+import { buildXlsxData } from "./buildXlsxData.js";
 
 /**
  * @param {string} csvText
@@ -25,12 +26,13 @@ export const saveToCsvOrXlsxFile = async (csvText, config) => {
   }
   const reportFilePath = path.resolve(reportFolderPath, `${fileName}.csv`);
   if (config.outputFormat === "xlsx") {
-    console.log("mock export to xlsx");
-    // await exportToXls(
-    //   { name: "empty_xls", sheets: [] },
-    //   path.resolve(tmpdir(), `./hours-report-temp-xls/`),
-    //   reportFolderPath
-    // );
+    const xlsxData = buildXlsxData(csvText);
+    xlsxData.name = fileName;
+    await exportToXls(
+      xlsxData,
+      path.resolve(tmpdir(), `./hours-report-temp-xls/`),
+      reportFolderPath
+    );
   } else if (config.outputFormat === "csv") {
     writeFileSync(reportFilePath, csvText);
   }
