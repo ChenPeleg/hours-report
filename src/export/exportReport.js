@@ -15,6 +15,7 @@ export const exportReport = async (report, config) => {
   );
   let fileLocation;
   const csv = buildCsvAsString(report);
+  logToConsole(config.outputFormat);
   if (config.outputFormat === "console" || config.outputFormat === "all") {
     await exportReportToConsole(csv);
   }
@@ -29,6 +30,8 @@ export const exportReport = async (report, config) => {
       )}`
     );
     setTimeout(() => openExplorerIn(saveFileResult.folderPath), 1000);
+  } else if (config.outputFormat === "xlsx") {
+    console.log("export xlsx");
   }
   logger.info(
     "exportReport success",
