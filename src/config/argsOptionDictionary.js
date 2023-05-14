@@ -43,7 +43,8 @@ export const ArgsOptionDictionary = [
     name: "format",
     alias: "fr",
     type: "string",
-    helpText: "output format : 'csv' | 'console' | 'all'. Default: 'csv'",
+    helpText:
+      "output format : 'csv' | 'console' | 'all'. Also there is an experimental 'xlsx' format that is not stable yet. . Default: 'csv'",
     configOption: "outputFormat",
   },
   {
@@ -60,13 +61,7 @@ export const ArgsOptionDictionary = [
     helpText: "Git repository to analyze. Default: . (current folder)",
     configOption: "PathToRepo",
   },
-  {
-    name: "full-report",
-    alias: "fr",
-    type: "boolean",
-    helpText: "Experimental full report in xlsx format",
-    configOption: "fullReport",
-  },
+
   {
     name: "help",
     alias: "h",
