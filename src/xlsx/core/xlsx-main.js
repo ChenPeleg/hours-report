@@ -18,5 +18,5 @@ export const main = async (data, config) => {
   const xlsObject = createFileObjectFromSheets(workbookObject);
   await copyFilesToTempDir(xlsObject, resolve(tempDir));
   await deleteFilesFromDir(outDir);
-  await runZipper(workbookObject.name, outDir);
+  await runZipper(workbookObject.name, tempDir, outDir);
 };
