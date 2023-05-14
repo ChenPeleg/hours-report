@@ -7,8 +7,11 @@ import fs from "node:fs";
 
 export const deleteFilesFromDir = async (directory = "temp") => {
   const dir = resolve(directory);
-  fs.rmSync(dir, { recursive: true, force: true });
-  fs.mkdirSync(dir);
+  if (existsSync(dir)) {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+
+  fs.mkdirSync(dir, { recursive: true });
 };
 
 export const execPromise = async (command, extraParams = {}) => {
