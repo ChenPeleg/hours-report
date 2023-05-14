@@ -60,6 +60,13 @@ export const ArgsOptionDictionary = [
     helpText: "Git repository to analyze. Default: . (current folder)",
     configOption: "PathToRepo",
   },
+  // {
+  //   name: "full-report",
+  //   alias: "fr",
+  //   type: "boolean",
+  //   helpText: "Experimental full report in xlsx format",
+  //   configOption: "fullReport",
+  // },
   {
     name: "help",
     alias: "h",

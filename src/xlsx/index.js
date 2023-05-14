@@ -5,4 +5,4 @@ async function example() {
   console.log("success!");
 }
 
-example();
+example().then();
