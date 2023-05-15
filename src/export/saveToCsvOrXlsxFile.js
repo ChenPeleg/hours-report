@@ -32,7 +32,7 @@ export const saveToCsvOrXlsxFile = async (csvText, config, report) => {
     await exportToXls(
       xlsxData, // "temp",
       // "out"
-      path.resolve(tmpdir(), `./hours-report-temp-xls/`),
+      path.resolve(tmpdir(), `hours-report-temp-xls`),
       reportFolderPath
     );
   } else if (config.outputFormat === "csv") {

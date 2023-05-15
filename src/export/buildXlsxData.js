@@ -55,6 +55,14 @@ function creatASheetForMonth(month) {
       c("Hours"),
     ],
   });
+  rows[rows.length - 1].height = 45;
+  rows[rows.length - 1].cells.forEach(
+    (c) =>
+      (c.style.border = [
+        { width: "thick", position: "bottom", color: "#000000" },
+      ])
+  );
+  rows.forEach((r) => r.cells.forEach((c) => (c.style.font = { bold: true })));
 
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
   const sheet = { name: monthName, rows: rows };

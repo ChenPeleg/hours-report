@@ -9,6 +9,7 @@ export type CellBorder =
       width?: "thin" | "medium" | "thick" | "dotted" | "hair" | "double";
       color?: string;
     };
+
 export interface CellStyle {
   background?: string;
   font?: {
@@ -19,11 +20,14 @@ export interface CellStyle {
   border?: CellBorder[];
   styleId?: string;
 }
+
 export interface Cell {
   dataType?: "number" | "string" | "empty";
   value: number | string;
   style?: CellStyle;
 }
+
+/** A row in a xlsx spreadsheet The height is in pixels */
 export interface Row {
   cells: Cell[];
   height?: number;
@@ -34,6 +38,7 @@ export interface Sheet {
   name: string;
   columnWidth?: number[];
 }
+
 export interface Workbook {
   name: string;
   sheets: Sheet[];
