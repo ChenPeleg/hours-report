@@ -91,7 +91,7 @@ function creatASheetForMonth(month) {
       }
     });
   });
-  sheet.columnWidth = [20, 30, 40, 50, 60];
+  sheet.columnWidth = [5, 5, 5, 30, 5, 5];
   return sheet;
 }
 
