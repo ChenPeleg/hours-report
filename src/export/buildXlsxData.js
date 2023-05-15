@@ -8,7 +8,8 @@ import { DateAndTimeUtil } from "../utils/dateAndTime.js";
 export const buildXlsxData = (csvText, report) => {
   const last3Months = report.months
     .slice(-3)
-    .map((m) => creatASheetForMonth(m));
+    .map((m) => creatASheetForMonth(m))
+    .reverse();
 
   return {
     name: "sheetReport",
