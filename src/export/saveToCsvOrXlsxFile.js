@@ -30,8 +30,7 @@ export const saveToCsvOrXlsxFile = async (csvText, config, report) => {
     const xlsxData = buildXlsxData(csvText, report);
     xlsxData.name = fileName;
     await exportToXls(
-      xlsxData,
-      // "temp",
+      xlsxData, // "temp",
       // "out"
       path.resolve(tmpdir(), `./hours-report-temp-xls/`),
       reportFolderPath

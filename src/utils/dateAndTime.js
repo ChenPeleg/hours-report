@@ -32,6 +32,8 @@ const dateAndTimeToDateObj = (date, time, offset = "Z") => {
   return new Date(`${date}T${time}${offset}`);
 };
 /**
+ * Gets the number of minutes between two date objets
+ *
  * @param {Date} startDate
  * @param {Date} endDate
  * @returns {number}
