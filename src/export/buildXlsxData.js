@@ -6,14 +6,13 @@ import { DateAndTimeUtil } from "../utils/dateAndTime.js";
  * @returns {import("../xlsx/types/worksheet.types.js").Workbook}
  */
 export const buildXlsxData = (csvText, report) => {
-  const last3Months = report.months.slice(-3);
+  const last3Months = report.months
+    .slice(-3)
+    .map((m) => creatASheetForMonth(m));
 
   return {
     name: "sheetReport",
-    sheets: [
-      creatASheetForMonth(report.months[1]),
-      getMainSheetFromCsv(csvText),
-    ],
+    sheets: [creatASheetForMonth(report.months[1]), ...last3Months],
   };
 };
 
@@ -61,7 +60,7 @@ function creatASheetForMonth(month) {
   rows.forEach((r) => r.cells.forEach((c) => (c.style.font = { bold: true })));
 
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
-  const sheet = { name: monthName, rows: rows };
+  const sheet = { name: `${monthName}_${yearName}`, rows: rows };
 
   month.days.forEach((d) => {
     const lastRowIndex = rows.push({
