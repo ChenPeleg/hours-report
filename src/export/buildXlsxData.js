@@ -45,36 +45,53 @@ function creatASheetForMonth(month) {
   const yearName = month.MonthDate.getFullYear();
   rows.push({ cells: [c(`${monthName} ${yearName} Report`)] });
   rows.push({ cells: [] });
-  rows.push({ cells: [c("Day"), c("Date"), c(" "), c("Session ")] });
+  rows.push({
+    cells: [
+      c("Day"),
+      c("Date"),
+      c(" "),
+      c("Sessions "),
+      c("Start hour "),
+      c("Hours"),
+    ],
+  });
 
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
   const sheet = { name: monthName, rows: rows };
 
   month.days.forEach((d) => {
-    rows.push({
+    const lastRowIndex = rows.push({
       cells: [
         c(`  ${d.dayDate.toLocaleDateString("en-GB", { weekday: "short" })}`),
         c(
           `${d.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`
         ),
         c(" "),
-        c("Sessions "),
+        c(" "),
       ],
     });
-    d.workSessions.forEach((s) => {
-      if (d) {
+    const cll = c("");
+
+    d.workSessions.forEach((s, i) => {
+      const sessionCells = [
+        c(""),
+        c(""),
+        c(""),
+        c(s.gitComments),
+        c(`   ${s.startTime.getHours()}:${s.startTime.getMinutes()}   `),
+        c(
+          (
+            DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) /
+            60
+          ).toFixed(1)
+        ),
+      ];
+      if (i === 0) {
+        rows[lastRowIndex - 1].cells =
+          rows[lastRowIndex - 1].cells.concat(sessionCells);
+      } else {
         rows.push({
-          cells: [
-            c(""),
-            c(""),
-            c(""),
-            c(""),
-            c(s.gitComments),
-            c(s.startTime.getTime()),
-            c(
-              DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime)
-            ),
-          ],
+          cells: sessionCells,
         });
       }
     });
