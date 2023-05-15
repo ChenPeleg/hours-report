@@ -66,17 +66,12 @@ function creatASheetForMonth(month) {
         c(
           `${d.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`
         ),
-        c(" "),
-        c(" "),
+        c(""),
       ],
     });
-    const cll = c("");
 
     d.workSessions.forEach((s, i) => {
       const sessionCells = [
-        c(""),
-        c(""),
-        c(""),
         c(s.gitComments),
         c(`   ${s.startTime.getHours()}:${s.startTime.getMinutes()}   `),
         c(
@@ -91,11 +86,12 @@ function creatASheetForMonth(month) {
           rows[lastRowIndex - 1].cells.concat(sessionCells);
       } else {
         rows.push({
-          cells: sessionCells,
+          cells: [c(""), c(""), c("")].concat(sessionCells),
         });
       }
     });
   });
+  sheet.columnWidth = [20, 30, 40, 50, 60];
   return sheet;
 }
 
