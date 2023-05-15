@@ -1,3 +1,5 @@
+import { DateAndTimeUtil } from "../utils/dateAndTime.js";
+
 /**
  * @param {string} csvText
  * @param {import("../types/Report.js").Report} report
@@ -9,8 +11,8 @@ export const buildXlsxData = (csvText, report) => {
   return {
     name: "sheetReport",
     sheets: [
-      getMainSheetFromCsv(csvText),
       creatASheetForMonth(report.months[1]),
+      getMainSheetFromCsv(csvText),
     ],
   };
 };
@@ -43,14 +45,37 @@ function creatASheetForMonth(month) {
   const yearName = month.MonthDate.getFullYear();
   rows.push({ cells: [c(`${monthName} ${yearName} Report`)] });
   rows.push({ cells: [] });
+  rows.push({ cells: [c("Day"), c("Date"), c(" "), c("Session ")] });
 
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
   const sheet = { name: monthName, rows: rows };
 
   month.days.forEach((d) => {
+    rows.push({
+      cells: [
+        c(`  ${d.dayDate.toLocaleDateString("en-GB", { weekday: "short" })}`),
+        c(
+          `${d.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`
+        ),
+        c(" "),
+        c("Sessions "),
+      ],
+    });
     d.workSessions.forEach((s) => {
       if (d) {
-        rows.push({ cells: [c(d.dayDate.getDate())] });
+        rows.push({
+          cells: [
+            c(""),
+            c(""),
+            c(""),
+            c(""),
+            c(s.gitComments),
+            c(s.startTime.getTime()),
+            c(
+              DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime)
+            ),
+          ],
+        });
       }
     });
   });
@@ -70,6 +95,7 @@ function getMainSheetFromCsv(csvText) {
   rows.forEach((r, ri) => {
     /** @type {import("../xlsx/types/worksheet.types.js").Row} */
     const oneRow = { cells: [] };
+
     const cells = r.split(",");
     cells.forEach((cellData, ci) => {
       oneRow.cells.push(c(cellData));
