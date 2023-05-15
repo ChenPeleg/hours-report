@@ -41,7 +41,7 @@ export const buildStyleSheets = (allStyles) => {
     let { background, color, font, bold, border } = stl;
     background = `fillId="${+background + 2}" applyFill="1"`;
     font = !isNaN(font) ? `fontId="${font + 2}" applyFont="1"` : `fontId="0"`;
-    border = border
+    border = !isNaN(border)
       ? `borderId="${border + 1}" applyBorder="1"`
       : `borderId="0"`;
     return `
@@ -66,15 +66,17 @@ export const buildStyleSheets = (allStyles) => {
     styleXml = styleXml.replace(`<font/>`, fonts.join(" "));
   }
   const borders = allStylesContainers.border.map((b) => buildBorder(b));
+
   if (borders.length) {
     styleXml = styleXml.replace(
       `<borders count="1">
-        <border />
-    </borders>`,
+            <border />
+        </borders>`,
       `<borders count="${borders.length + 1}">
       <border /> ${borders.join(" ")}
   </borders>`
     );
+
     styleXml = styleXml.replace(`<font/>`, fonts.join(" "));
   }
   return styleXml;
