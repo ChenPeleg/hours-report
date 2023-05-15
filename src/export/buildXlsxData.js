@@ -50,18 +50,14 @@ function creatASheetForMonth(month) {
       c("Day"),
       c("Date"),
       c(" "),
-      c("Sessions "),
-      c("Start hour "),
+      c("Sessions - Start"),
       c("Hours"),
+      c(""),
+      c("Details "),
     ],
   });
   rows[rows.length - 1].height = 45;
-  rows[rows.length - 1].cells.forEach(
-    (c) =>
-      (c.style.border = [
-        { width: "thick", position: "bottom", color: "#000000" },
-      ])
-  );
+  rows[rows.length - 1].cells.forEach((c) => (c.style.border = ["bottom"]));
   rows.forEach((r) => r.cells.forEach((c) => (c.style.font = { bold: true })));
 
   /** @type {import("../xlsx/types/worksheet.types.js").Sheet} */
@@ -80,12 +76,11 @@ function creatASheetForMonth(month) {
 
     d.workSessions.forEach((s, i) => {
       const sessionCells = [
-        c(s.gitComments),
         c(
           `   ${s.startTime.getHours()}:${s.startTime
             .getMinutes()
             .toString()
-            .padStart(1, "0")}   `
+            .padStart(2, "0")}   `
         ),
         c(
           (
@@ -93,6 +88,8 @@ function creatASheetForMonth(month) {
             60
           ).toFixed(1)
         ),
+        c(""),
+        c(s.gitComments),
       ];
       if (i === 0) {
         rows[lastRowIndex - 1].cells =
@@ -102,9 +99,10 @@ function creatASheetForMonth(month) {
           cells: [c(""), c(""), c("")].concat(sessionCells),
         });
       }
+      rows[rows.length - 1].height = 40;
     });
   });
-  sheet.columnWidth = [5, 5, 5, 30, 5, 5];
+  sheet.columnWidth = [5, 5, 3, 10, 10, 5, 60];
   return sheet;
 }
 
