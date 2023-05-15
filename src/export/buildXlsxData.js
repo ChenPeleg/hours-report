@@ -73,7 +73,12 @@ function creatASheetForMonth(month) {
     d.workSessions.forEach((s, i) => {
       const sessionCells = [
         c(s.gitComments),
-        c(`   ${s.startTime.getHours()}:${s.startTime.getMinutes()}   `),
+        c(
+          `   ${s.startTime.getHours()}:${s.startTime
+            .getMinutes()
+            .toString()
+            .padStart(1, "0")}   `
+        ),
         c(
           (
             DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) /
