@@ -12,7 +12,7 @@ export const buildXlsxData = (csvText, report) => {
 
   return {
     name: "sheetReport",
-    sheets: [creatASheetForMonth(report.months[1]), ...last3Months],
+    sheets: [getMainSheetFromCsv(csvText), ...last3Months],
   };
 };
 
@@ -83,7 +83,8 @@ function creatASheetForMonth(month) {
         ),
         c(
           (
-            DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) /
+            (DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) +
+              30) /
             60
           ).toFixed(1)
         ),
