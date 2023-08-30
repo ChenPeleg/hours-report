@@ -26,6 +26,9 @@ export const exportReport = async (report, config) => {
   ) {
     const saveFileResult = await saveToCsvOrXlsxFile(csv, config, report);
     fileLocation = saveFileResult.filePath;
+    if (config.outputFormat === "xlsx") {
+      fileLocation = fileLocation.replace("csv", "xlsx");
+    }
     logToConsole(
       "\n\x1b[32m ✔ \x1b[0m",
       `Hours report exported successfully to: \n    file:///${fileLocation.replace(
