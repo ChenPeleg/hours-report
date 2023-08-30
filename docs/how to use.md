@@ -30,7 +30,7 @@ These are the options, with which you can change the default behaviour:
     -mn,  --min-session                  how many minutes the first commit of a session should add to total. Default: 30
     -df,  --date-from                    Analyze data since certain date (git log format). default: always (with limit of 1000 rows)
     -du,  --date-until                   Analyze data until certain date (git log format). default: now
-    -fr,  --format                       output format : 'csv' | 'console' | 'all'. Default: 'csv'
+    -fr,  --format                       output format : 'csv' | 'console' | 'xlsx'. Default: 'xlsx'
     -o,   --output                       output folder. Default: temp/hours-report
     -p,   --path                         Git repository to analyze. Default: . (current folder)
     -h,   --help                         prints help options
