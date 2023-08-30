@@ -5,9 +5,9 @@ import { logToConsole } from "../../src/utils/logToConsole.js";
 
 const outputFolder = "output";
 
-const cleanStringsToFindInAccessability = [
+const cleanStringsToFindInAccessibility = [
   "Hours report drorsoft/accessibility",
-  "Total hours 11",
+  "Total: 11",
   "December Day Date Hours Details",
   "Thu 22.12 6 Initial commit; graphics; just the docs theme;",
 ];
@@ -23,7 +23,7 @@ const eq = (val1, val2) => {
 
 const e2eTest = async () => {
   const exceResopnse = await execPromise(
-    `npm run start -- -o=./${outputFolder} -p=../accessibility -e=chenpeleg@gmail.com`
+    `npm run start -- -o=./${outputFolder} -p=../accessibility -e=chenpeleg@gmail.com -fr=csv`
   );
   const resLines = exceResopnse.split("\n").slice(2);
   const outputLine = resLines.find((l) => l.includes(outputFolder));
@@ -34,12 +34,12 @@ const e2eTest = async () => {
 
   const pathToFile = `./${outputFolder}/${fileName}`;
   const resultCsv = readFileSync(path.resolve(pathToFile)).toString();
-  console.log(resultCsv);
+  // console.log(resultCsv);
 
   const cleanText = removeCommasAndMultiSpaces(resultCsv);
 
   eq(cleanText.length > 100, true);
-  for (const text of cleanStringsToFindInAccessability) {
+  for (const text of cleanStringsToFindInAccessibility) {
     eq(cleanText.includes(text), true);
   }
   logToConsole("e2e passed");
