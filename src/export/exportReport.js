@@ -15,7 +15,7 @@ export const exportReport = async (report, config) => {
   );
   let fileLocation;
   const csv = buildCsvAsString(report);
-  logToConsole(config.outputFormat);
+  // logToConsole(config.outputFormat);
   if (config.outputFormat === "console" || config.outputFormat === "all") {
     await exportReportToConsole(csv);
   }
