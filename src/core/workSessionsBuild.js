@@ -15,6 +15,11 @@ export const WorkSessionsBuild = (logEntries, config) => {
     (a, b) => a.date.getTime() - b.date.getTime()
   );
   logger.info(`workSessionBuildData recieved ${logEntries.length} log entries`);
+  logger.debug(
+    `all  logEntries ${logEntries
+      .map((le) => `${le.date} ${le.branch} ${le.comment}`)
+      .join("; \n")} `
+  );
   gitLogAddBranchesToLogEntries(sortedLogEntries);
 
   const basicSession = groupEntriesToSessions(

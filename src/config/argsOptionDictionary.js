@@ -35,7 +35,7 @@ export const ArgsOptionDictionary = [
   {
     name: "date-until",
     alias: "du",
-    type: "number",
+    type: "string",
     helpText: "Analyze data until certain date (git log format). default: now",
     configOption: "DateUntil",
   },
