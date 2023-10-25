@@ -21,9 +21,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
-    "start:alinks": "node ./src/index.js --path=../dash-enduser-api" ,
     "start:debug": "node ./src/index.js --debug",
-    "start:xlsx": "node ./src/index.js --format=xlsx",
     "test": " node ./test/test_runner.js integration",
     "e2e": " node ./test/e2e/runAppE2e.test.js",
     "format": "prettier --write .",
