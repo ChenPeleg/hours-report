@@ -64,6 +64,7 @@ from [git-hours](https://github.com/kimmobrunfeldt/git-hours), [git-time](https:
 - [x] Node.js 14
 - [x] Node.js 16
 - [x] Node.js 18
+- [x] Node.js 20
 
 The package is written in vanilla JS so no dependencies (only Typescript as dev dependency).
 This is so it can support version 12-18 of nodeJS.
