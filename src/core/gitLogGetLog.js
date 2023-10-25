@@ -39,8 +39,6 @@ export const gitLogGetLog = async (config) => {
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
-  console.log("gitgitLogCommand", gitLogCommand(dir, config.Email, moreData));
-  console.log("git log", gitLog);
 
   logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(

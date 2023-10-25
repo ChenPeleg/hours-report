@@ -34,7 +34,6 @@ const e2eTest = async () => {
 
   const pathToFile = `./${outputFolder}/${fileName}`;
   const resultCsv = readFileSync(path.resolve(pathToFile)).toString();
-  // console.log(resultCsv);
 
   const cleanText = removeCommasAndMultiSpaces(resultCsv);
 
