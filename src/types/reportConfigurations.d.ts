@@ -7,7 +7,7 @@ export interface ReportConfigurations {
   PathToRepo: string; //  Git repository to analyze. Default: .
   outputFormat: "csv" | "console" | "all" | "xlsx";
   outputFolder: string;
-  Debug: boolean;
+  debug: boolean;
 }
 
 export interface CommandLineOption {
