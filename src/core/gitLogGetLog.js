@@ -33,7 +33,7 @@ export const gitLogGetLog = async (config) => {
   }
   const moreData = `--until=${
     config.DateUntil || new Date().getFullYear() + 1
-  } ${config.DateFrom ? `--since=${config.DateFrom}` : ""}`;
+  } ${config.DateFrom ? `--since="${config.DateFrom}"` : ""}`;
   const gitLog = await execPromise(
     gitLogCommand(dir, config.Email, moreData)
   ).catch((err) => {
