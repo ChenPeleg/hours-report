@@ -64,6 +64,7 @@ export const gitLogGetLog = async (config) => {
     throw errMessage;
   } else {
     logger.info(`Recieved git log. length: ${gitLog.length} chars`);
+    logger.debug(`Recieved git log. all data: ${gitLog} chars`);
   }
 
   return { gitLog, gitRepoName };
