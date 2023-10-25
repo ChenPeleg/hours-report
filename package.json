@@ -21,7 +21,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
-    "start:alinks": "node ./src/index.js --path=../dash-enduser-api --date-from=\"2023-10-10\"" ,
+    "start:alinks": "node ./src/index.js --path=../dash-enduser-api --date-from=\"2023-10-10\" --debug" ,
     "start:debug": "node ./src/index.js --debug",
     "start:xlsx": "node ./src/index.js --format=xlsx",
     "test": " node ./test/test_runner.js integration",

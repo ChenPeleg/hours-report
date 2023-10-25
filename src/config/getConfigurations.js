@@ -24,6 +24,9 @@ export const getConfiguration = (commandLineArgs) => {
       if (configProp === "Help") {
         printHelp = true;
       }
+      if (configProp === "debug") {
+        config.debug = true;
+      }
     }
   } catch (err) {
     logger.error(err);
