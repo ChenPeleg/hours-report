@@ -69,4 +69,11 @@ export const ArgsOptionDictionary = [
     helpText: "prints help options",
     configOption: "Help",
   },
+  {
+    name: "debug",
+    alias: "db",
+    type: "string",
+    helpText: "runs the app in debug mode",
+    configOption: "Debug",
+  },
 ];
