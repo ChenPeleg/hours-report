@@ -4,14 +4,27 @@ import { rename } from "node:fs/promises";
 import { exec } from "child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import fs from "node:fs";
+import { TestFrameWorkConsole } from "../../utils/consoleFormat.js";
 
 export const deleteFilesFromDir = async (directory = "temp") => {
   const dir = resolve(directory);
   if (existsSync(dir)) {
   }
+  try {
+    fs.rmSync(dir, { recursive: true, force: true });
 
-  fs.rmSync(dir, { recursive: true, force: true });
-  fs.mkdirSync(dir, { recursive: true });
+    fs.mkdirSync(dir, { recursive: true });
+  } catch (e) {
+    if (e.toString().includes("Error: EBUSY: resource busy or locked")) {
+      console.error(
+        TestFrameWorkConsole.paint(
+          `*****  Error   *****\n The file is open in another program, please close ${directory} \n `,
+          { color: "red", background: "BGblack" }
+        )
+      );
+      process.exit(1);
+    }
+  }
 };
 
 export const execPromise = async (command, extraParams = {}) => {
