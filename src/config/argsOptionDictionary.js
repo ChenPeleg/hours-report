@@ -27,7 +27,7 @@ export const ArgsOptionDictionary = [
   {
     name: "date-from",
     alias: "df",
-    type: "number",
+    type: "string",
     helpText:
       "Analyze data since certain date (git log format). default: always (with limit of 1000 rows)",
     configOption: "DateFrom",
