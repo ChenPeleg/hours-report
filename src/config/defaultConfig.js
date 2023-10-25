@@ -8,4 +8,5 @@ export const defaultConfig = {
   PathToRepo: ".",
   outputFormat: "xlsx",
   outputFolder: "",
+  debug: false,
 };
