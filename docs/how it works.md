@@ -65,3 +65,9 @@ The detail column contains only partial information received from the git log:
 
 - branch names if are any (until a certain limit of characters per day)\
 - commit messages (until a certain limit of characters per day)
+
+
+## Difference between commit creation date and author date
+
+The commit date is the date that the commit was created. 
+The author date is the date that the commit was committed. The author date is the one that is used to calculate the work days.
