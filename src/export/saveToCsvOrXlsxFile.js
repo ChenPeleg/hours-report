@@ -38,7 +38,8 @@ export const saveToCsvOrXlsxFile = async (csvText, config, report) => {
   } else if (config.outputFormat === "csv") {
     writeFileSync(reportFilePath, csvText);
   }
-
-  exportLogs(reportLogsFolderPath);
+  if (config.debug) {
+    exportLogs(reportLogsFolderPath);
+  }
   return { folderPath: reportFolderPath, filePath: reportFilePath };
 };
