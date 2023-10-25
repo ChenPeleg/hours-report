@@ -13,7 +13,7 @@ const gitNameCommand = `git config --get remote.origin.url`;
  * @returns {Promise<{ gitLog: string; gitRepoName: string }>}
  */
 export const gitLogGetLog = async (config) => {
-  logger.debug("gitLogGetLog started");
+  logger.info("gitLogGetLog started");
   const dir = path.resolve(proccessDir, config.PathToRepo);
   logger.info(`gitLogGetLog: ${dir}`);
 
