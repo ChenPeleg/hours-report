@@ -1,8 +1,9 @@
-import { log } from "util";
-
 const logs = [];
 
 export const logger = {
+  debug(...args) {
+    logs.push([new Date().toISOString(), "Debug-Info", ...args]);
+  },
   info(...args) {
     logs.push([new Date().toISOString(), "Info", ...args]);
   },
