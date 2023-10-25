@@ -33,14 +33,14 @@ export const gitLogGetLog = async (config) => {
   }
   const moreData = `--until=${
     config.DateUntil || new Date().getFullYear() + 1
-  } ${config.DateFrom ? `--since="${config.DateFrom}"` : ""}`;
+  } ${config.DateFrom ? `--since=${config.DateFrom}` : ""}`;
   const gitLog = await execPromise(
     gitLogCommand(dir, config.Email, moreData)
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
   console.log(gitLogCommand(dir, config.Email, moreData));
-  console.log(gitLog);
+  console.log("git log", gitLog);
 
   logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(
