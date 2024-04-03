@@ -4,10 +4,11 @@ import { DateAndTimeUtil } from "../utils/dateAndTime.js";
  * Build the data of a single day that is shown on the table as one row
  *
  * @param {import("../types/Day.js").Day} day
+ * @param {import("../types/reportConfigurations.js").ReportConfigurations} configuration
  * @returns {import("../types/Day.js").Day}
  */
 
-const buildDayData = (day) => {
+const buildDayData = (day, configuration) => {
   const dayWithData = { ...day };
   dayWithData.dayDate = day.workSessions[0].startTime;
   dayWithData.minuetSum = day.workSessions
@@ -26,11 +27,33 @@ const buildDayData = (day) => {
     .filter((b) => b.trim())
     .join("; ");
   dayWithData.comments = dayWithData.comments.replace(/_/g, " ").trim();
+  let commentsFromWorkSession = day.workSessions.map((ws) =>
+    ws.gitComments.trim()
+  );
   if (!dayWithData.comments) {
-    const unsortedComments = day.workSessions.map((ws) =>
-      ws.gitComments.trim()
+    if (configuration.priorityCommentPattern) {
+      // sort text with priorityCommentPattern first in the array
+      const priorityComments = commentsFromWorkSession.filter((c) =>
+        c.includes(configuration.priorityCommentPattern)
+      );
+      if (priorityComments.length) {
+        commentsFromWorkSession = commentsFromWorkSession.filter(
+          (c) => !priorityComments.includes(c)
+        );
+        commentsFromWorkSession = [
+          ...priorityComments,
+          ...commentsFromWorkSession,
+        ];
+      }
+    }
+    dayWithData.comments = commentsFromWorkSession.join("; ");
+  } else if (configuration.priorityCommentPattern) {
+    const priorityComments = commentsFromWorkSession.filter((c) =>
+      c.includes(configuration.priorityCommentPattern)
     );
-    dayWithData.comments = unsortedComments.join("; ");
+    if (priorityComments.length) {
+      dayWithData.comments = priorityComments.join("; ") + dayWithData.comments;
+    }
   }
   return dayWithData;
 };
@@ -76,5 +99,5 @@ export const buildDaysFromSessions = (workSessions, configuration) => {
     allDays.push(CurrentDay);
   }
 
-  return allDays.map((d) => buildDayData(d));
+  return allDays.map((d) => buildDayData(d, configuration));
 };
