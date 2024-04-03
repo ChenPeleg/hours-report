@@ -52,7 +52,7 @@ const buildDayData = (day, configuration) => {
       c.includes(configuration.priorityCommentPattern)
     );
     if (priorityComments.length) {
-      dayWithData.comments = priorityComments.join("; ") + dayWithData.comments;
+      dayWithData.comments += priorityComments.join("; ");
     }
   }
   return dayWithData;
