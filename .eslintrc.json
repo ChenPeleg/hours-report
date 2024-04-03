@@ -15,9 +15,8 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "prettier/prettier": [
-
-      "error"
+    "prettier/prettier": ["error",{
+      "endOfLine": "auto"}
     ],
     "@typescript-eslint/ban-ts-comment": 0
   }
