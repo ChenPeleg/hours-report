@@ -8,6 +8,7 @@ export interface ReportConfigurations {
   outputFormat: "csv" | "console" | "all" | "xlsx";
   outputFolder: string;
   debug: boolean;
+  priorityCommentPattern: string;
 }
 
 export interface CommandLineOption {

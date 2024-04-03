@@ -14,6 +14,7 @@ export const WorkSessionsBuild = (logEntries, config) => {
   const sortedLogEntries = [...logEntries].sort(
     (a, b) => a.date.getTime() - b.date.getTime()
   );
+
   logger.info(`workSessionBuildData recieved ${logEntries.length} log entries`);
   logger.debug(
     `all  logEntries ${logEntries
