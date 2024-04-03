@@ -2,8 +2,7 @@ import { resolve } from "node:path";
 import { platform } from "node:os";
 import { rename } from "node:fs/promises";
 import { exec } from "child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import fs from "node:fs";
+import fs, { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { TestFrameWorkConsole } from "../../utils/consoleFormat.js";
 
 export const deleteFilesFromDir = async (directory = "temp") => {
