@@ -14,6 +14,12 @@ export const WorkSessionsBuild = (logEntries, config) => {
   const sortedLogEntries = [...logEntries].sort(
     (a, b) => a.date.getTime() - b.date.getTime()
   );
+  // if (config.priorityCommentPattern) {
+  //   const highPriorityComment = sortedLogEntries.filter((ent) =>
+  //     ent.comment?.includes(config.priorityCommentPattern)
+  //   );
+  //   console.log(highPriorityComment);
+  // }
 
   logger.info(`workSessionBuildData recieved ${logEntries.length} log entries`);
   logger.debug(
