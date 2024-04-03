@@ -9,4 +9,5 @@ export const defaultConfig = {
   outputFormat: "xlsx",
   outputFolder: "",
   debug: false,
+  priorityCommentPattern: "# ",
 };
