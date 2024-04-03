@@ -27,9 +27,10 @@ const buildDayData = (day) => {
     .join("; ");
   dayWithData.comments = dayWithData.comments.replace(/_/g, " ").trim();
   if (!dayWithData.comments) {
-    dayWithData.comments = day.workSessions
-      .map((ws) => ws.gitComments.trim())
-      .join("; ");
+    const unsortedComments = day.workSessions.map((ws) =>
+      ws.gitComments.trim()
+    );
+    dayWithData.comments = unsortedComments.join("; ");
   }
   return dayWithData;
 };
