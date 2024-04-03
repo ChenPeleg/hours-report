@@ -1,6 +1,8 @@
 import { DateAndTimeUtil } from "../utils/dateAndTime.js";
 
 /**
+ * Build the data of a single day that is shown on the table as one row
+ *
  * @param {import("../types/Day.js").Day} day
  * @returns {import("../types/Day.js").Day}
  */

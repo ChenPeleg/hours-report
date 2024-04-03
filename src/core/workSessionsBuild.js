@@ -18,7 +18,6 @@ export const WorkSessionsBuild = (logEntries, config) => {
   //   const highPriorityComment = sortedLogEntries.filter((ent) =>
   //     ent.comment?.includes(config.priorityCommentPattern)
   //   );
-  //   console.log(highPriorityComment);
   // }
 
   logger.info(`workSessionBuildData recieved ${logEntries.length} log entries`);
