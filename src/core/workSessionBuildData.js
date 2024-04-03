@@ -27,6 +27,7 @@ const buildWorkSessionWithData = (
     branches,
   };
 };
+
 /**
  * @param {{
  *   logEntries: import("../types/gitLogEntry.js").GitLogEntry[];
