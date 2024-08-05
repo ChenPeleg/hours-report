@@ -72,7 +72,7 @@ export const buildCsvAsString = (report) => {
     "Total hours",
     "",
 
-    report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
+    allHoursFromDaysWithRounding
   );
 
   r("", "");
