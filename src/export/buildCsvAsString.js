@@ -2,6 +2,8 @@ import { logger } from "../utils/logger.js";
 
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = "----------------";
+
+const DEBUG_DONT_ROUND_HOURS = true;
 /**
  * @param {string[] | any} cells
  * @returns {string[]}
@@ -29,7 +31,9 @@ const limitCellLength = (rowAsString, separator = ";", maxLength = 100) => {
   }
   return finalString;
 };
-const roundHours = (minuets) => Math.ceil(minuets / 60);
+
+const roundHours = (minuets) =>
+  DEBUG_DONT_ROUND_HOURS ? minuets / 60 : Math.ceil(minuets / 60);
 
 /**
  * @param {import("../types/Report.js").Report} report
