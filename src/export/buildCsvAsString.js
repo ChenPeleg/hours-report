@@ -30,8 +30,7 @@ const limitCellLength = (rowAsString, separator = ";", maxLength = 100) => {
   }
   return finalString;
 };
-
-const roundHours = (minuets) => Math.round(minuets / 6) / 10;
+const roundHours = (minuets) => Math.ceil(minuets / 60);
 
 /**
  * @param {import("../types/Report.js").Report} report
@@ -73,7 +72,7 @@ export const buildCsvAsString = (report) => {
     "Total hours",
     "",
 
-    allHoursFromDaysWithRounding
+    report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
   );
 
   r("", "");

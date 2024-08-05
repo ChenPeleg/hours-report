@@ -12,7 +12,6 @@ describe("Hours sum bug", () => {
   it("should sum the hours by the days summary", () => {
     const fixture = gitLogsFixtures.fixture1
       .split("\n")
-      .slice(0, 81)
       .join("\n");
     const logEntries = parseGitLogToEntries(fixture);
     const workSessions = WorkSessionsBuild(logEntries, defaultConfig);
