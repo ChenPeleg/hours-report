@@ -63,13 +63,19 @@ export const buildCsvAsString = (report) => {
       now.getFullYear() - 2000
     }`
   );
+  const allHoursFromDaysWithRounding = report.months
+    .map((m) => m.days)
+    .flat()
+    .map((d) => d.minuetSum)
+    .map((h) => roundHours(h))
+    .reduce((a, b) => a + b);
   r(
     "Total hours",
     "",
 
-    report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
+    allHoursFromDaysWithRounding
   );
-  //report.months.map((m) => {m.days.map((d) =>  (d.minuetSum)).flat(1).map((h) => roundHours(h)).reduce((a, b) => a + b)
+
   r("", "");
 
   report.months.forEach((month) => {
