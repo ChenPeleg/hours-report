@@ -3,7 +3,6 @@ import { logger } from "../utils/logger.js";
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = "----------------";
 
-const DEBUG_DONT_ROUND_HOURS = true;
 /**
  * @param {string[] | any} cells
  * @returns {string[]}
@@ -32,8 +31,7 @@ const limitCellLength = (rowAsString, separator = ";", maxLength = 100) => {
   return finalString;
 };
 
-const roundHours = (minuets) =>
-  DEBUG_DONT_ROUND_HOURS ? minuets / 60 : Math.ceil(minuets / 60);
+const roundHours = (minuets) => Math.round(minuets / 6) / 10;
 
 /**
  * @param {import("../types/Report.js").Report} report
@@ -71,7 +69,7 @@ export const buildCsvAsString = (report) => {
 
     report.months.map((m) => roundHours(m.minuetSum)).reduce((a, b) => a + b)
   );
-
+  //report.months.map((m) => {m.days.map((d) =>  (d.minuetSum)).flat(1).map((h) => roundHours(h)).reduce((a, b) => a + b)
   r("", "");
 
   report.months.forEach((month) => {
