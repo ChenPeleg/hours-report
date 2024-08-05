@@ -99,3 +99,8 @@ $ npm run e2e
 ```
 
 
+### Fixes
+
+- version 1.1.5
+
+fixed https://github.com/ChenPeleg/hours-report/issues/36
