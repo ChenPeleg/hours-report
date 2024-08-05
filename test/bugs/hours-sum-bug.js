@@ -19,9 +19,6 @@ describe("Hours sum bug", () => {
     const report = buildReportFromSession(workSessions, defaultConfig, "name");
     const csvAsString = buildCsvAsString(report);
     const { totalHours, dailyHours } = getHoursFromCsv(csvAsString);
-    console.log("Total Hours:", totalHours);
-    console.log("Daily Hours:", dailyHours);
-
     assert.equal(
       totalHours,
       dailyHours.reduce((a, b) => a + b)
