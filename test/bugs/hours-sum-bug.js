@@ -5,6 +5,7 @@ import assert from "node:assert/strict";
 import { WorkSessionsBuild } from "../../src/core/workSessionsBuild.js";
 import { buildReportFromSession } from "../../src/report/buildReport.js";
 import { defaultConfig } from "../../src/config/defaultConfig.js";
+import { buildCsvAsString } from "../../src/export/buildCsvAsString.js";
 
 describe("Hours sum bug", () => {
   it("should sum the hours by the days summary", () => {
@@ -15,13 +16,8 @@ describe("Hours sum bug", () => {
     const logEntries = parseGitLogToEntries(fixture);
     const workSessions = WorkSessionsBuild(logEntries, defaultConfig);
     const report = buildReportFromSession(workSessions, defaultConfig, "name");
-
-    const days =
-      /** @type {import("../../src/types/Day.js").Day[]} */
-      report.months.map((m) => m.days).reduce((a, b) => a.concat(b), []);
-    const daysSum = days.map((d) => d.minuetSum).reduce((a, b) => a + b, 0);
-    console.log(daysSum);
-    console.log(report.minuetSum);
+    const csvAsString = buildCsvAsString(report);
+    console.log(csvAsString);
     assert.equal(1, 1);
   });
 });
