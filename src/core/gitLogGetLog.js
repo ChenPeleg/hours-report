@@ -4,9 +4,9 @@ import { execPromise } from "../utils/execPromise.js";
 import { gitLogCommand } from "./gitLogbuildLogCommand.js";
 import { logger } from "../utils/logger.js";
 
-const proccessDir = process.cwd();
+const processDir = process.cwd();
 
-const gitNameCommand = `git config --get remote.origin.url`;
+const gitNameFromUrlCommand = `git config --get remote.origin.url`;
 
 /**
  * @param {import("../types/reportConfigurations.js").ReportConfigurations} config
@@ -14,7 +14,7 @@ const gitNameCommand = `git config --get remote.origin.url`;
  */
 export const gitLogGetLog = async (config) => {
   logger.info("gitLogGetLog started");
-  const dir = path.resolve(proccessDir, config.PathToRepo);
+  const dir = path.resolve(processDir, config.PathToRepo);
   logger.info(`gitLogGetLog: ${dir}`);
 
   let lsCommand = `ls ${dir}/.git`;
@@ -42,10 +42,13 @@ export const gitLogGetLog = async (config) => {
 
   logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(
-    `cd ${dir} && ${gitNameCommand}`
+    `cd ${dir} && ${gitNameFromUrlCommand}`
   ).catch((err) => {
     throw `git log command failed ${err}`;
   });
+  if (!gitRepoNameRaw) {
+    throw `could not get git repo name from ${dir}`;
+  }
   const gitRepoName = gitRepoNameRaw
     .split("/")
     .slice(-2)
