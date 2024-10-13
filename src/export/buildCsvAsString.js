@@ -1,4 +1,5 @@
 import { logger } from "../utils/logger.js";
+import { DateAndTimeUtil } from "../utils/dateAndTime.js";
 
 const CELLS_PER_ROW = 15;
 const ROWS_LINE = "----------------";
@@ -30,7 +31,6 @@ const limitCellLength = (rowAsString, separator = ";", maxLength = 100) => {
   }
   return finalString;
 };
-const roundHours = (minuets) => Math.ceil(minuets / 60);
 
 /**
  * @param {import("../types/Report.js").Report} report
@@ -66,7 +66,7 @@ export const buildCsvAsString = (report) => {
     .map((m) => m.days)
     .flat()
     .map((d) => d.minuetSum)
-    .map((h) => roundHours(h))
+    .map((h) => DateAndTimeUtil.roundMinuetsToHours(h))
     .reduce((a, b) => a + b);
   r(
     "Total hours",
@@ -91,7 +91,7 @@ export const buildCsvAsString = (report) => {
         "",
         `  ${day.dayDate.toLocaleDateString("en-GB", { weekday: "short" })}`,
         `${day.dayDate.getDate().toString()}.${month.MonthDate.getMonth() + 1}`,
-        roundHours(day.minuetSum).toString(),
+        DateAndTimeUtil.roundMinuetsToHours(day.minuetSum).toString(),
         limitCellLength(`   ${day.comments}`)
       );
     });
@@ -104,7 +104,7 @@ export const buildCsvAsString = (report) => {
       ROWS_LINE,
       ROWS_LINE,
       `Total:`,
-      roundHours(month.minuetSum).toString()
+      DateAndTimeUtil.roundMinuetsToHours(month.minuetSum).toString()
     );
     r("", "");
   });

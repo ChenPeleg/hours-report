@@ -83,10 +83,9 @@ function creatASheetForMonth(month) {
             .padStart(2, "0")}   `
         ),
         c(
-          (
-            DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) /
-            60
-          ).toFixed(1)
+          DateAndTimeUtil.roundMinuetsToHours(
+            DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime)
+          )
         ),
         c(""),
         c(s.gitComments),
