@@ -84,8 +84,7 @@ function creatASheetForMonth(month) {
         ),
         c(
           (
-            (DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) +
-              30) /
+            DateAndTimeUtil.getMinutesBetweenDates(s.startTime, s.finishTime) /
             60
           ).toFixed(1)
         ),
