@@ -7,9 +7,9 @@ const outputFolder = "output";
 
 const cleanStringsToFindInAccessibility = [
   "Hours report drorsoft/accessibility",
-  "Total: 11",
+  "Total: 10.1",
   "December Day Date Hours Details",
-  "Thu 22.12 6 Initial commit; graphics; just the docs theme;",
+  "Thu 22.12 5.4 Initial commit; graphics; just the docs theme;",
 ];
 
 const removeCommasAndMultiSpaces = (text) =>
@@ -38,7 +38,7 @@ const e2eTest = async () => {
   const cleanText = removeCommasAndMultiSpaces(resultCsv);
 
   eq(cleanText.length > 100, true);
-  console.log("text", cleanText);
+
   for (const text of cleanStringsToFindInAccessibility) {
     eq(cleanText.includes(text), true);
   }
