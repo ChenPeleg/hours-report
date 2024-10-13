@@ -50,10 +50,14 @@ const subtractMinutesFromDate = (date, minuets) => {
   return new Date(date.getTime() - 1000 * 60 * minuets);
 };
 
+const roundMinuetsToHours = (/** @type {number} */ minuets) =>
+  (minuets / 60).toFixed(1);
+
 export const DateAndTimeUtil = {
   datesAreOnSameMonth,
   datesAreOnSameDay,
   getMinutesBetweenDates,
   dateAndTimeToDateObj,
   subtractMinutesFromDate,
+  roundMinuetsToHours,
 };
