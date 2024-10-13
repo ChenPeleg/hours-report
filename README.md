@@ -100,7 +100,7 @@ $ npm run e2e
 
 
 ### Fixes
-
-- version 1.1.5
+ 
+- version 1.1.6
 
 fixed https://github.com/ChenPeleg/hours-report/issues/36
