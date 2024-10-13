@@ -40,15 +40,16 @@ export const gitLogGetLog = async (config) => {
     throw `git log command failed ${err}`;
   });
 
-  logger.info(`executed ${gitLogCommand(dir, config.Email, moreData)}`);
   const gitRepoNameRaw = await execPromise(
     `cd ${dir} && ${gitNameFromUrlCommand}`
   ).catch((err) => {
-    throw `git log command failed ${err}`;
+    throw `git Repo Name Raw command failed ${err}  `;
   });
+
   if (!gitRepoNameRaw) {
     throw `could not get git repo name from ${dir}`;
   }
+
   const gitRepoName = gitRepoNameRaw
     .split("/")
     .slice(-2)

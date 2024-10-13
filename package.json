@@ -23,7 +23,7 @@
     "start": "node ./src/index.js",
     "start:debug": "node ./src/index.js --debug",
     "start:debug-arguments": "node ./src/index.js ",
-    "start:debug-arguments2": "node ./src/index.js -p ./dump/one-commit-only",
+    "start:debug-arguments2": "node ./src/index.js -p ./dump/only-one-commit-o12345 -mn 0 --debug",
     "test": " node ./test/test_runner.js integration",
     "e2e": " node ./test/e2e/runAppE2e.test.js",
     "format": "prettier --write .",
