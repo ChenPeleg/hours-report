@@ -38,6 +38,7 @@ const e2eTest = async () => {
   const cleanText = removeCommasAndMultiSpaces(resultCsv);
 
   eq(cleanText.length > 100, true);
+  console.log("text", cleanText);
   for (const text of cleanStringsToFindInAccessibility) {
     eq(cleanText.includes(text), true);
   }
