@@ -15,6 +15,7 @@ export const buildReportFromSession = (
 ) => {
   const days = buildDaysFromSessions(workSessions, configuration);
   const months = buildReportMonths(days, configuration);
+
   return {
     months,
     minuetSum: months.map((m) => m.minuetSum).reduce((a, b) => a + b, 0),
