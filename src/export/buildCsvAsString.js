@@ -66,13 +66,13 @@ export const buildCsvAsString = (report) => {
     .map((m) => m.days)
     .flat()
     .map((d) => d.minuetSum)
-    .map((h) => DateAndTimeUtil.roundMinuetsToHours(h))
+    .map((h) => h)
     .reduce((a, b) => a + b);
   r(
     "Total hours",
     "",
 
-    allHoursFromDaysWithRounding
+    DateAndTimeUtil.roundMinuetsToHours(allHoursFromDaysWithRounding)
   );
 
   r("", "");
