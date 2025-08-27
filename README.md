@@ -122,6 +122,7 @@ npm run e2e
 ---
 
 ## Fixes
-
+**Version 1.1.7**  
+Fixed Typos and Improved Documentation
 **Version 1.1.6**  
 Fixed [Issue #36](https://github.com/ChenPeleg/hours-report/issues/36)
