@@ -29,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChenPeleg/vanilla-elements.git"
+    "url": "git+https://github.com/ChenPeleg/hours-report.git"
   },
   "author": "Chen Peleg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ChenPeleg/vanilla-elements/issues"
+    "url": "https://github.com/ChenPeleg/hours-report/issues"
   },
-  "homepage": "https://chenpeleg.github.io/vanilla-elements/",
+  "homepage": "https://chenpeleg.github.io/hours-report/",
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
